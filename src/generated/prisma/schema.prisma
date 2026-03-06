@@ -1,6 +1,5 @@
 datasource db {
-  provider     = "postgresql"
-  relationMode = "prisma"
+  provider = "postgresql"
 }
 
 generator client {
@@ -8,17 +7,40 @@ generator client {
   output   = "../src/generated/prisma"
 }
 
-model User {
-  id            Int       @id @default(autoincrement())
-  createdAt     DateTime  @default(now())
-  email         String    @unique
-  name          String?
-  emailVerified Boolean   @default(false)
-  image         String?
-  updatedAt     DateTime  @updatedAt
-  sessions      Session[]
-  accounts      Account[]
+enum SEXE {
+  M
+  F
+}
 
+model User {
+  id                String           @id
+  createdAt         DateTime         @default(now())
+  email             String           @unique
+  name              String?          @db.VarChar(30)
+  postnom           String?          @db.VarChar(30)
+  prenom            String?          @db.VarChar(30)
+  slug              String?          @unique @db.VarChar(60)
+  numero_telephone  String?          @db.VarChar(15)
+  date_de_naissance DateTime?
+  adresse_residence String?          @db.VarChar(255)
+  emailVerified     Boolean          @default(false)
+  image             String?          @db.VarChar(255)
+  sexe              SEXE?
+  updatedAt         DateTime         @updatedAt
+  is_active         Boolean          @default(true)
+  sessions          Session[]
+  accounts          Account[]
+  preoccupations    Preoccupations[]
+  patient           Patients[]
+  medecin           Medecins[]
+
+  role       String?
+  banned     Boolean?  @default(false)
+  banReason  String?
+  banExpires DateTime?
+
+  @@index([email])
+  @@index([slug])
   @@map("user")
 }
 
@@ -30,11 +52,14 @@ model Session {
   updatedAt DateTime @updatedAt
   ipAddress String?
   userAgent String?
-  userId    Int
+  userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  impersonatedBy String?
 
   @@unique([token])
   @@index([userId])
+  @@index([token])
   @@map("session")
 }
 
@@ -42,7 +67,7 @@ model Account {
   id                    String    @id
   accountId             String
   providerId            String
-  userId                Int
+  userId                String
   user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   accessToken           String?
   refreshToken          String?
@@ -68,4 +93,167 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+//////////////////////////////////////////
+// PREOCCUPATIONS
+//////////////////////////////////////////
+
+model Preoccupations {
+  id         String   @id @default(uuid())
+  sujet      String
+  message    String
+  cree_le    DateTime @default(now())
+  modifie_le DateTime @updatedAt
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("preoccupations")
+}
+
+//////////////////////////////////////////
+// PATIENT
+//////////////////////////////////////////
+
+model Patients {
+  id_patient String   @id @default(uuid())
+  cree_le    DateTime @default(now())
+  modifie_le DateTime @updatedAt
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  rendezVous    RendezVous[]
+  consultations Consultations[]
+
+  @@map("patients")
+}
+
+//////////////////////////////////////////
+// MEDECIN
+//////////////////////////////////////////
+
+model Medecins {
+  id_medecin         String   @id @default(uuid())
+  specialite         String
+  description        String
+  nombre_signalement Int      @default(0)
+  cree_le            DateTime @default(now())
+  modifie_le         DateTime @updatedAt
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  rendezVous    RendezVous[]
+  posts         Posts[]
+  consultations Consultations[]
+
+  @@index([specialite])
+  @@map("medecins")
+}
+
+//////////////////////////////////////////
+// RENDEZ-VOUS
+//////////////////////////////////////////
+enum StatusRvd {
+  attente
+  confirme
+  annule
+  termine
+}
+
+model RendezVous {
+  id_rdv     String    @id @default(uuid())
+  motif      String
+  cree_le    DateTime  @default(now())
+  status     StatusRvd @default(attente)
+  modifie_le DateTime  @updatedAt
+
+  id_patient String
+  id_medecin String
+
+  patients Patients @relation(fields: [id_patient], references: [id_patient], onDelete: Cascade)
+  medecins Medecins @relation(fields: [id_medecin], references: [id_medecin], onDelete: Cascade)
+
+  @@map("rendez-vous")
+}
+
+//////////////////////////////////////////
+// POSTS
+//////////////////////////////////////////
+
+model Posts {
+  id_post         String   @id @default(uuid())
+  slug            String   @unique
+  titre           String
+  description     String
+  lien_image      String?
+  star            Int      @default(0)
+  nombre_aime     Int      @default(0)
+  nombre_non_aime Int      @default(0)
+  nombre_vue      Int      @default(0)
+  cree_le         DateTime @default(now())
+  modifie_le      DateTime @updatedAt
+
+  id_medecin String
+  medecins   Medecins @relation(fields: [id_medecin], references: [id_medecin], onDelete: Cascade)
+
+  commentaires Commentaires[]
+
+  @@map("posts")
+}
+
+//////////////////////////////////////////
+// COMMENTAIRES
+//////////////////////////////////////////
+
+model Commentaires {
+  id_commentaire String   @id @default(uuid())
+  commentaire    String
+  cree_le        DateTime @default(now())
+  modifie_le     DateTime @updatedAt
+
+  id_post String
+  posts   Posts  @relation(fields: [id_post], references: [id_post], onDelete: Cascade)
+
+  @@index([commentaire])
+  @@map("commentaires")
+}
+
+//////////////////////////////////////////
+// CONSULTATIONS
+//////////////////////////////////////////
+
+model Consultations {
+  id_consultation String   @id @default(uuid())
+  diagnostique    String
+  cree_le         DateTime @default(now())
+  modifie_le      DateTime @updatedAt
+
+  id_patient String
+  id_medecin String
+  patient    Patients   @relation(fields: [id_patient], references: [id_patient], onDelete: Cascade)
+  medecin    Medecins   @relation(fields: [id_medecin], references: [id_medecin], onDelete: Cascade)
+  fichiers   Fichiers[]
+
+  @@index([diagnostique])
+  @@map("consultations")
+}
+
+//////////////////////////////////////////
+// FICHIERS
+//////////////////////////////////////////
+
+model Fichiers {
+  id_fichier   String   @id @default(uuid())
+  lien_fichier String
+  cree_le      DateTime @default(now())
+  modifie_le   DateTime @updatedAt
+
+  id_consultation String
+  consultations   Consultations @relation(fields: [id_consultation], references: [id_consultation], onDelete: Cascade)
+
+  @@index([lien_fichier])
+  @@map("fichiers")
 }

@@ -24,12 +24,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 7.4.1
- * Query Engine version: 55ae170b1ced7fc6ed07a15f110549408c501bb3
+ * Prisma Client JS version: 7.4.2
+ * Query Engine version: 94a226be1cf2967af2541cca5529f0f7ba866919
  */
 Prisma.prismaVersion = {
-  client: "7.4.1",
-  engine: "55ae170b1ced7fc6ed07a15f110549408c501bb3"
+  client: "7.4.2",
+  engine: "94a226be1cf2967af2541cca5529f0f7ba866919"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -125,9 +125,21 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt',
   email: 'email',
   name: 'name',
+  postnom: 'postnom',
+  prenom: 'prenom',
+  slug: 'slug',
+  numero_telephone: 'numero_telephone',
+  date_de_naissance: 'date_de_naissance',
+  adresse_residence: 'adresse_residence',
   emailVerified: 'emailVerified',
   image: 'image',
-  updatedAt: 'updatedAt'
+  sexe: 'sexe',
+  updatedAt: 'updatedAt',
+  is_active: 'is_active',
+  role: 'role',
+  banned: 'banned',
+  banReason: 'banReason',
+  banExpires: 'banExpires'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
@@ -138,7 +150,8 @@ exports.Prisma.SessionScalarFieldEnum = {
   updatedAt: 'updatedAt',
   ipAddress: 'ipAddress',
   userAgent: 'userAgent',
-  userId: 'userId'
+  userId: 'userId',
+  impersonatedBy: 'impersonatedBy'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {
@@ -166,6 +179,82 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PreoccupationsScalarFieldEnum = {
+  id: 'id',
+  sujet: 'sujet',
+  message: 'message',
+  cree_le: 'cree_le',
+  modifie_le: 'modifie_le',
+  userId: 'userId'
+};
+
+exports.Prisma.PatientsScalarFieldEnum = {
+  id_patient: 'id_patient',
+  cree_le: 'cree_le',
+  modifie_le: 'modifie_le',
+  userId: 'userId'
+};
+
+exports.Prisma.MedecinsScalarFieldEnum = {
+  id_medecin: 'id_medecin',
+  specialite: 'specialite',
+  description: 'description',
+  nombre_signalement: 'nombre_signalement',
+  cree_le: 'cree_le',
+  modifie_le: 'modifie_le',
+  userId: 'userId'
+};
+
+exports.Prisma.RendezVousScalarFieldEnum = {
+  id_rdv: 'id_rdv',
+  motif: 'motif',
+  cree_le: 'cree_le',
+  status: 'status',
+  modifie_le: 'modifie_le',
+  id_patient: 'id_patient',
+  id_medecin: 'id_medecin'
+};
+
+exports.Prisma.PostsScalarFieldEnum = {
+  id_post: 'id_post',
+  slug: 'slug',
+  titre: 'titre',
+  description: 'description',
+  lien_image: 'lien_image',
+  star: 'star',
+  nombre_aime: 'nombre_aime',
+  nombre_non_aime: 'nombre_non_aime',
+  nombre_vue: 'nombre_vue',
+  cree_le: 'cree_le',
+  modifie_le: 'modifie_le',
+  id_medecin: 'id_medecin'
+};
+
+exports.Prisma.CommentairesScalarFieldEnum = {
+  id_commentaire: 'id_commentaire',
+  commentaire: 'commentaire',
+  cree_le: 'cree_le',
+  modifie_le: 'modifie_le',
+  id_post: 'id_post'
+};
+
+exports.Prisma.ConsultationsScalarFieldEnum = {
+  id_consultation: 'id_consultation',
+  diagnostique: 'diagnostique',
+  cree_le: 'cree_le',
+  modifie_le: 'modifie_le',
+  id_patient: 'id_patient',
+  id_medecin: 'id_medecin'
+};
+
+exports.Prisma.FichiersScalarFieldEnum = {
+  id_fichier: 'id_fichier',
+  lien_fichier: 'lien_fichier',
+  cree_le: 'cree_le',
+  modifie_le: 'modifie_le',
+  id_consultation: 'id_consultation'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -180,13 +269,31 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.SEXE = exports.$Enums.SEXE = {
+  M: 'M',
+  F: 'F'
+};
 
+exports.StatusRvd = exports.$Enums.StatusRvd = {
+  attente: 'attente',
+  confirme: 'confirme',
+  annule: 'annule',
+  termine: 'termine'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  Preoccupations: 'Preoccupations',
+  Patients: 'Patients',
+  Medecins: 'Medecins',
+  RendezVous: 'RendezVous',
+  Posts: 'Posts',
+  Commentaires: 'Commentaires',
+  Consultations: 'Consultations',
+  Fichiers: 'Fichiers'
 };
 
 /**
