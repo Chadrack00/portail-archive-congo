@@ -13,24 +13,24 @@ enum SEXE {
 }
 
 model User {
-  id                String           @id
-  createdAt         DateTime         @default(now())
-  email             String           @unique
-  name              String?          @db.VarChar(30)
-  postnom           String?          @db.VarChar(30)
-  prenom            String?          @db.VarChar(30)
-  slug              String?          @unique @db.VarChar(60)
-  numero_telephone  String?          @db.VarChar(15)
+  id                String         @id
+  createdAt         DateTime       @default(now())
+  email             String         @unique
+  name              String?        @db.VarChar(30)
+  postnom           String?        @db.VarChar(30)
+  prenom            String?        @db.VarChar(30)
+  slug              String?        @unique @db.VarChar(60)
+  numero_telephone  String?        @db.VarChar(15)
   date_de_naissance DateTime?
-  adresse_residence String?          @db.VarChar(255)
-  emailVerified     Boolean          @default(false)
-  image             String?          @db.VarChar(255)
+  adresse_residence String?        @db.VarChar(255)
+  emailVerified     Boolean        @default(false)
+  image             String?        @db.VarChar(255)
   sexe              SEXE?
-  updatedAt         DateTime         @updatedAt
-  is_active         Boolean          @default(true)
+  updatedAt         DateTime       @updatedAt
+  is_active         Boolean        @default(true)
   sessions          Session[]
   accounts          Account[]
-  preoccupations    Preoccupations[]
+  signalements      Signalements[]
   patient           Patients[]
   medecin           Medecins[]
 
@@ -99,9 +99,9 @@ model Verification {
 // PREOCCUPATIONS
 //////////////////////////////////////////
 
-model Preoccupations {
+model Signalements {
   id         String   @id @default(uuid())
-  sujet      String
+  sujet      String?
   message    String
   cree_le    DateTime @default(now())
   modifie_le DateTime @updatedAt
@@ -109,7 +109,7 @@ model Preoccupations {
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("preoccupations")
+  @@map("signalements")
 }
 
 //////////////////////////////////////////

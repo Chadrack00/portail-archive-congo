@@ -15,7 +15,7 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
-
+  
   emailVerification: {
     expiresIn: 60 * 60,
     autoSignIn: true,
@@ -63,7 +63,6 @@ export const auth = betterAuth({
         user,
         medecin,
       },
-      defaultRole: "user",
       adminUserIds: ["KA2f6Uj8jwE7zmVpr6tCxsA0NnQ18m8L"],
     }),
   ],
@@ -102,4 +101,21 @@ export const auth = betterAuth({
     expiresIn: 60 * 60 * 24 * 3,
     updateAge: 60 * 60 * 24,
   },
+
+  user:{
+    additionalFields:{
+      postnom:{
+        type: "string",
+        required: false
+      },
+      prenom:{
+        type: "string",
+        required: false,
+      },
+      slug:{
+        type:"string",
+        required: false,
+      }
+    }
+  }
 });

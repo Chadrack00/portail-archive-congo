@@ -20,11 +20,6 @@ export default function Page() {
       redirect("/sign-in");
     }
 
-    // if (error === "token_expired") {
-    //   // Handled by initial state
-    // } else if (!error) {
-    //   router.push("/home");
-    // }
 
     if(error){
       console.log("Erreur inconnu dans /verify-email", error)

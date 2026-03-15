@@ -30,7 +30,7 @@ model User {
   is_active         Boolean          @default(true)
   sessions          Session[]
   accounts          Account[]
-  preoccupations    Preoccupations[]
+  signalements    Signalements[]
   patient           Patients[]
   medecin           Medecins[]
 
@@ -99,9 +99,9 @@ model Verification {
 // PREOCCUPATIONS
 //////////////////////////////////////////
 
-model Preoccupations {
+model Signalements {
   id         String   @id @default(uuid())
-  sujet      String
+  sujet      String?
   message    String
   cree_le    DateTime @default(now())
   modifie_le DateTime @updatedAt
@@ -109,7 +109,7 @@ model Preoccupations {
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("preoccupations")
+  @@map("signalements")
 }
 
 //////////////////////////////////////////

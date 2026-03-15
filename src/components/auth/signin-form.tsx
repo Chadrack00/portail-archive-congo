@@ -25,7 +25,6 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
-
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const {
     register,
@@ -35,8 +34,7 @@ export function LoginForm({
   } = HandleLoginForm();
 
   const handleGoogleSignIn = async () => {
-    setIsGoogleLoading(true);
-    await signInGoogle();
+    await signInGoogle({ setIsGoogleLoading });
   };
 
   return (
@@ -162,7 +160,7 @@ function HandleLoginForm() {
       setError("root.warning", {
         message: result.message,
       });
-    } else { 
+    } else {
       setError("root.globalError", {
         message: "Une erreur est survenue, veuillez réessayer plus tard",
       });
@@ -176,11 +174,16 @@ function HandleLoginForm() {
   };
 }
 
-const signInGoogle = async () => {
-  await authClient.signIn.social({
+const signInGoogle = async ({
+  setIsGoogleLoading,
+}: {
+  setIsGoogleLoading: (value: boolean) => void;
+}) => {
+  setIsGoogleLoading(true);
+  const response = await authClient.signIn.social({
     provider: "google",
     callbackURL: `${process.env.NEXT_PUBLIC_APP}/`,
   });
+  console.log(response);
+  setIsGoogleLoading(false);
 };
-
-

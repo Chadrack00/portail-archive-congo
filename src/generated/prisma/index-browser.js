@@ -179,7 +179,7 @@ exports.Prisma.VerificationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.PreoccupationsScalarFieldEnum = {
+exports.Prisma.SignalementsScalarFieldEnum = {
   id: 'id',
   sujet: 'sujet',
   message: 'message',
@@ -286,7 +286,7 @@ exports.Prisma.ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
-  Preoccupations: 'Preoccupations',
+  Signalements: 'Signalements',
   Patients: 'Patients',
   Medecins: 'Medecins',
   RendezVous: 'RendezVous',

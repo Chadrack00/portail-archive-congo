@@ -34,10 +34,10 @@ export type Account = $Result.DefaultSelection<Prisma.$AccountPayload>
  */
 export type Verification = $Result.DefaultSelection<Prisma.$VerificationPayload>
 /**
- * Model Preoccupations
+ * Model Signalements
  * 
  */
-export type Preoccupations = $Result.DefaultSelection<Prisma.$PreoccupationsPayload>
+export type Signalements = $Result.DefaultSelection<Prisma.$SignalementsPayload>
 /**
  * Model Patients
  * 
@@ -267,14 +267,14 @@ export class PrismaClient<
   get verification(): Prisma.VerificationDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.preoccupations`: Exposes CRUD operations for the **Preoccupations** model.
+   * `prisma.signalements`: Exposes CRUD operations for the **Signalements** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Preoccupations
-    * const preoccupations = await prisma.preoccupations.findMany()
+    * // Fetch zero or more Signalements
+    * const signalements = await prisma.signalements.findMany()
     * ```
     */
-  get preoccupations(): Prisma.PreoccupationsDelegate<ExtArgs, ClientOptions>;
+  get signalements(): Prisma.SignalementsDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.patients`: Exposes CRUD operations for the **Patients** model.
@@ -783,7 +783,7 @@ export namespace Prisma {
     Session: 'Session',
     Account: 'Account',
     Verification: 'Verification',
-    Preoccupations: 'Preoccupations',
+    Signalements: 'Signalements',
     Patients: 'Patients',
     Medecins: 'Medecins',
     RendezVous: 'RendezVous',
@@ -806,7 +806,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "preoccupations" | "patients" | "medecins" | "rendezVous" | "posts" | "commentaires" | "consultations" | "fichiers"
+      modelProps: "user" | "session" | "account" | "verification" | "signalements" | "patients" | "medecins" | "rendezVous" | "posts" | "commentaires" | "consultations" | "fichiers"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1106,77 +1106,77 @@ export namespace Prisma {
           }
         }
       }
-      Preoccupations: {
-        payload: Prisma.$PreoccupationsPayload<ExtArgs>
-        fields: Prisma.PreoccupationsFieldRefs
+      Signalements: {
+        payload: Prisma.$SignalementsPayload<ExtArgs>
+        fields: Prisma.SignalementsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.PreoccupationsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload> | null
+            args: Prisma.SignalementsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.PreoccupationsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload>
+            args: Prisma.SignalementsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload>
           }
           findFirst: {
-            args: Prisma.PreoccupationsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload> | null
+            args: Prisma.SignalementsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.PreoccupationsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload>
+            args: Prisma.SignalementsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload>
           }
           findMany: {
-            args: Prisma.PreoccupationsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload>[]
+            args: Prisma.SignalementsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload>[]
           }
           create: {
-            args: Prisma.PreoccupationsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload>
+            args: Prisma.SignalementsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload>
           }
           createMany: {
-            args: Prisma.PreoccupationsCreateManyArgs<ExtArgs>
+            args: Prisma.SignalementsCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.PreoccupationsCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload>[]
+            args: Prisma.SignalementsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload>[]
           }
           delete: {
-            args: Prisma.PreoccupationsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload>
+            args: Prisma.SignalementsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload>
           }
           update: {
-            args: Prisma.PreoccupationsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload>
+            args: Prisma.SignalementsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload>
           }
           deleteMany: {
-            args: Prisma.PreoccupationsDeleteManyArgs<ExtArgs>
+            args: Prisma.SignalementsDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.PreoccupationsUpdateManyArgs<ExtArgs>
+            args: Prisma.SignalementsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.PreoccupationsUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload>[]
+            args: Prisma.SignalementsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload>[]
           }
           upsert: {
-            args: Prisma.PreoccupationsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PreoccupationsPayload>
+            args: Prisma.SignalementsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SignalementsPayload>
           }
           aggregate: {
-            args: Prisma.PreoccupationsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePreoccupations>
+            args: Prisma.SignalementsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSignalements>
           }
           groupBy: {
-            args: Prisma.PreoccupationsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PreoccupationsGroupByOutputType>[]
+            args: Prisma.SignalementsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SignalementsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.PreoccupationsCountArgs<ExtArgs>
-            result: $Utils.Optional<PreoccupationsCountAggregateOutputType> | number
+            args: Prisma.SignalementsCountArgs<ExtArgs>
+            result: $Utils.Optional<SignalementsCountAggregateOutputType> | number
           }
         }
       }
@@ -1810,7 +1810,7 @@ export namespace Prisma {
     session?: SessionOmit
     account?: AccountOmit
     verification?: VerificationOmit
-    preoccupations?: PreoccupationsOmit
+    signalements?: SignalementsOmit
     patients?: PatientsOmit
     medecins?: MedecinsOmit
     rendezVous?: RendezVousOmit
@@ -1900,7 +1900,7 @@ export namespace Prisma {
   export type UserCountOutputType = {
     sessions: number
     accounts: number
-    preoccupations: number
+    signalements: number
     patient: number
     medecin: number
   }
@@ -1908,7 +1908,7 @@ export namespace Prisma {
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
-    preoccupations?: boolean | UserCountOutputTypeCountPreoccupationsArgs
+    signalements?: boolean | UserCountOutputTypeCountSignalementsArgs
     patient?: boolean | UserCountOutputTypeCountPatientArgs
     medecin?: boolean | UserCountOutputTypeCountMedecinArgs
   }
@@ -1941,8 +1941,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountPreoccupationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PreoccupationsWhereInput
+  export type UserCountOutputTypeCountSignalementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SignalementsWhereInput
   }
 
   /**
@@ -2393,7 +2393,7 @@ export namespace Prisma {
     banExpires?: boolean
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
-    preoccupations?: boolean | User$preoccupationsArgs<ExtArgs>
+    signalements?: boolean | User$signalementsArgs<ExtArgs>
     patient?: boolean | User$patientArgs<ExtArgs>
     medecin?: boolean | User$medecinArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2469,7 +2469,7 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
-    preoccupations?: boolean | User$preoccupationsArgs<ExtArgs>
+    signalements?: boolean | User$signalementsArgs<ExtArgs>
     patient?: boolean | User$patientArgs<ExtArgs>
     medecin?: boolean | User$medecinArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2482,7 +2482,7 @@ export namespace Prisma {
     objects: {
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
-      preoccupations: Prisma.$PreoccupationsPayload<ExtArgs>[]
+      signalements: Prisma.$SignalementsPayload<ExtArgs>[]
       patient: Prisma.$PatientsPayload<ExtArgs>[]
       medecin: Prisma.$MedecinsPayload<ExtArgs>[]
     }
@@ -2902,7 +2902,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    preoccupations<T extends User$preoccupationsArgs<ExtArgs> = {}>(args?: Subset<T, User$preoccupationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    signalements<T extends User$signalementsArgs<ExtArgs> = {}>(args?: Subset<T, User$signalementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     patient<T extends User$patientArgs<ExtArgs> = {}>(args?: Subset<T, User$patientArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     medecin<T extends User$medecinArgs<ExtArgs> = {}>(args?: Subset<T, User$medecinArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MedecinsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -3389,27 +3389,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.preoccupations
+   * User.signalements
    */
-  export type User$preoccupationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$signalementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
-    where?: PreoccupationsWhereInput
-    orderBy?: PreoccupationsOrderByWithRelationInput | PreoccupationsOrderByWithRelationInput[]
-    cursor?: PreoccupationsWhereUniqueInput
+    include?: SignalementsInclude<ExtArgs> | null
+    where?: SignalementsWhereInput
+    orderBy?: SignalementsOrderByWithRelationInput | SignalementsOrderByWithRelationInput[]
+    cursor?: SignalementsWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PreoccupationsScalarFieldEnum | PreoccupationsScalarFieldEnum[]
+    distinct?: SignalementsScalarFieldEnum | SignalementsScalarFieldEnum[]
   }
 
   /**
@@ -6760,16 +6760,16 @@ export namespace Prisma {
 
 
   /**
-   * Model Preoccupations
+   * Model Signalements
    */
 
-  export type AggregatePreoccupations = {
-    _count: PreoccupationsCountAggregateOutputType | null
-    _min: PreoccupationsMinAggregateOutputType | null
-    _max: PreoccupationsMaxAggregateOutputType | null
+  export type AggregateSignalements = {
+    _count: SignalementsCountAggregateOutputType | null
+    _min: SignalementsMinAggregateOutputType | null
+    _max: SignalementsMaxAggregateOutputType | null
   }
 
-  export type PreoccupationsMinAggregateOutputType = {
+  export type SignalementsMinAggregateOutputType = {
     id: string | null
     sujet: string | null
     message: string | null
@@ -6778,7 +6778,7 @@ export namespace Prisma {
     userId: string | null
   }
 
-  export type PreoccupationsMaxAggregateOutputType = {
+  export type SignalementsMaxAggregateOutputType = {
     id: string | null
     sujet: string | null
     message: string | null
@@ -6787,7 +6787,7 @@ export namespace Prisma {
     userId: string | null
   }
 
-  export type PreoccupationsCountAggregateOutputType = {
+  export type SignalementsCountAggregateOutputType = {
     id: number
     sujet: number
     message: number
@@ -6798,7 +6798,7 @@ export namespace Prisma {
   }
 
 
-  export type PreoccupationsMinAggregateInputType = {
+  export type SignalementsMinAggregateInputType = {
     id?: true
     sujet?: true
     message?: true
@@ -6807,7 +6807,7 @@ export namespace Prisma {
     userId?: true
   }
 
-  export type PreoccupationsMaxAggregateInputType = {
+  export type SignalementsMaxAggregateInputType = {
     id?: true
     sujet?: true
     message?: true
@@ -6816,7 +6816,7 @@ export namespace Prisma {
     userId?: true
   }
 
-  export type PreoccupationsCountAggregateInputType = {
+  export type SignalementsCountAggregateInputType = {
     id?: true
     sujet?: true
     message?: true
@@ -6826,105 +6826,105 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type PreoccupationsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Preoccupations to aggregate.
+     * Filter which Signalements to aggregate.
      */
-    where?: PreoccupationsWhereInput
+    where?: SignalementsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Preoccupations to fetch.
+     * Determine the order of Signalements to fetch.
      */
-    orderBy?: PreoccupationsOrderByWithRelationInput | PreoccupationsOrderByWithRelationInput[]
+    orderBy?: SignalementsOrderByWithRelationInput | SignalementsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: PreoccupationsWhereUniqueInput
+    cursor?: SignalementsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Preoccupations from the position of the cursor.
+     * Take `±n` Signalements from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Preoccupations.
+     * Skip the first `n` Signalements.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Preoccupations
+     * Count returned Signalements
     **/
-    _count?: true | PreoccupationsCountAggregateInputType
+    _count?: true | SignalementsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: PreoccupationsMinAggregateInputType
+    _min?: SignalementsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: PreoccupationsMaxAggregateInputType
+    _max?: SignalementsMaxAggregateInputType
   }
 
-  export type GetPreoccupationsAggregateType<T extends PreoccupationsAggregateArgs> = {
-        [P in keyof T & keyof AggregatePreoccupations]: P extends '_count' | 'count'
+  export type GetSignalementsAggregateType<T extends SignalementsAggregateArgs> = {
+        [P in keyof T & keyof AggregateSignalements]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregatePreoccupations[P]>
-      : GetScalarType<T[P], AggregatePreoccupations[P]>
+        : GetScalarType<T[P], AggregateSignalements[P]>
+      : GetScalarType<T[P], AggregateSignalements[P]>
   }
 
 
 
 
-  export type PreoccupationsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PreoccupationsWhereInput
-    orderBy?: PreoccupationsOrderByWithAggregationInput | PreoccupationsOrderByWithAggregationInput[]
-    by: PreoccupationsScalarFieldEnum[] | PreoccupationsScalarFieldEnum
-    having?: PreoccupationsScalarWhereWithAggregatesInput
+  export type SignalementsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SignalementsWhereInput
+    orderBy?: SignalementsOrderByWithAggregationInput | SignalementsOrderByWithAggregationInput[]
+    by: SignalementsScalarFieldEnum[] | SignalementsScalarFieldEnum
+    having?: SignalementsScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: PreoccupationsCountAggregateInputType | true
-    _min?: PreoccupationsMinAggregateInputType
-    _max?: PreoccupationsMaxAggregateInputType
+    _count?: SignalementsCountAggregateInputType | true
+    _min?: SignalementsMinAggregateInputType
+    _max?: SignalementsMaxAggregateInputType
   }
 
-  export type PreoccupationsGroupByOutputType = {
+  export type SignalementsGroupByOutputType = {
     id: string
-    sujet: string
+    sujet: string | null
     message: string
     cree_le: Date
     modifie_le: Date
     userId: string
-    _count: PreoccupationsCountAggregateOutputType | null
-    _min: PreoccupationsMinAggregateOutputType | null
-    _max: PreoccupationsMaxAggregateOutputType | null
+    _count: SignalementsCountAggregateOutputType | null
+    _min: SignalementsMinAggregateOutputType | null
+    _max: SignalementsMaxAggregateOutputType | null
   }
 
-  type GetPreoccupationsGroupByPayload<T extends PreoccupationsGroupByArgs> = Prisma.PrismaPromise<
+  type GetSignalementsGroupByPayload<T extends SignalementsGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<PreoccupationsGroupByOutputType, T['by']> &
+      PickEnumerable<SignalementsGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof PreoccupationsGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof SignalementsGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], PreoccupationsGroupByOutputType[P]>
-            : GetScalarType<T[P], PreoccupationsGroupByOutputType[P]>
+              : GetScalarType<T[P], SignalementsGroupByOutputType[P]>
+            : GetScalarType<T[P], SignalementsGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type PreoccupationsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type SignalementsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     sujet?: boolean
     message?: boolean
@@ -6932,9 +6932,9 @@ export namespace Prisma {
     modifie_le?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["preoccupations"]>
+  }, ExtArgs["result"]["signalements"]>
 
-  export type PreoccupationsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type SignalementsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     sujet?: boolean
     message?: boolean
@@ -6942,9 +6942,9 @@ export namespace Prisma {
     modifie_le?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["preoccupations"]>
+  }, ExtArgs["result"]["signalements"]>
 
-  export type PreoccupationsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type SignalementsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     sujet?: boolean
     message?: boolean
@@ -6952,9 +6952,9 @@ export namespace Prisma {
     modifie_le?: boolean
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["preoccupations"]>
+  }, ExtArgs["result"]["signalements"]>
 
-  export type PreoccupationsSelectScalar = {
+  export type SignalementsSelectScalar = {
     id?: boolean
     sujet?: boolean
     message?: boolean
@@ -6963,159 +6963,159 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type PreoccupationsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sujet" | "message" | "cree_le" | "modifie_le" | "userId", ExtArgs["result"]["preoccupations"]>
-  export type PreoccupationsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sujet" | "message" | "cree_le" | "modifie_le" | "userId", ExtArgs["result"]["signalements"]>
+  export type SignalementsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type PreoccupationsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type PreoccupationsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
-  export type $PreoccupationsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Preoccupations"
+  export type $SignalementsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Signalements"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      sujet: string
+      sujet: string | null
       message: string
       cree_le: Date
       modifie_le: Date
       userId: string
-    }, ExtArgs["result"]["preoccupations"]>
+    }, ExtArgs["result"]["signalements"]>
     composites: {}
   }
 
-  type PreoccupationsGetPayload<S extends boolean | null | undefined | PreoccupationsDefaultArgs> = $Result.GetResult<Prisma.$PreoccupationsPayload, S>
+  type SignalementsGetPayload<S extends boolean | null | undefined | SignalementsDefaultArgs> = $Result.GetResult<Prisma.$SignalementsPayload, S>
 
-  type PreoccupationsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PreoccupationsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PreoccupationsCountAggregateInputType | true
+  type SignalementsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SignalementsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SignalementsCountAggregateInputType | true
     }
 
-  export interface PreoccupationsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Preoccupations'], meta: { name: 'Preoccupations' } }
+  export interface SignalementsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Signalements'], meta: { name: 'Signalements' } }
     /**
-     * Find zero or one Preoccupations that matches the filter.
-     * @param {PreoccupationsFindUniqueArgs} args - Arguments to find a Preoccupations
+     * Find zero or one Signalements that matches the filter.
+     * @param {SignalementsFindUniqueArgs} args - Arguments to find a Signalements
      * @example
-     * // Get one Preoccupations
-     * const preoccupations = await prisma.preoccupations.findUnique({
+     * // Get one Signalements
+     * const signalements = await prisma.signalements.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends PreoccupationsFindUniqueArgs>(args: SelectSubset<T, PreoccupationsFindUniqueArgs<ExtArgs>>): Prisma__PreoccupationsClient<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends SignalementsFindUniqueArgs>(args: SelectSubset<T, SignalementsFindUniqueArgs<ExtArgs>>): Prisma__SignalementsClient<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Preoccupations that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Signalements that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {PreoccupationsFindUniqueOrThrowArgs} args - Arguments to find a Preoccupations
+     * @param {SignalementsFindUniqueOrThrowArgs} args - Arguments to find a Signalements
      * @example
-     * // Get one Preoccupations
-     * const preoccupations = await prisma.preoccupations.findUniqueOrThrow({
+     * // Get one Signalements
+     * const signalements = await prisma.signalements.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends PreoccupationsFindUniqueOrThrowArgs>(args: SelectSubset<T, PreoccupationsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PreoccupationsClient<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends SignalementsFindUniqueOrThrowArgs>(args: SelectSubset<T, SignalementsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SignalementsClient<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Preoccupations that matches the filter.
+     * Find the first Signalements that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PreoccupationsFindFirstArgs} args - Arguments to find a Preoccupations
+     * @param {SignalementsFindFirstArgs} args - Arguments to find a Signalements
      * @example
-     * // Get one Preoccupations
-     * const preoccupations = await prisma.preoccupations.findFirst({
+     * // Get one Signalements
+     * const signalements = await prisma.signalements.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends PreoccupationsFindFirstArgs>(args?: SelectSubset<T, PreoccupationsFindFirstArgs<ExtArgs>>): Prisma__PreoccupationsClient<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends SignalementsFindFirstArgs>(args?: SelectSubset<T, SignalementsFindFirstArgs<ExtArgs>>): Prisma__SignalementsClient<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Preoccupations that matches the filter or
+     * Find the first Signalements that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PreoccupationsFindFirstOrThrowArgs} args - Arguments to find a Preoccupations
+     * @param {SignalementsFindFirstOrThrowArgs} args - Arguments to find a Signalements
      * @example
-     * // Get one Preoccupations
-     * const preoccupations = await prisma.preoccupations.findFirstOrThrow({
+     * // Get one Signalements
+     * const signalements = await prisma.signalements.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends PreoccupationsFindFirstOrThrowArgs>(args?: SelectSubset<T, PreoccupationsFindFirstOrThrowArgs<ExtArgs>>): Prisma__PreoccupationsClient<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends SignalementsFindFirstOrThrowArgs>(args?: SelectSubset<T, SignalementsFindFirstOrThrowArgs<ExtArgs>>): Prisma__SignalementsClient<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Preoccupations that matches the filter.
+     * Find zero or more Signalements that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PreoccupationsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {SignalementsFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Preoccupations
-     * const preoccupations = await prisma.preoccupations.findMany()
+     * // Get all Signalements
+     * const signalements = await prisma.signalements.findMany()
      * 
-     * // Get first 10 Preoccupations
-     * const preoccupations = await prisma.preoccupations.findMany({ take: 10 })
+     * // Get first 10 Signalements
+     * const signalements = await prisma.signalements.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const preoccupationsWithIdOnly = await prisma.preoccupations.findMany({ select: { id: true } })
+     * const signalementsWithIdOnly = await prisma.signalements.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends PreoccupationsFindManyArgs>(args?: SelectSubset<T, PreoccupationsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends SignalementsFindManyArgs>(args?: SelectSubset<T, SignalementsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Preoccupations.
-     * @param {PreoccupationsCreateArgs} args - Arguments to create a Preoccupations.
+     * Create a Signalements.
+     * @param {SignalementsCreateArgs} args - Arguments to create a Signalements.
      * @example
-     * // Create one Preoccupations
-     * const Preoccupations = await prisma.preoccupations.create({
+     * // Create one Signalements
+     * const Signalements = await prisma.signalements.create({
      *   data: {
-     *     // ... data to create a Preoccupations
+     *     // ... data to create a Signalements
      *   }
      * })
      * 
      */
-    create<T extends PreoccupationsCreateArgs>(args: SelectSubset<T, PreoccupationsCreateArgs<ExtArgs>>): Prisma__PreoccupationsClient<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends SignalementsCreateArgs>(args: SelectSubset<T, SignalementsCreateArgs<ExtArgs>>): Prisma__SignalementsClient<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Preoccupations.
-     * @param {PreoccupationsCreateManyArgs} args - Arguments to create many Preoccupations.
+     * Create many Signalements.
+     * @param {SignalementsCreateManyArgs} args - Arguments to create many Signalements.
      * @example
-     * // Create many Preoccupations
-     * const preoccupations = await prisma.preoccupations.createMany({
+     * // Create many Signalements
+     * const signalements = await prisma.signalements.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends PreoccupationsCreateManyArgs>(args?: SelectSubset<T, PreoccupationsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends SignalementsCreateManyArgs>(args?: SelectSubset<T, SignalementsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Preoccupations and returns the data saved in the database.
-     * @param {PreoccupationsCreateManyAndReturnArgs} args - Arguments to create many Preoccupations.
+     * Create many Signalements and returns the data saved in the database.
+     * @param {SignalementsCreateManyAndReturnArgs} args - Arguments to create many Signalements.
      * @example
-     * // Create many Preoccupations
-     * const preoccupations = await prisma.preoccupations.createManyAndReturn({
+     * // Create many Signalements
+     * const signalements = await prisma.signalements.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Preoccupations and only return the `id`
-     * const preoccupationsWithIdOnly = await prisma.preoccupations.createManyAndReturn({
+     * // Create many Signalements and only return the `id`
+     * const signalementsWithIdOnly = await prisma.signalements.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -7125,28 +7125,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends PreoccupationsCreateManyAndReturnArgs>(args?: SelectSubset<T, PreoccupationsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends SignalementsCreateManyAndReturnArgs>(args?: SelectSubset<T, SignalementsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Preoccupations.
-     * @param {PreoccupationsDeleteArgs} args - Arguments to delete one Preoccupations.
+     * Delete a Signalements.
+     * @param {SignalementsDeleteArgs} args - Arguments to delete one Signalements.
      * @example
-     * // Delete one Preoccupations
-     * const Preoccupations = await prisma.preoccupations.delete({
+     * // Delete one Signalements
+     * const Signalements = await prisma.signalements.delete({
      *   where: {
-     *     // ... filter to delete one Preoccupations
+     *     // ... filter to delete one Signalements
      *   }
      * })
      * 
      */
-    delete<T extends PreoccupationsDeleteArgs>(args: SelectSubset<T, PreoccupationsDeleteArgs<ExtArgs>>): Prisma__PreoccupationsClient<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends SignalementsDeleteArgs>(args: SelectSubset<T, SignalementsDeleteArgs<ExtArgs>>): Prisma__SignalementsClient<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Preoccupations.
-     * @param {PreoccupationsUpdateArgs} args - Arguments to update one Preoccupations.
+     * Update one Signalements.
+     * @param {SignalementsUpdateArgs} args - Arguments to update one Signalements.
      * @example
-     * // Update one Preoccupations
-     * const preoccupations = await prisma.preoccupations.update({
+     * // Update one Signalements
+     * const signalements = await prisma.signalements.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7156,30 +7156,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends PreoccupationsUpdateArgs>(args: SelectSubset<T, PreoccupationsUpdateArgs<ExtArgs>>): Prisma__PreoccupationsClient<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends SignalementsUpdateArgs>(args: SelectSubset<T, SignalementsUpdateArgs<ExtArgs>>): Prisma__SignalementsClient<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Preoccupations.
-     * @param {PreoccupationsDeleteManyArgs} args - Arguments to filter Preoccupations to delete.
+     * Delete zero or more Signalements.
+     * @param {SignalementsDeleteManyArgs} args - Arguments to filter Signalements to delete.
      * @example
-     * // Delete a few Preoccupations
-     * const { count } = await prisma.preoccupations.deleteMany({
+     * // Delete a few Signalements
+     * const { count } = await prisma.signalements.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends PreoccupationsDeleteManyArgs>(args?: SelectSubset<T, PreoccupationsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends SignalementsDeleteManyArgs>(args?: SelectSubset<T, SignalementsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Preoccupations.
+     * Update zero or more Signalements.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PreoccupationsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {SignalementsUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Preoccupations
-     * const preoccupations = await prisma.preoccupations.updateMany({
+     * // Update many Signalements
+     * const signalements = await prisma.signalements.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7189,14 +7189,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends PreoccupationsUpdateManyArgs>(args: SelectSubset<T, PreoccupationsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends SignalementsUpdateManyArgs>(args: SelectSubset<T, SignalementsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Preoccupations and returns the data updated in the database.
-     * @param {PreoccupationsUpdateManyAndReturnArgs} args - Arguments to update many Preoccupations.
+     * Update zero or more Signalements and returns the data updated in the database.
+     * @param {SignalementsUpdateManyAndReturnArgs} args - Arguments to update many Signalements.
      * @example
-     * // Update many Preoccupations
-     * const preoccupations = await prisma.preoccupations.updateManyAndReturn({
+     * // Update many Signalements
+     * const signalements = await prisma.signalements.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7205,8 +7205,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Preoccupations and only return the `id`
-     * const preoccupationsWithIdOnly = await prisma.preoccupations.updateManyAndReturn({
+     * // Update zero or more Signalements and only return the `id`
+     * const signalementsWithIdOnly = await prisma.signalements.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -7219,56 +7219,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends PreoccupationsUpdateManyAndReturnArgs>(args: SelectSubset<T, PreoccupationsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends SignalementsUpdateManyAndReturnArgs>(args: SelectSubset<T, SignalementsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Preoccupations.
-     * @param {PreoccupationsUpsertArgs} args - Arguments to update or create a Preoccupations.
+     * Create or update one Signalements.
+     * @param {SignalementsUpsertArgs} args - Arguments to update or create a Signalements.
      * @example
-     * // Update or create a Preoccupations
-     * const preoccupations = await prisma.preoccupations.upsert({
+     * // Update or create a Signalements
+     * const signalements = await prisma.signalements.upsert({
      *   create: {
-     *     // ... data to create a Preoccupations
+     *     // ... data to create a Signalements
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Preoccupations we want to update
+     *     // ... the filter for the Signalements we want to update
      *   }
      * })
      */
-    upsert<T extends PreoccupationsUpsertArgs>(args: SelectSubset<T, PreoccupationsUpsertArgs<ExtArgs>>): Prisma__PreoccupationsClient<$Result.GetResult<Prisma.$PreoccupationsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends SignalementsUpsertArgs>(args: SelectSubset<T, SignalementsUpsertArgs<ExtArgs>>): Prisma__SignalementsClient<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Preoccupations.
+     * Count the number of Signalements.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PreoccupationsCountArgs} args - Arguments to filter Preoccupations to count.
+     * @param {SignalementsCountArgs} args - Arguments to filter Signalements to count.
      * @example
-     * // Count the number of Preoccupations
-     * const count = await prisma.preoccupations.count({
+     * // Count the number of Signalements
+     * const count = await prisma.signalements.count({
      *   where: {
-     *     // ... the filter for the Preoccupations we want to count
+     *     // ... the filter for the Signalements we want to count
      *   }
      * })
     **/
-    count<T extends PreoccupationsCountArgs>(
-      args?: Subset<T, PreoccupationsCountArgs>,
+    count<T extends SignalementsCountArgs>(
+      args?: Subset<T, SignalementsCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], PreoccupationsCountAggregateOutputType>
+          : GetScalarType<T['select'], SignalementsCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Preoccupations.
+     * Allows you to perform aggregations operations on a Signalements.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PreoccupationsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {SignalementsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -7288,13 +7288,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends PreoccupationsAggregateArgs>(args: Subset<T, PreoccupationsAggregateArgs>): Prisma.PrismaPromise<GetPreoccupationsAggregateType<T>>
+    aggregate<T extends SignalementsAggregateArgs>(args: Subset<T, SignalementsAggregateArgs>): Prisma.PrismaPromise<GetSignalementsAggregateType<T>>
 
     /**
-     * Group by Preoccupations.
+     * Group by Signalements.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PreoccupationsGroupByArgs} args - Group by arguments.
+     * @param {SignalementsGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -7309,14 +7309,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends PreoccupationsGroupByArgs,
+      T extends SignalementsGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PreoccupationsGroupByArgs['orderBy'] }
-        : { orderBy?: PreoccupationsGroupByArgs['orderBy'] },
+        ? { orderBy: SignalementsGroupByArgs['orderBy'] }
+        : { orderBy?: SignalementsGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7365,20 +7365,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, PreoccupationsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPreoccupationsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, SignalementsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSignalementsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Preoccupations model
+   * Fields of the Signalements model
    */
-  readonly fields: PreoccupationsFieldRefs;
+  readonly fields: SignalementsFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Preoccupations.
+   * The delegate class that acts as a "Promise-like" for Signalements.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__PreoccupationsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__SignalementsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -7407,426 +7407,426 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Preoccupations model
+   * Fields of the Signalements model
    */
-  interface PreoccupationsFieldRefs {
-    readonly id: FieldRef<"Preoccupations", 'String'>
-    readonly sujet: FieldRef<"Preoccupations", 'String'>
-    readonly message: FieldRef<"Preoccupations", 'String'>
-    readonly cree_le: FieldRef<"Preoccupations", 'DateTime'>
-    readonly modifie_le: FieldRef<"Preoccupations", 'DateTime'>
-    readonly userId: FieldRef<"Preoccupations", 'String'>
+  interface SignalementsFieldRefs {
+    readonly id: FieldRef<"Signalements", 'String'>
+    readonly sujet: FieldRef<"Signalements", 'String'>
+    readonly message: FieldRef<"Signalements", 'String'>
+    readonly cree_le: FieldRef<"Signalements", 'DateTime'>
+    readonly modifie_le: FieldRef<"Signalements", 'DateTime'>
+    readonly userId: FieldRef<"Signalements", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * Preoccupations findUnique
+   * Signalements findUnique
    */
-  export type PreoccupationsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
+    include?: SignalementsInclude<ExtArgs> | null
     /**
-     * Filter, which Preoccupations to fetch.
+     * Filter, which Signalements to fetch.
      */
-    where: PreoccupationsWhereUniqueInput
+    where: SignalementsWhereUniqueInput
   }
 
   /**
-   * Preoccupations findUniqueOrThrow
+   * Signalements findUniqueOrThrow
    */
-  export type PreoccupationsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
+    include?: SignalementsInclude<ExtArgs> | null
     /**
-     * Filter, which Preoccupations to fetch.
+     * Filter, which Signalements to fetch.
      */
-    where: PreoccupationsWhereUniqueInput
+    where: SignalementsWhereUniqueInput
   }
 
   /**
-   * Preoccupations findFirst
+   * Signalements findFirst
    */
-  export type PreoccupationsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
+    include?: SignalementsInclude<ExtArgs> | null
     /**
-     * Filter, which Preoccupations to fetch.
+     * Filter, which Signalements to fetch.
      */
-    where?: PreoccupationsWhereInput
+    where?: SignalementsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Preoccupations to fetch.
+     * Determine the order of Signalements to fetch.
      */
-    orderBy?: PreoccupationsOrderByWithRelationInput | PreoccupationsOrderByWithRelationInput[]
+    orderBy?: SignalementsOrderByWithRelationInput | SignalementsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Preoccupations.
+     * Sets the position for searching for Signalements.
      */
-    cursor?: PreoccupationsWhereUniqueInput
+    cursor?: SignalementsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Preoccupations from the position of the cursor.
+     * Take `±n` Signalements from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Preoccupations.
+     * Skip the first `n` Signalements.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Preoccupations.
+     * Filter by unique combinations of Signalements.
      */
-    distinct?: PreoccupationsScalarFieldEnum | PreoccupationsScalarFieldEnum[]
+    distinct?: SignalementsScalarFieldEnum | SignalementsScalarFieldEnum[]
   }
 
   /**
-   * Preoccupations findFirstOrThrow
+   * Signalements findFirstOrThrow
    */
-  export type PreoccupationsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
+    include?: SignalementsInclude<ExtArgs> | null
     /**
-     * Filter, which Preoccupations to fetch.
+     * Filter, which Signalements to fetch.
      */
-    where?: PreoccupationsWhereInput
+    where?: SignalementsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Preoccupations to fetch.
+     * Determine the order of Signalements to fetch.
      */
-    orderBy?: PreoccupationsOrderByWithRelationInput | PreoccupationsOrderByWithRelationInput[]
+    orderBy?: SignalementsOrderByWithRelationInput | SignalementsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Preoccupations.
+     * Sets the position for searching for Signalements.
      */
-    cursor?: PreoccupationsWhereUniqueInput
+    cursor?: SignalementsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Preoccupations from the position of the cursor.
+     * Take `±n` Signalements from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Preoccupations.
+     * Skip the first `n` Signalements.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Preoccupations.
+     * Filter by unique combinations of Signalements.
      */
-    distinct?: PreoccupationsScalarFieldEnum | PreoccupationsScalarFieldEnum[]
+    distinct?: SignalementsScalarFieldEnum | SignalementsScalarFieldEnum[]
   }
 
   /**
-   * Preoccupations findMany
+   * Signalements findMany
    */
-  export type PreoccupationsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
+    include?: SignalementsInclude<ExtArgs> | null
     /**
-     * Filter, which Preoccupations to fetch.
+     * Filter, which Signalements to fetch.
      */
-    where?: PreoccupationsWhereInput
+    where?: SignalementsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Preoccupations to fetch.
+     * Determine the order of Signalements to fetch.
      */
-    orderBy?: PreoccupationsOrderByWithRelationInput | PreoccupationsOrderByWithRelationInput[]
+    orderBy?: SignalementsOrderByWithRelationInput | SignalementsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Preoccupations.
+     * Sets the position for listing Signalements.
      */
-    cursor?: PreoccupationsWhereUniqueInput
+    cursor?: SignalementsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Preoccupations from the position of the cursor.
+     * Take `±n` Signalements from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Preoccupations.
+     * Skip the first `n` Signalements.
      */
     skip?: number
-    distinct?: PreoccupationsScalarFieldEnum | PreoccupationsScalarFieldEnum[]
+    distinct?: SignalementsScalarFieldEnum | SignalementsScalarFieldEnum[]
   }
 
   /**
-   * Preoccupations create
+   * Signalements create
    */
-  export type PreoccupationsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
+    include?: SignalementsInclude<ExtArgs> | null
     /**
-     * The data needed to create a Preoccupations.
+     * The data needed to create a Signalements.
      */
-    data: XOR<PreoccupationsCreateInput, PreoccupationsUncheckedCreateInput>
+    data: XOR<SignalementsCreateInput, SignalementsUncheckedCreateInput>
   }
 
   /**
-   * Preoccupations createMany
+   * Signalements createMany
    */
-  export type PreoccupationsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Preoccupations.
+     * The data used to create many Signalements.
      */
-    data: PreoccupationsCreateManyInput | PreoccupationsCreateManyInput[]
+    data: SignalementsCreateManyInput | SignalementsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Preoccupations createManyAndReturn
+   * Signalements createManyAndReturn
    */
-  export type PreoccupationsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelectCreateManyAndReturn<ExtArgs> | null
+    select?: SignalementsSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
-     * The data used to create many Preoccupations.
+     * The data used to create many Signalements.
      */
-    data: PreoccupationsCreateManyInput | PreoccupationsCreateManyInput[]
+    data: SignalementsCreateManyInput | SignalementsCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: SignalementsIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Preoccupations update
+   * Signalements update
    */
-  export type PreoccupationsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
+    include?: SignalementsInclude<ExtArgs> | null
     /**
-     * The data needed to update a Preoccupations.
+     * The data needed to update a Signalements.
      */
-    data: XOR<PreoccupationsUpdateInput, PreoccupationsUncheckedUpdateInput>
+    data: XOR<SignalementsUpdateInput, SignalementsUncheckedUpdateInput>
     /**
-     * Choose, which Preoccupations to update.
+     * Choose, which Signalements to update.
      */
-    where: PreoccupationsWhereUniqueInput
+    where: SignalementsWhereUniqueInput
   }
 
   /**
-   * Preoccupations updateMany
+   * Signalements updateMany
    */
-  export type PreoccupationsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Preoccupations.
+     * The data used to update Signalements.
      */
-    data: XOR<PreoccupationsUpdateManyMutationInput, PreoccupationsUncheckedUpdateManyInput>
+    data: XOR<SignalementsUpdateManyMutationInput, SignalementsUncheckedUpdateManyInput>
     /**
-     * Filter which Preoccupations to update
+     * Filter which Signalements to update
      */
-    where?: PreoccupationsWhereInput
+    where?: SignalementsWhereInput
     /**
-     * Limit how many Preoccupations to update.
+     * Limit how many Signalements to update.
      */
     limit?: number
   }
 
   /**
-   * Preoccupations updateManyAndReturn
+   * Signalements updateManyAndReturn
    */
-  export type PreoccupationsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: SignalementsSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
-     * The data used to update Preoccupations.
+     * The data used to update Signalements.
      */
-    data: XOR<PreoccupationsUpdateManyMutationInput, PreoccupationsUncheckedUpdateManyInput>
+    data: XOR<SignalementsUpdateManyMutationInput, SignalementsUncheckedUpdateManyInput>
     /**
-     * Filter which Preoccupations to update
+     * Filter which Signalements to update
      */
-    where?: PreoccupationsWhereInput
+    where?: SignalementsWhereInput
     /**
-     * Limit how many Preoccupations to update.
+     * Limit how many Signalements to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: SignalementsIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Preoccupations upsert
+   * Signalements upsert
    */
-  export type PreoccupationsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
+    include?: SignalementsInclude<ExtArgs> | null
     /**
-     * The filter to search for the Preoccupations to update in case it exists.
+     * The filter to search for the Signalements to update in case it exists.
      */
-    where: PreoccupationsWhereUniqueInput
+    where: SignalementsWhereUniqueInput
     /**
-     * In case the Preoccupations found by the `where` argument doesn't exist, create a new Preoccupations with this data.
+     * In case the Signalements found by the `where` argument doesn't exist, create a new Signalements with this data.
      */
-    create: XOR<PreoccupationsCreateInput, PreoccupationsUncheckedCreateInput>
+    create: XOR<SignalementsCreateInput, SignalementsUncheckedCreateInput>
     /**
-     * In case the Preoccupations was found with the provided `where` argument, update it with this data.
+     * In case the Signalements was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<PreoccupationsUpdateInput, PreoccupationsUncheckedUpdateInput>
+    update: XOR<SignalementsUpdateInput, SignalementsUncheckedUpdateInput>
   }
 
   /**
-   * Preoccupations delete
+   * Signalements delete
    */
-  export type PreoccupationsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
+    include?: SignalementsInclude<ExtArgs> | null
     /**
-     * Filter which Preoccupations to delete.
+     * Filter which Signalements to delete.
      */
-    where: PreoccupationsWhereUniqueInput
+    where: SignalementsWhereUniqueInput
   }
 
   /**
-   * Preoccupations deleteMany
+   * Signalements deleteMany
    */
-  export type PreoccupationsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Preoccupations to delete
+     * Filter which Signalements to delete
      */
-    where?: PreoccupationsWhereInput
+    where?: SignalementsWhereInput
     /**
-     * Limit how many Preoccupations to delete.
+     * Limit how many Signalements to delete.
      */
     limit?: number
   }
 
   /**
-   * Preoccupations without action
+   * Signalements without action
    */
-  export type PreoccupationsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SignalementsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Preoccupations
+     * Select specific fields to fetch from the Signalements
      */
-    select?: PreoccupationsSelect<ExtArgs> | null
+    select?: SignalementsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Preoccupations
+     * Omit specific fields from the Signalements
      */
-    omit?: PreoccupationsOmit<ExtArgs> | null
+    omit?: SignalementsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: PreoccupationsInclude<ExtArgs> | null
+    include?: SignalementsInclude<ExtArgs> | null
   }
 
 
@@ -15764,7 +15764,7 @@ export namespace Prisma {
   export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
-  export const PreoccupationsScalarFieldEnum: {
+  export const SignalementsScalarFieldEnum: {
     id: 'id',
     sujet: 'sujet',
     message: 'message',
@@ -15773,7 +15773,7 @@ export namespace Prisma {
     userId: 'userId'
   };
 
-  export type PreoccupationsScalarFieldEnum = (typeof PreoccupationsScalarFieldEnum)[keyof typeof PreoccupationsScalarFieldEnum]
+  export type SignalementsScalarFieldEnum = (typeof SignalementsScalarFieldEnum)[keyof typeof SignalementsScalarFieldEnum]
 
 
   export const PatientsScalarFieldEnum: {
@@ -16012,7 +16012,7 @@ export namespace Prisma {
     banExpires?: DateTimeNullableFilter<"User"> | Date | string | null
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
-    preoccupations?: PreoccupationsListRelationFilter
+    signalements?: SignalementsListRelationFilter
     patient?: PatientsListRelationFilter
     medecin?: MedecinsListRelationFilter
   }
@@ -16039,7 +16039,7 @@ export namespace Prisma {
     banExpires?: SortOrderInput | SortOrder
     sessions?: SessionOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
-    preoccupations?: PreoccupationsOrderByRelationAggregateInput
+    signalements?: SignalementsOrderByRelationAggregateInput
     patient?: PatientsOrderByRelationAggregateInput
     medecin?: MedecinsOrderByRelationAggregateInput
   }
@@ -16069,7 +16069,7 @@ export namespace Prisma {
     banExpires?: DateTimeNullableFilter<"User"> | Date | string | null
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
-    preoccupations?: PreoccupationsListRelationFilter
+    signalements?: SignalementsListRelationFilter
     patient?: PatientsListRelationFilter
     medecin?: MedecinsListRelationFilter
   }, "id" | "email" | "slug">
@@ -16351,22 +16351,22 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Verification"> | Date | string
   }
 
-  export type PreoccupationsWhereInput = {
-    AND?: PreoccupationsWhereInput | PreoccupationsWhereInput[]
-    OR?: PreoccupationsWhereInput[]
-    NOT?: PreoccupationsWhereInput | PreoccupationsWhereInput[]
-    id?: StringFilter<"Preoccupations"> | string
-    sujet?: StringFilter<"Preoccupations"> | string
-    message?: StringFilter<"Preoccupations"> | string
-    cree_le?: DateTimeFilter<"Preoccupations"> | Date | string
-    modifie_le?: DateTimeFilter<"Preoccupations"> | Date | string
-    userId?: StringFilter<"Preoccupations"> | string
+  export type SignalementsWhereInput = {
+    AND?: SignalementsWhereInput | SignalementsWhereInput[]
+    OR?: SignalementsWhereInput[]
+    NOT?: SignalementsWhereInput | SignalementsWhereInput[]
+    id?: StringFilter<"Signalements"> | string
+    sujet?: StringNullableFilter<"Signalements"> | string | null
+    message?: StringFilter<"Signalements"> | string
+    cree_le?: DateTimeFilter<"Signalements"> | Date | string
+    modifie_le?: DateTimeFilter<"Signalements"> | Date | string
+    userId?: StringFilter<"Signalements"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
-  export type PreoccupationsOrderByWithRelationInput = {
+  export type SignalementsOrderByWithRelationInput = {
     id?: SortOrder
-    sujet?: SortOrder
+    sujet?: SortOrderInput | SortOrder
     message?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
@@ -16374,41 +16374,41 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
   }
 
-  export type PreoccupationsWhereUniqueInput = Prisma.AtLeast<{
+  export type SignalementsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: PreoccupationsWhereInput | PreoccupationsWhereInput[]
-    OR?: PreoccupationsWhereInput[]
-    NOT?: PreoccupationsWhereInput | PreoccupationsWhereInput[]
-    sujet?: StringFilter<"Preoccupations"> | string
-    message?: StringFilter<"Preoccupations"> | string
-    cree_le?: DateTimeFilter<"Preoccupations"> | Date | string
-    modifie_le?: DateTimeFilter<"Preoccupations"> | Date | string
-    userId?: StringFilter<"Preoccupations"> | string
+    AND?: SignalementsWhereInput | SignalementsWhereInput[]
+    OR?: SignalementsWhereInput[]
+    NOT?: SignalementsWhereInput | SignalementsWhereInput[]
+    sujet?: StringNullableFilter<"Signalements"> | string | null
+    message?: StringFilter<"Signalements"> | string
+    cree_le?: DateTimeFilter<"Signalements"> | Date | string
+    modifie_le?: DateTimeFilter<"Signalements"> | Date | string
+    userId?: StringFilter<"Signalements"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
-  export type PreoccupationsOrderByWithAggregationInput = {
+  export type SignalementsOrderByWithAggregationInput = {
     id?: SortOrder
-    sujet?: SortOrder
+    sujet?: SortOrderInput | SortOrder
     message?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
     userId?: SortOrder
-    _count?: PreoccupationsCountOrderByAggregateInput
-    _max?: PreoccupationsMaxOrderByAggregateInput
-    _min?: PreoccupationsMinOrderByAggregateInput
+    _count?: SignalementsCountOrderByAggregateInput
+    _max?: SignalementsMaxOrderByAggregateInput
+    _min?: SignalementsMinOrderByAggregateInput
   }
 
-  export type PreoccupationsScalarWhereWithAggregatesInput = {
-    AND?: PreoccupationsScalarWhereWithAggregatesInput | PreoccupationsScalarWhereWithAggregatesInput[]
-    OR?: PreoccupationsScalarWhereWithAggregatesInput[]
-    NOT?: PreoccupationsScalarWhereWithAggregatesInput | PreoccupationsScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Preoccupations"> | string
-    sujet?: StringWithAggregatesFilter<"Preoccupations"> | string
-    message?: StringWithAggregatesFilter<"Preoccupations"> | string
-    cree_le?: DateTimeWithAggregatesFilter<"Preoccupations"> | Date | string
-    modifie_le?: DateTimeWithAggregatesFilter<"Preoccupations"> | Date | string
-    userId?: StringWithAggregatesFilter<"Preoccupations"> | string
+  export type SignalementsScalarWhereWithAggregatesInput = {
+    AND?: SignalementsScalarWhereWithAggregatesInput | SignalementsScalarWhereWithAggregatesInput[]
+    OR?: SignalementsScalarWhereWithAggregatesInput[]
+    NOT?: SignalementsScalarWhereWithAggregatesInput | SignalementsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Signalements"> | string
+    sujet?: StringNullableWithAggregatesFilter<"Signalements"> | string | null
+    message?: StringWithAggregatesFilter<"Signalements"> | string
+    cree_le?: DateTimeWithAggregatesFilter<"Signalements"> | Date | string
+    modifie_le?: DateTimeWithAggregatesFilter<"Signalements"> | Date | string
+    userId?: StringWithAggregatesFilter<"Signalements"> | string
   }
 
   export type PatientsWhereInput = {
@@ -16904,7 +16904,7 @@ export namespace Prisma {
     banExpires?: Date | string | null
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
-    preoccupations?: PreoccupationsCreateNestedManyWithoutUserInput
+    signalements?: SignalementsCreateNestedManyWithoutUserInput
     patient?: PatientsCreateNestedManyWithoutUserInput
     medecin?: MedecinsCreateNestedManyWithoutUserInput
   }
@@ -16931,7 +16931,7 @@ export namespace Prisma {
     banExpires?: Date | string | null
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    preoccupations?: PreoccupationsUncheckedCreateNestedManyWithoutUserInput
+    signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
     patient?: PatientsUncheckedCreateNestedManyWithoutUserInput
     medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
   }
@@ -16958,7 +16958,7 @@ export namespace Prisma {
     banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    preoccupations?: PreoccupationsUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUpdateManyWithoutUserNestedInput
     patient?: PatientsUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUpdateManyWithoutUserNestedInput
   }
@@ -16985,7 +16985,7 @@ export namespace Prisma {
     banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    preoccupations?: PreoccupationsUncheckedUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
     patient?: PatientsUncheckedUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -17313,62 +17313,62 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PreoccupationsCreateInput = {
+  export type SignalementsCreateInput = {
     id?: string
-    sujet: string
+    sujet?: string | null
     message: string
     cree_le?: Date | string
     modifie_le?: Date | string
-    user: UserCreateNestedOneWithoutPreoccupationsInput
+    user: UserCreateNestedOneWithoutSignalementsInput
   }
 
-  export type PreoccupationsUncheckedCreateInput = {
+  export type SignalementsUncheckedCreateInput = {
     id?: string
-    sujet: string
+    sujet?: string | null
     message: string
     cree_le?: Date | string
     modifie_le?: Date | string
     userId: string
   }
 
-  export type PreoccupationsUpdateInput = {
+  export type SignalementsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sujet?: StringFieldUpdateOperationsInput | string
+    sujet?: NullableStringFieldUpdateOperationsInput | string | null
     message?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutPreoccupationsNestedInput
+    user?: UserUpdateOneRequiredWithoutSignalementsNestedInput
   }
 
-  export type PreoccupationsUncheckedUpdateInput = {
+  export type SignalementsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sujet?: StringFieldUpdateOperationsInput | string
+    sujet?: NullableStringFieldUpdateOperationsInput | string | null
     message?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type PreoccupationsCreateManyInput = {
+  export type SignalementsCreateManyInput = {
     id?: string
-    sujet: string
+    sujet?: string | null
     message: string
     cree_le?: Date | string
     modifie_le?: Date | string
     userId: string
   }
 
-  export type PreoccupationsUpdateManyMutationInput = {
+  export type SignalementsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sujet?: StringFieldUpdateOperationsInput | string
+    sujet?: NullableStringFieldUpdateOperationsInput | string | null
     message?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PreoccupationsUncheckedUpdateManyInput = {
+  export type SignalementsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sujet?: StringFieldUpdateOperationsInput | string
+    sujet?: NullableStringFieldUpdateOperationsInput | string | null
     message?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17944,10 +17944,10 @@ export namespace Prisma {
     none?: AccountWhereInput
   }
 
-  export type PreoccupationsListRelationFilter = {
-    every?: PreoccupationsWhereInput
-    some?: PreoccupationsWhereInput
-    none?: PreoccupationsWhereInput
+  export type SignalementsListRelationFilter = {
+    every?: SignalementsWhereInput
+    some?: SignalementsWhereInput
+    none?: SignalementsWhereInput
   }
 
   export type PatientsListRelationFilter = {
@@ -17975,7 +17975,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type PreoccupationsOrderByRelationAggregateInput = {
+  export type SignalementsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18259,7 +18259,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type PreoccupationsCountOrderByAggregateInput = {
+  export type SignalementsCountOrderByAggregateInput = {
     id?: SortOrder
     sujet?: SortOrder
     message?: SortOrder
@@ -18268,7 +18268,7 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type PreoccupationsMaxOrderByAggregateInput = {
+  export type SignalementsMaxOrderByAggregateInput = {
     id?: SortOrder
     sujet?: SortOrder
     message?: SortOrder
@@ -18277,7 +18277,7 @@ export namespace Prisma {
     userId?: SortOrder
   }
 
-  export type PreoccupationsMinOrderByAggregateInput = {
+  export type SignalementsMinOrderByAggregateInput = {
     id?: SortOrder
     sujet?: SortOrder
     message?: SortOrder
@@ -18637,11 +18637,11 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
-  export type PreoccupationsCreateNestedManyWithoutUserInput = {
-    create?: XOR<PreoccupationsCreateWithoutUserInput, PreoccupationsUncheckedCreateWithoutUserInput> | PreoccupationsCreateWithoutUserInput[] | PreoccupationsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: PreoccupationsCreateOrConnectWithoutUserInput | PreoccupationsCreateOrConnectWithoutUserInput[]
-    createMany?: PreoccupationsCreateManyUserInputEnvelope
-    connect?: PreoccupationsWhereUniqueInput | PreoccupationsWhereUniqueInput[]
+  export type SignalementsCreateNestedManyWithoutUserInput = {
+    create?: XOR<SignalementsCreateWithoutUserInput, SignalementsUncheckedCreateWithoutUserInput> | SignalementsCreateWithoutUserInput[] | SignalementsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SignalementsCreateOrConnectWithoutUserInput | SignalementsCreateOrConnectWithoutUserInput[]
+    createMany?: SignalementsCreateManyUserInputEnvelope
+    connect?: SignalementsWhereUniqueInput | SignalementsWhereUniqueInput[]
   }
 
   export type PatientsCreateNestedManyWithoutUserInput = {
@@ -18672,11 +18672,11 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
-  export type PreoccupationsUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<PreoccupationsCreateWithoutUserInput, PreoccupationsUncheckedCreateWithoutUserInput> | PreoccupationsCreateWithoutUserInput[] | PreoccupationsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: PreoccupationsCreateOrConnectWithoutUserInput | PreoccupationsCreateOrConnectWithoutUserInput[]
-    createMany?: PreoccupationsCreateManyUserInputEnvelope
-    connect?: PreoccupationsWhereUniqueInput | PreoccupationsWhereUniqueInput[]
+  export type SignalementsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SignalementsCreateWithoutUserInput, SignalementsUncheckedCreateWithoutUserInput> | SignalementsCreateWithoutUserInput[] | SignalementsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SignalementsCreateOrConnectWithoutUserInput | SignalementsCreateOrConnectWithoutUserInput[]
+    createMany?: SignalementsCreateManyUserInputEnvelope
+    connect?: SignalementsWhereUniqueInput | SignalementsWhereUniqueInput[]
   }
 
   export type PatientsUncheckedCreateNestedManyWithoutUserInput = {
@@ -18749,18 +18749,18 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
-  export type PreoccupationsUpdateManyWithoutUserNestedInput = {
-    create?: XOR<PreoccupationsCreateWithoutUserInput, PreoccupationsUncheckedCreateWithoutUserInput> | PreoccupationsCreateWithoutUserInput[] | PreoccupationsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: PreoccupationsCreateOrConnectWithoutUserInput | PreoccupationsCreateOrConnectWithoutUserInput[]
-    upsert?: PreoccupationsUpsertWithWhereUniqueWithoutUserInput | PreoccupationsUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: PreoccupationsCreateManyUserInputEnvelope
-    set?: PreoccupationsWhereUniqueInput | PreoccupationsWhereUniqueInput[]
-    disconnect?: PreoccupationsWhereUniqueInput | PreoccupationsWhereUniqueInput[]
-    delete?: PreoccupationsWhereUniqueInput | PreoccupationsWhereUniqueInput[]
-    connect?: PreoccupationsWhereUniqueInput | PreoccupationsWhereUniqueInput[]
-    update?: PreoccupationsUpdateWithWhereUniqueWithoutUserInput | PreoccupationsUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: PreoccupationsUpdateManyWithWhereWithoutUserInput | PreoccupationsUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: PreoccupationsScalarWhereInput | PreoccupationsScalarWhereInput[]
+  export type SignalementsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SignalementsCreateWithoutUserInput, SignalementsUncheckedCreateWithoutUserInput> | SignalementsCreateWithoutUserInput[] | SignalementsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SignalementsCreateOrConnectWithoutUserInput | SignalementsCreateOrConnectWithoutUserInput[]
+    upsert?: SignalementsUpsertWithWhereUniqueWithoutUserInput | SignalementsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SignalementsCreateManyUserInputEnvelope
+    set?: SignalementsWhereUniqueInput | SignalementsWhereUniqueInput[]
+    disconnect?: SignalementsWhereUniqueInput | SignalementsWhereUniqueInput[]
+    delete?: SignalementsWhereUniqueInput | SignalementsWhereUniqueInput[]
+    connect?: SignalementsWhereUniqueInput | SignalementsWhereUniqueInput[]
+    update?: SignalementsUpdateWithWhereUniqueWithoutUserInput | SignalementsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SignalementsUpdateManyWithWhereWithoutUserInput | SignalementsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SignalementsScalarWhereInput | SignalementsScalarWhereInput[]
   }
 
   export type PatientsUpdateManyWithoutUserNestedInput = {
@@ -18819,18 +18819,18 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
-  export type PreoccupationsUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<PreoccupationsCreateWithoutUserInput, PreoccupationsUncheckedCreateWithoutUserInput> | PreoccupationsCreateWithoutUserInput[] | PreoccupationsUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: PreoccupationsCreateOrConnectWithoutUserInput | PreoccupationsCreateOrConnectWithoutUserInput[]
-    upsert?: PreoccupationsUpsertWithWhereUniqueWithoutUserInput | PreoccupationsUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: PreoccupationsCreateManyUserInputEnvelope
-    set?: PreoccupationsWhereUniqueInput | PreoccupationsWhereUniqueInput[]
-    disconnect?: PreoccupationsWhereUniqueInput | PreoccupationsWhereUniqueInput[]
-    delete?: PreoccupationsWhereUniqueInput | PreoccupationsWhereUniqueInput[]
-    connect?: PreoccupationsWhereUniqueInput | PreoccupationsWhereUniqueInput[]
-    update?: PreoccupationsUpdateWithWhereUniqueWithoutUserInput | PreoccupationsUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: PreoccupationsUpdateManyWithWhereWithoutUserInput | PreoccupationsUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: PreoccupationsScalarWhereInput | PreoccupationsScalarWhereInput[]
+  export type SignalementsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SignalementsCreateWithoutUserInput, SignalementsUncheckedCreateWithoutUserInput> | SignalementsCreateWithoutUserInput[] | SignalementsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SignalementsCreateOrConnectWithoutUserInput | SignalementsCreateOrConnectWithoutUserInput[]
+    upsert?: SignalementsUpsertWithWhereUniqueWithoutUserInput | SignalementsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SignalementsCreateManyUserInputEnvelope
+    set?: SignalementsWhereUniqueInput | SignalementsWhereUniqueInput[]
+    disconnect?: SignalementsWhereUniqueInput | SignalementsWhereUniqueInput[]
+    delete?: SignalementsWhereUniqueInput | SignalementsWhereUniqueInput[]
+    connect?: SignalementsWhereUniqueInput | SignalementsWhereUniqueInput[]
+    update?: SignalementsUpdateWithWhereUniqueWithoutUserInput | SignalementsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SignalementsUpdateManyWithWhereWithoutUserInput | SignalementsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SignalementsScalarWhereInput | SignalementsScalarWhereInput[]
   }
 
   export type PatientsUncheckedUpdateManyWithoutUserNestedInput = {
@@ -18889,18 +18889,18 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAccountsInput, UserUpdateWithoutAccountsInput>, UserUncheckedUpdateWithoutAccountsInput>
   }
 
-  export type UserCreateNestedOneWithoutPreoccupationsInput = {
-    create?: XOR<UserCreateWithoutPreoccupationsInput, UserUncheckedCreateWithoutPreoccupationsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPreoccupationsInput
+  export type UserCreateNestedOneWithoutSignalementsInput = {
+    create?: XOR<UserCreateWithoutSignalementsInput, UserUncheckedCreateWithoutSignalementsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSignalementsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutPreoccupationsNestedInput = {
-    create?: XOR<UserCreateWithoutPreoccupationsInput, UserUncheckedCreateWithoutPreoccupationsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPreoccupationsInput
-    upsert?: UserUpsertWithoutPreoccupationsInput
+  export type UserUpdateOneRequiredWithoutSignalementsNestedInput = {
+    create?: XOR<UserCreateWithoutSignalementsInput, UserUncheckedCreateWithoutSignalementsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSignalementsInput
+    upsert?: UserUpsertWithoutSignalementsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPreoccupationsInput, UserUpdateWithoutPreoccupationsInput>, UserUncheckedUpdateWithoutPreoccupationsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSignalementsInput, UserUpdateWithoutSignalementsInput>, UserUncheckedUpdateWithoutSignalementsInput>
   }
 
   export type UserCreateNestedOneWithoutPatientInput = {
@@ -19628,29 +19628,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PreoccupationsCreateWithoutUserInput = {
+  export type SignalementsCreateWithoutUserInput = {
     id?: string
-    sujet: string
+    sujet?: string | null
     message: string
     cree_le?: Date | string
     modifie_le?: Date | string
   }
 
-  export type PreoccupationsUncheckedCreateWithoutUserInput = {
+  export type SignalementsUncheckedCreateWithoutUserInput = {
     id?: string
-    sujet: string
+    sujet?: string | null
     message: string
     cree_le?: Date | string
     modifie_le?: Date | string
   }
 
-  export type PreoccupationsCreateOrConnectWithoutUserInput = {
-    where: PreoccupationsWhereUniqueInput
-    create: XOR<PreoccupationsCreateWithoutUserInput, PreoccupationsUncheckedCreateWithoutUserInput>
+  export type SignalementsCreateOrConnectWithoutUserInput = {
+    where: SignalementsWhereUniqueInput
+    create: XOR<SignalementsCreateWithoutUserInput, SignalementsUncheckedCreateWithoutUserInput>
   }
 
-  export type PreoccupationsCreateManyUserInputEnvelope = {
-    data: PreoccupationsCreateManyUserInput | PreoccupationsCreateManyUserInput[]
+  export type SignalementsCreateManyUserInputEnvelope = {
+    data: SignalementsCreateManyUserInput | SignalementsCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -19780,32 +19780,32 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Account"> | Date | string
   }
 
-  export type PreoccupationsUpsertWithWhereUniqueWithoutUserInput = {
-    where: PreoccupationsWhereUniqueInput
-    update: XOR<PreoccupationsUpdateWithoutUserInput, PreoccupationsUncheckedUpdateWithoutUserInput>
-    create: XOR<PreoccupationsCreateWithoutUserInput, PreoccupationsUncheckedCreateWithoutUserInput>
+  export type SignalementsUpsertWithWhereUniqueWithoutUserInput = {
+    where: SignalementsWhereUniqueInput
+    update: XOR<SignalementsUpdateWithoutUserInput, SignalementsUncheckedUpdateWithoutUserInput>
+    create: XOR<SignalementsCreateWithoutUserInput, SignalementsUncheckedCreateWithoutUserInput>
   }
 
-  export type PreoccupationsUpdateWithWhereUniqueWithoutUserInput = {
-    where: PreoccupationsWhereUniqueInput
-    data: XOR<PreoccupationsUpdateWithoutUserInput, PreoccupationsUncheckedUpdateWithoutUserInput>
+  export type SignalementsUpdateWithWhereUniqueWithoutUserInput = {
+    where: SignalementsWhereUniqueInput
+    data: XOR<SignalementsUpdateWithoutUserInput, SignalementsUncheckedUpdateWithoutUserInput>
   }
 
-  export type PreoccupationsUpdateManyWithWhereWithoutUserInput = {
-    where: PreoccupationsScalarWhereInput
-    data: XOR<PreoccupationsUpdateManyMutationInput, PreoccupationsUncheckedUpdateManyWithoutUserInput>
+  export type SignalementsUpdateManyWithWhereWithoutUserInput = {
+    where: SignalementsScalarWhereInput
+    data: XOR<SignalementsUpdateManyMutationInput, SignalementsUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type PreoccupationsScalarWhereInput = {
-    AND?: PreoccupationsScalarWhereInput | PreoccupationsScalarWhereInput[]
-    OR?: PreoccupationsScalarWhereInput[]
-    NOT?: PreoccupationsScalarWhereInput | PreoccupationsScalarWhereInput[]
-    id?: StringFilter<"Preoccupations"> | string
-    sujet?: StringFilter<"Preoccupations"> | string
-    message?: StringFilter<"Preoccupations"> | string
-    cree_le?: DateTimeFilter<"Preoccupations"> | Date | string
-    modifie_le?: DateTimeFilter<"Preoccupations"> | Date | string
-    userId?: StringFilter<"Preoccupations"> | string
+  export type SignalementsScalarWhereInput = {
+    AND?: SignalementsScalarWhereInput | SignalementsScalarWhereInput[]
+    OR?: SignalementsScalarWhereInput[]
+    NOT?: SignalementsScalarWhereInput | SignalementsScalarWhereInput[]
+    id?: StringFilter<"Signalements"> | string
+    sujet?: StringNullableFilter<"Signalements"> | string | null
+    message?: StringFilter<"Signalements"> | string
+    cree_le?: DateTimeFilter<"Signalements"> | Date | string
+    modifie_le?: DateTimeFilter<"Signalements"> | Date | string
+    userId?: StringFilter<"Signalements"> | string
   }
 
   export type PatientsUpsertWithWhereUniqueWithoutUserInput = {
@@ -19884,7 +19884,7 @@ export namespace Prisma {
     banReason?: string | null
     banExpires?: Date | string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
-    preoccupations?: PreoccupationsCreateNestedManyWithoutUserInput
+    signalements?: SignalementsCreateNestedManyWithoutUserInput
     patient?: PatientsCreateNestedManyWithoutUserInput
     medecin?: MedecinsCreateNestedManyWithoutUserInput
   }
@@ -19910,7 +19910,7 @@ export namespace Prisma {
     banReason?: string | null
     banExpires?: Date | string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    preoccupations?: PreoccupationsUncheckedCreateNestedManyWithoutUserInput
+    signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
     patient?: PatientsUncheckedCreateNestedManyWithoutUserInput
     medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
   }
@@ -19952,7 +19952,7 @@ export namespace Prisma {
     banReason?: NullableStringFieldUpdateOperationsInput | string | null
     banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    preoccupations?: PreoccupationsUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUpdateManyWithoutUserNestedInput
     patient?: PatientsUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUpdateManyWithoutUserNestedInput
   }
@@ -19978,7 +19978,7 @@ export namespace Prisma {
     banReason?: NullableStringFieldUpdateOperationsInput | string | null
     banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    preoccupations?: PreoccupationsUncheckedUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
     patient?: PatientsUncheckedUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -20004,7 +20004,7 @@ export namespace Prisma {
     banReason?: string | null
     banExpires?: Date | string | null
     sessions?: SessionCreateNestedManyWithoutUserInput
-    preoccupations?: PreoccupationsCreateNestedManyWithoutUserInput
+    signalements?: SignalementsCreateNestedManyWithoutUserInput
     patient?: PatientsCreateNestedManyWithoutUserInput
     medecin?: MedecinsCreateNestedManyWithoutUserInput
   }
@@ -20030,7 +20030,7 @@ export namespace Prisma {
     banReason?: string | null
     banExpires?: Date | string | null
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    preoccupations?: PreoccupationsUncheckedCreateNestedManyWithoutUserInput
+    signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
     patient?: PatientsUncheckedCreateNestedManyWithoutUserInput
     medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
   }
@@ -20072,7 +20072,7 @@ export namespace Prisma {
     banReason?: NullableStringFieldUpdateOperationsInput | string | null
     banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     sessions?: SessionUpdateManyWithoutUserNestedInput
-    preoccupations?: PreoccupationsUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUpdateManyWithoutUserNestedInput
     patient?: PatientsUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUpdateManyWithoutUserNestedInput
   }
@@ -20098,12 +20098,12 @@ export namespace Prisma {
     banReason?: NullableStringFieldUpdateOperationsInput | string | null
     banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    preoccupations?: PreoccupationsUncheckedUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
     patient?: PatientsUncheckedUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type UserCreateWithoutPreoccupationsInput = {
+  export type UserCreateWithoutSignalementsInput = {
     id: string
     createdAt?: Date | string
     email: string
@@ -20129,7 +20129,7 @@ export namespace Prisma {
     medecin?: MedecinsCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutPreoccupationsInput = {
+  export type UserUncheckedCreateWithoutSignalementsInput = {
     id: string
     createdAt?: Date | string
     email: string
@@ -20155,23 +20155,23 @@ export namespace Prisma {
     medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutPreoccupationsInput = {
+  export type UserCreateOrConnectWithoutSignalementsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutPreoccupationsInput, UserUncheckedCreateWithoutPreoccupationsInput>
+    create: XOR<UserCreateWithoutSignalementsInput, UserUncheckedCreateWithoutSignalementsInput>
   }
 
-  export type UserUpsertWithoutPreoccupationsInput = {
-    update: XOR<UserUpdateWithoutPreoccupationsInput, UserUncheckedUpdateWithoutPreoccupationsInput>
-    create: XOR<UserCreateWithoutPreoccupationsInput, UserUncheckedCreateWithoutPreoccupationsInput>
+  export type UserUpsertWithoutSignalementsInput = {
+    update: XOR<UserUpdateWithoutSignalementsInput, UserUncheckedUpdateWithoutSignalementsInput>
+    create: XOR<UserCreateWithoutSignalementsInput, UserUncheckedCreateWithoutSignalementsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutPreoccupationsInput = {
+  export type UserUpdateToOneWithWhereWithoutSignalementsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutPreoccupationsInput, UserUncheckedUpdateWithoutPreoccupationsInput>
+    data: XOR<UserUpdateWithoutSignalementsInput, UserUncheckedUpdateWithoutSignalementsInput>
   }
 
-  export type UserUpdateWithoutPreoccupationsInput = {
+  export type UserUpdateWithoutSignalementsInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     email?: StringFieldUpdateOperationsInput | string
@@ -20197,7 +20197,7 @@ export namespace Prisma {
     medecin?: MedecinsUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutPreoccupationsInput = {
+  export type UserUncheckedUpdateWithoutSignalementsInput = {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     email?: StringFieldUpdateOperationsInput | string
@@ -20245,7 +20245,7 @@ export namespace Prisma {
     banExpires?: Date | string | null
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
-    preoccupations?: PreoccupationsCreateNestedManyWithoutUserInput
+    signalements?: SignalementsCreateNestedManyWithoutUserInput
     medecin?: MedecinsCreateNestedManyWithoutUserInput
   }
 
@@ -20271,7 +20271,7 @@ export namespace Prisma {
     banExpires?: Date | string | null
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    preoccupations?: PreoccupationsUncheckedCreateNestedManyWithoutUserInput
+    signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
     medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -20369,7 +20369,7 @@ export namespace Prisma {
     banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    preoccupations?: PreoccupationsUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUpdateManyWithoutUserNestedInput
   }
 
@@ -20395,7 +20395,7 @@ export namespace Prisma {
     banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    preoccupations?: PreoccupationsUncheckedUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -20478,7 +20478,7 @@ export namespace Prisma {
     banExpires?: Date | string | null
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
-    preoccupations?: PreoccupationsCreateNestedManyWithoutUserInput
+    signalements?: SignalementsCreateNestedManyWithoutUserInput
     patient?: PatientsCreateNestedManyWithoutUserInput
   }
 
@@ -20504,7 +20504,7 @@ export namespace Prisma {
     banExpires?: Date | string | null
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    preoccupations?: PreoccupationsUncheckedCreateNestedManyWithoutUserInput
+    signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
     patient?: PatientsUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -20642,7 +20642,7 @@ export namespace Prisma {
     banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    preoccupations?: PreoccupationsUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUpdateManyWithoutUserNestedInput
     patient?: PatientsUpdateManyWithoutUserNestedInput
   }
 
@@ -20668,7 +20668,7 @@ export namespace Prisma {
     banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    preoccupations?: PreoccupationsUncheckedUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
     patient?: PatientsUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -21282,9 +21282,9 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type PreoccupationsCreateManyUserInput = {
+  export type SignalementsCreateManyUserInput = {
     id?: string
-    sujet: string
+    sujet?: string | null
     message: string
     cree_le?: Date | string
     modifie_le?: Date | string
@@ -21383,25 +21383,25 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PreoccupationsUpdateWithoutUserInput = {
+  export type SignalementsUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sujet?: StringFieldUpdateOperationsInput | string
+    sujet?: NullableStringFieldUpdateOperationsInput | string | null
     message?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PreoccupationsUncheckedUpdateWithoutUserInput = {
+  export type SignalementsUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sujet?: StringFieldUpdateOperationsInput | string
+    sujet?: NullableStringFieldUpdateOperationsInput | string | null
     message?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PreoccupationsUncheckedUpdateManyWithoutUserInput = {
+  export type SignalementsUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sujet?: StringFieldUpdateOperationsInput | string
+    sujet?: NullableStringFieldUpdateOperationsInput | string | null
     message?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
