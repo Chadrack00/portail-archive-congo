@@ -5,9 +5,9 @@ import StaticConsultationsPage from "@/components/user/static-consultations-page
 import StaticPostPage from "@/components/user/static-post";
 import StaticRdvPage from "@/components/user/static-rdv";
 import { auth } from "@/lib/auth";
+import { checkSlug } from "@/lib/posts/check-slug";
 import { prisma } from "@/lib/prisma";
 import { headers } from "next/headers";
-import { notFound } from "next/navigation";
 import { Suspense } from "react";
 export default async function Page({
   params,
@@ -17,14 +17,7 @@ export default async function Page({
   const { user_slug } = await params;
   // await new Promise((resolve) => setTimeout(resolve, 10000));
   console.log(user_slug);
-  const user = await prisma.user.findUnique({
-    where: {
-      slug: user_slug,
-    },
-  });
-  if (!user) {
-    notFound();
-  }
+  const user = await checkSlug(user_slug)
   const session = await auth.api.getSession({
     headers: await headers(),
   });

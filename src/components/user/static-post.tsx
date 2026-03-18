@@ -53,7 +53,7 @@ export default async function StaticPostPage({ slug }: { slug: string }) {
               </div>
             </div>
           ))}
-          <Link href={`/`} className="absolute bottom-1 right-1 gap-2 flex-end">
+          <Link href={`/${slug}/posts`} className="absolute bottom-1 right-1 gap-2 flex-end">
             <Button>
               Voir plus <Plus size={15} />
             </Button>

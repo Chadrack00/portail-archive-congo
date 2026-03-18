@@ -186,7 +186,7 @@ model RendezVous {
 model Posts {
   id_post         String   @id @default(uuid())
   slug            String   @unique
-  titre           String
+  titre           String    @db.VarChar(100)
   description     String
   lien_image      String?
   star            Int      @default(0)
