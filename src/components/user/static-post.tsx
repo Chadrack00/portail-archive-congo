@@ -85,22 +85,36 @@ export default async function StaticPostPage({ slug }: { slug: string }) {
 }
 
 const getStaticPost = async ({ slug }: { slug: string }) => {
-  const results = await prisma.posts.findMany({
-    where: {
-      slug: slug,
-    },
-    orderBy: {
-      nombre_aime: "desc",
-    },
-    take: 3,
-  });
-  return results.map((user) => ({
-    title: user.titre,
-    image: user.lien_image ?? undefined,
-    description: user.description,
-    createdAt: user.cree_le,
-    thumbsUp: user.nombre_aime,
-    thumbsDown: user.nombre_non_aime,
-    slug: user.slug,
-  }));
+  try {
+    const { checkSlug } = await import("@/lib/posts/check-slug");
+    const user = await checkSlug(slug);
+    
+    if (!user) return [];
+
+    const results = await prisma.posts.findMany({
+      where: {
+        medecins: { userId: user.id },
+      },
+      include: {
+        likes: { select: { type: true } },
+      },
+      orderBy: {
+        cree_le: "desc",
+      },
+      take: 3,
+    });
+
+    return results.map((post) => ({
+      title: post.titre,
+      image: post.lien_image ?? undefined,
+      description: post.description,
+      createdAt: post.cree_le,
+      thumbsUp: post.likes.filter((l) => l.type === "aime").length,
+      thumbsDown: post.likes.filter((l) => l.type === "non_aime").length,
+      slug: post.slug,
+    }));
+  } catch (error) {
+    console.error("Error fetching static posts:", error);
+    return [];
+  }
 };

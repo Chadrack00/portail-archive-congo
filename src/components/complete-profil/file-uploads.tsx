@@ -50,7 +50,7 @@ export function FileUploadProfil({files, setFiles}: {files: File[], setFiles: (f
         </FileUploadTrigger>
       </FileUploadDropzone>
       <FileUploadList>
-        {files.map((file, index) => (
+        {files?.map((file, index) => (
           <FileUploadItem key={index} value={file}>
             <FileUploadItemPreview />
             <FileUploadItemMetadata />

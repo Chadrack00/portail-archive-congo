@@ -1,5 +1,7 @@
 "use client";
+import { FileUploadProfil } from "@/components/complete-profil/file-uploads";
 import { Button } from "@/components/ui/button";
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { createPostAction } from "@/lib/posts/create-post";
@@ -9,7 +11,6 @@ import {
 } from "@/types/zod-types/post-types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import "easymde/dist/easymde.min.css";
-import { ImagePlus } from "lucide-react";
 import dynamic from "next/dynamic";
 import { redirect } from "next/navigation";
 import { useTransition } from "react";
@@ -19,7 +20,7 @@ const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
 
-export default function FormCreatePost({slug}:{slug: string}) {
+export default function FormCreatePost({ slug }: { slug: string }) {
   const [isPending, startTransition] = useTransition();
 
   const {
@@ -38,7 +39,6 @@ export default function FormCreatePost({slug}:{slug: string}) {
   const onSubmit = (data: CreatePostSchema) => {
     startTransition(async () => {
       await processForm(data, slug);
-
     });
   };
 
@@ -66,7 +66,35 @@ export default function FormCreatePost({slug}:{slug: string}) {
       </div>
 
       {/* Image Upload Area */}
-      <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
+      <Field>
+        <FieldLabel htmlFor="image_profile">Image de Profil</FieldLabel>
+        <Controller
+          name="image_profile"
+          control={control}
+          render={({ field: { onChange, value } }) => (
+            // <Input
+            //   id="image_profile"
+            //   type="file"
+            //   accept="image/jpeg,image/png,image/webp,image/heic,image/heif"
+            //   onChange={(e) => {
+            //     const file = e.target.files?.[0];
+            //     if (file) onChange(file);
+            //   }}
+            //   {...fieldProps}
+            // />
+            <FileUploadProfil files={value} setFiles={onChange} />
+          )}
+        />
+        <FieldDescription className="text-xs">
+          5MB max (JPG, PNG, WEBP, HEIC, HEIF)
+        </FieldDescription>
+        {errors.image_profile && (
+          <FieldDescription className="text-red-500 text-sm">
+            {errors.image_profile.message as string}
+          </FieldDescription>
+        )}
+      </Field>
+      {/* <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
         <Label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
           Image de couverture
         </Label>
@@ -93,7 +121,7 @@ export default function FormCreatePost({slug}:{slug: string}) {
             {errors.image_profile.message as string} 
           </p>
         )}
-      </div>
+      </div> */}
 
       {/* Content Area (Rich Text Mockup) */}
       <div className="bg-white dark:bg-slate-900 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800">
@@ -132,7 +160,7 @@ export default function FormCreatePost({slug}:{slug: string}) {
   );
 }
 
-async function processForm(data: CreatePostSchema, slug:string) {
+async function processForm(data: CreatePostSchema, slug: string) {
   const formData = new FormData();
   formData.append("title", data.title);
   formData.append("description", data.description);

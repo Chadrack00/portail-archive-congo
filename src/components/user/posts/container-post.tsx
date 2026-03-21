@@ -1,10 +1,11 @@
 "use client";
+import { useState } from "react";
 import AsidePosts from "./aside";
 import MainPost from "./main-post";
-import { useState } from "react";
 
 export type TypePosts = {
   id: string;
+  slug: string;
   title: string;
   image: string;
   author: string;
@@ -15,17 +16,27 @@ export type TypePosts = {
   aime: number;
   non_aime: number;
   description: string;
-}
+};
 
-export default function ContainerPost({posts}: {posts: TypePosts[]}) {
-  const [selectedPost, setSelectedPost] = useState<TypePosts | null>(posts[0] || null);
+export default function ContainerPost({ posts, isOwner }: { posts: TypePosts[], isOwner: boolean }) {
+  const [selectedPostId, setSelectedPostId] = useState<string | null>(
+    posts[0]?.id || null,
+  );
+
+  const selectedPost =
+    posts.find((p) => p.id === selectedPostId) || posts[0] || null;
 
   return (
     <div className="flex flex-1 overflow-hidden">
       {/* <!-- Sidebar (Post Feed) --> */}
-      <AsidePosts posts={posts} selectedPost={selectedPost} onSelectPost={setSelectedPost}/>
+      <AsidePosts
+      isOwner={isOwner}
+        posts={posts}
+        selectedPost={selectedPost}
+        onSelectPost={(p) => setSelectedPostId(p?.id || null)}
+      />
       {/* <!-- Main Content Area --> */}
-      <MainPost selectedPost={selectedPost}/>
+      <MainPost selectedPost={selectedPost} />
     </div>
   );
 }

@@ -59,6 +59,11 @@ export type RendezVous = $Result.DefaultSelection<Prisma.$RendezVousPayload>
  */
 export type Posts = $Result.DefaultSelection<Prisma.$PostsPayload>
 /**
+ * Model Likes
+ * 
+ */
+export type Likes = $Result.DefaultSelection<Prisma.$LikesPayload>
+/**
  * Model Commentaires
  * 
  */
@@ -95,6 +100,14 @@ export const StatusRvd: {
 
 export type StatusRvd = (typeof StatusRvd)[keyof typeof StatusRvd]
 
+
+export const LikeType: {
+  aime: 'aime',
+  non_aime: 'non_aime'
+};
+
+export type LikeType = (typeof LikeType)[keyof typeof LikeType]
+
 }
 
 export type SEXE = $Enums.SEXE
@@ -104,6 +117,10 @@ export const SEXE: typeof $Enums.SEXE
 export type StatusRvd = $Enums.StatusRvd
 
 export const StatusRvd: typeof $Enums.StatusRvd
+
+export type LikeType = $Enums.LikeType
+
+export const LikeType: typeof $Enums.LikeType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -315,6 +332,16 @@ export class PrismaClient<
     * ```
     */
   get posts(): Prisma.PostsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.likes`: Exposes CRUD operations for the **Likes** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Likes
+    * const likes = await prisma.likes.findMany()
+    * ```
+    */
+  get likes(): Prisma.LikesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.commentaires`: Exposes CRUD operations for the **Commentaires** model.
@@ -788,6 +815,7 @@ export namespace Prisma {
     Medecins: 'Medecins',
     RendezVous: 'RendezVous',
     Posts: 'Posts',
+    Likes: 'Likes',
     Commentaires: 'Commentaires',
     Consultations: 'Consultations',
     Fichiers: 'Fichiers'
@@ -806,7 +834,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "verification" | "signalements" | "patients" | "medecins" | "rendezVous" | "posts" | "commentaires" | "consultations" | "fichiers"
+      modelProps: "user" | "session" | "account" | "verification" | "signalements" | "patients" | "medecins" | "rendezVous" | "posts" | "likes" | "commentaires" | "consultations" | "fichiers"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1476,6 +1504,80 @@ export namespace Prisma {
           }
         }
       }
+      Likes: {
+        payload: Prisma.$LikesPayload<ExtArgs>
+        fields: Prisma.LikesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LikesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LikesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload>
+          }
+          findFirst: {
+            args: Prisma.LikesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LikesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload>
+          }
+          findMany: {
+            args: Prisma.LikesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload>[]
+          }
+          create: {
+            args: Prisma.LikesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload>
+          }
+          createMany: {
+            args: Prisma.LikesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LikesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload>[]
+          }
+          delete: {
+            args: Prisma.LikesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload>
+          }
+          update: {
+            args: Prisma.LikesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload>
+          }
+          deleteMany: {
+            args: Prisma.LikesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LikesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LikesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload>[]
+          }
+          upsert: {
+            args: Prisma.LikesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LikesPayload>
+          }
+          aggregate: {
+            args: Prisma.LikesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLikes>
+          }
+          groupBy: {
+            args: Prisma.LikesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LikesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LikesCountArgs<ExtArgs>
+            result: $Utils.Optional<LikesCountAggregateOutputType> | number
+          }
+        }
+      }
       Commentaires: {
         payload: Prisma.$CommentairesPayload<ExtArgs>
         fields: Prisma.CommentairesFieldRefs
@@ -1815,6 +1917,7 @@ export namespace Prisma {
     medecins?: MedecinsOmit
     rendezVous?: RendezVousOmit
     posts?: PostsOmit
+    likes?: LikesOmit
     commentaires?: CommentairesOmit
     consultations?: ConsultationsOmit
     fichiers?: FichiersOmit
@@ -1903,6 +2006,7 @@ export namespace Prisma {
     signalements: number
     patient: number
     medecin: number
+    likes: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1911,6 +2015,7 @@ export namespace Prisma {
     signalements?: boolean | UserCountOutputTypeCountSignalementsArgs
     patient?: boolean | UserCountOutputTypeCountPatientArgs
     medecin?: boolean | UserCountOutputTypeCountMedecinArgs
+    likes?: boolean | UserCountOutputTypeCountLikesArgs
   }
 
   // Custom InputTypes
@@ -1957,6 +2062,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountMedecinArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MedecinsWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LikesWhereInput
   }
 
 
@@ -2054,10 +2166,12 @@ export namespace Prisma {
    */
 
   export type PostsCountOutputType = {
+    likes: number
     commentaires: number
   }
 
   export type PostsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    likes?: boolean | PostsCountOutputTypeCountLikesArgs
     commentaires?: boolean | PostsCountOutputTypeCountCommentairesArgs
   }
 
@@ -2070,6 +2184,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the PostsCountOutputType
      */
     select?: PostsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PostsCountOutputType without action
+   */
+  export type PostsCountOutputTypeCountLikesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LikesWhereInput
   }
 
   /**
@@ -2396,6 +2517,7 @@ export namespace Prisma {
     signalements?: boolean | User$signalementsArgs<ExtArgs>
     patient?: boolean | User$patientArgs<ExtArgs>
     medecin?: boolean | User$medecinArgs<ExtArgs>
+    likes?: boolean | User$likesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2472,6 +2594,7 @@ export namespace Prisma {
     signalements?: boolean | User$signalementsArgs<ExtArgs>
     patient?: boolean | User$patientArgs<ExtArgs>
     medecin?: boolean | User$medecinArgs<ExtArgs>
+    likes?: boolean | User$likesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2485,6 +2608,7 @@ export namespace Prisma {
       signalements: Prisma.$SignalementsPayload<ExtArgs>[]
       patient: Prisma.$PatientsPayload<ExtArgs>[]
       medecin: Prisma.$MedecinsPayload<ExtArgs>[]
+      likes: Prisma.$LikesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2905,6 +3029,7 @@ export namespace Prisma {
     signalements<T extends User$signalementsArgs<ExtArgs> = {}>(args?: Subset<T, User$signalementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SignalementsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     patient<T extends User$patientArgs<ExtArgs> = {}>(args?: Subset<T, User$patientArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     medecin<T extends User$medecinArgs<ExtArgs> = {}>(args?: Subset<T, User$medecinArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MedecinsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    likes<T extends User$likesArgs<ExtArgs> = {}>(args?: Subset<T, User$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3458,6 +3583,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MedecinsScalarFieldEnum | MedecinsScalarFieldEnum[]
+  }
+
+  /**
+   * User.likes
+   */
+  export type User$likesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    where?: LikesWhereInput
+    orderBy?: LikesOrderByWithRelationInput | LikesOrderByWithRelationInput[]
+    cursor?: LikesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LikesScalarFieldEnum | LikesScalarFieldEnum[]
   }
 
   /**
@@ -11243,15 +11392,11 @@ export namespace Prisma {
 
   export type PostsAvgAggregateOutputType = {
     star: number | null
-    nombre_aime: number | null
-    nombre_non_aime: number | null
     nombre_vue: number | null
   }
 
   export type PostsSumAggregateOutputType = {
     star: number | null
-    nombre_aime: number | null
-    nombre_non_aime: number | null
     nombre_vue: number | null
   }
 
@@ -11262,8 +11407,6 @@ export namespace Prisma {
     description: string | null
     lien_image: string | null
     star: number | null
-    nombre_aime: number | null
-    nombre_non_aime: number | null
     nombre_vue: number | null
     cree_le: Date | null
     modifie_le: Date | null
@@ -11277,8 +11420,6 @@ export namespace Prisma {
     description: string | null
     lien_image: string | null
     star: number | null
-    nombre_aime: number | null
-    nombre_non_aime: number | null
     nombre_vue: number | null
     cree_le: Date | null
     modifie_le: Date | null
@@ -11292,8 +11433,6 @@ export namespace Prisma {
     description: number
     lien_image: number
     star: number
-    nombre_aime: number
-    nombre_non_aime: number
     nombre_vue: number
     cree_le: number
     modifie_le: number
@@ -11304,15 +11443,11 @@ export namespace Prisma {
 
   export type PostsAvgAggregateInputType = {
     star?: true
-    nombre_aime?: true
-    nombre_non_aime?: true
     nombre_vue?: true
   }
 
   export type PostsSumAggregateInputType = {
     star?: true
-    nombre_aime?: true
-    nombre_non_aime?: true
     nombre_vue?: true
   }
 
@@ -11323,8 +11458,6 @@ export namespace Prisma {
     description?: true
     lien_image?: true
     star?: true
-    nombre_aime?: true
-    nombre_non_aime?: true
     nombre_vue?: true
     cree_le?: true
     modifie_le?: true
@@ -11338,8 +11471,6 @@ export namespace Prisma {
     description?: true
     lien_image?: true
     star?: true
-    nombre_aime?: true
-    nombre_non_aime?: true
     nombre_vue?: true
     cree_le?: true
     modifie_le?: true
@@ -11353,8 +11484,6 @@ export namespace Prisma {
     description?: true
     lien_image?: true
     star?: true
-    nombre_aime?: true
-    nombre_non_aime?: true
     nombre_vue?: true
     cree_le?: true
     modifie_le?: true
@@ -11455,8 +11584,6 @@ export namespace Prisma {
     description: string
     lien_image: string | null
     star: number
-    nombre_aime: number
-    nombre_non_aime: number
     nombre_vue: number
     cree_le: Date
     modifie_le: Date
@@ -11489,13 +11616,12 @@ export namespace Prisma {
     description?: boolean
     lien_image?: boolean
     star?: boolean
-    nombre_aime?: boolean
-    nombre_non_aime?: boolean
     nombre_vue?: boolean
     cree_le?: boolean
     modifie_le?: boolean
     id_medecin?: boolean
     medecins?: boolean | MedecinsDefaultArgs<ExtArgs>
+    likes?: boolean | Posts$likesArgs<ExtArgs>
     commentaires?: boolean | Posts$commentairesArgs<ExtArgs>
     _count?: boolean | PostsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["posts"]>
@@ -11507,8 +11633,6 @@ export namespace Prisma {
     description?: boolean
     lien_image?: boolean
     star?: boolean
-    nombre_aime?: boolean
-    nombre_non_aime?: boolean
     nombre_vue?: boolean
     cree_le?: boolean
     modifie_le?: boolean
@@ -11523,8 +11647,6 @@ export namespace Prisma {
     description?: boolean
     lien_image?: boolean
     star?: boolean
-    nombre_aime?: boolean
-    nombre_non_aime?: boolean
     nombre_vue?: boolean
     cree_le?: boolean
     modifie_le?: boolean
@@ -11539,17 +11661,16 @@ export namespace Prisma {
     description?: boolean
     lien_image?: boolean
     star?: boolean
-    nombre_aime?: boolean
-    nombre_non_aime?: boolean
     nombre_vue?: boolean
     cree_le?: boolean
     modifie_le?: boolean
     id_medecin?: boolean
   }
 
-  export type PostsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_post" | "slug" | "titre" | "description" | "lien_image" | "star" | "nombre_aime" | "nombre_non_aime" | "nombre_vue" | "cree_le" | "modifie_le" | "id_medecin", ExtArgs["result"]["posts"]>
+  export type PostsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_post" | "slug" | "titre" | "description" | "lien_image" | "star" | "nombre_vue" | "cree_le" | "modifie_le" | "id_medecin", ExtArgs["result"]["posts"]>
   export type PostsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     medecins?: boolean | MedecinsDefaultArgs<ExtArgs>
+    likes?: boolean | Posts$likesArgs<ExtArgs>
     commentaires?: boolean | Posts$commentairesArgs<ExtArgs>
     _count?: boolean | PostsCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -11564,6 +11685,7 @@ export namespace Prisma {
     name: "Posts"
     objects: {
       medecins: Prisma.$MedecinsPayload<ExtArgs>
+      likes: Prisma.$LikesPayload<ExtArgs>[]
       commentaires: Prisma.$CommentairesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -11573,8 +11695,6 @@ export namespace Prisma {
       description: string
       lien_image: string | null
       star: number
-      nombre_aime: number
-      nombre_non_aime: number
       nombre_vue: number
       cree_le: Date
       modifie_le: Date
@@ -11974,6 +12094,7 @@ export namespace Prisma {
   export interface Prisma__PostsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     medecins<T extends MedecinsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MedecinsDefaultArgs<ExtArgs>>): Prisma__MedecinsClient<$Result.GetResult<Prisma.$MedecinsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    likes<T extends Posts$likesArgs<ExtArgs> = {}>(args?: Subset<T, Posts$likesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     commentaires<T extends Posts$commentairesArgs<ExtArgs> = {}>(args?: Subset<T, Posts$commentairesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentairesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -12010,8 +12131,6 @@ export namespace Prisma {
     readonly description: FieldRef<"Posts", 'String'>
     readonly lien_image: FieldRef<"Posts", 'String'>
     readonly star: FieldRef<"Posts", 'Int'>
-    readonly nombre_aime: FieldRef<"Posts", 'Int'>
-    readonly nombre_non_aime: FieldRef<"Posts", 'Int'>
     readonly nombre_vue: FieldRef<"Posts", 'Int'>
     readonly cree_le: FieldRef<"Posts", 'DateTime'>
     readonly modifie_le: FieldRef<"Posts", 'DateTime'>
@@ -12412,6 +12531,30 @@ export namespace Prisma {
   }
 
   /**
+   * Posts.likes
+   */
+  export type Posts$likesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    where?: LikesWhereInput
+    orderBy?: LikesOrderByWithRelationInput | LikesOrderByWithRelationInput[]
+    cursor?: LikesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LikesScalarFieldEnum | LikesScalarFieldEnum[]
+  }
+
+  /**
    * Posts.commentaires
    */
   export type Posts$commentairesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12451,6 +12594,1085 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: PostsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Likes
+   */
+
+  export type AggregateLikes = {
+    _count: LikesCountAggregateOutputType | null
+    _min: LikesMinAggregateOutputType | null
+    _max: LikesMaxAggregateOutputType | null
+  }
+
+  export type LikesMinAggregateOutputType = {
+    id_like: string | null
+    type: $Enums.LikeType | null
+    cree_le: Date | null
+    modifie_le: Date | null
+    id_post: string | null
+    userId: string | null
+  }
+
+  export type LikesMaxAggregateOutputType = {
+    id_like: string | null
+    type: $Enums.LikeType | null
+    cree_le: Date | null
+    modifie_le: Date | null
+    id_post: string | null
+    userId: string | null
+  }
+
+  export type LikesCountAggregateOutputType = {
+    id_like: number
+    type: number
+    cree_le: number
+    modifie_le: number
+    id_post: number
+    userId: number
+    _all: number
+  }
+
+
+  export type LikesMinAggregateInputType = {
+    id_like?: true
+    type?: true
+    cree_le?: true
+    modifie_le?: true
+    id_post?: true
+    userId?: true
+  }
+
+  export type LikesMaxAggregateInputType = {
+    id_like?: true
+    type?: true
+    cree_le?: true
+    modifie_le?: true
+    id_post?: true
+    userId?: true
+  }
+
+  export type LikesCountAggregateInputType = {
+    id_like?: true
+    type?: true
+    cree_le?: true
+    modifie_le?: true
+    id_post?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type LikesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Likes to aggregate.
+     */
+    where?: LikesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Likes to fetch.
+     */
+    orderBy?: LikesOrderByWithRelationInput | LikesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LikesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Likes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Likes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Likes
+    **/
+    _count?: true | LikesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LikesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LikesMaxAggregateInputType
+  }
+
+  export type GetLikesAggregateType<T extends LikesAggregateArgs> = {
+        [P in keyof T & keyof AggregateLikes]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLikes[P]>
+      : GetScalarType<T[P], AggregateLikes[P]>
+  }
+
+
+
+
+  export type LikesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LikesWhereInput
+    orderBy?: LikesOrderByWithAggregationInput | LikesOrderByWithAggregationInput[]
+    by: LikesScalarFieldEnum[] | LikesScalarFieldEnum
+    having?: LikesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LikesCountAggregateInputType | true
+    _min?: LikesMinAggregateInputType
+    _max?: LikesMaxAggregateInputType
+  }
+
+  export type LikesGroupByOutputType = {
+    id_like: string
+    type: $Enums.LikeType
+    cree_le: Date
+    modifie_le: Date
+    id_post: string
+    userId: string
+    _count: LikesCountAggregateOutputType | null
+    _min: LikesMinAggregateOutputType | null
+    _max: LikesMaxAggregateOutputType | null
+  }
+
+  type GetLikesGroupByPayload<T extends LikesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LikesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LikesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LikesGroupByOutputType[P]>
+            : GetScalarType<T[P], LikesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LikesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_like?: boolean
+    type?: boolean
+    cree_le?: boolean
+    modifie_le?: boolean
+    id_post?: boolean
+    userId?: boolean
+    posts?: boolean | PostsDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["likes"]>
+
+  export type LikesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_like?: boolean
+    type?: boolean
+    cree_le?: boolean
+    modifie_le?: boolean
+    id_post?: boolean
+    userId?: boolean
+    posts?: boolean | PostsDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["likes"]>
+
+  export type LikesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_like?: boolean
+    type?: boolean
+    cree_le?: boolean
+    modifie_le?: boolean
+    id_post?: boolean
+    userId?: boolean
+    posts?: boolean | PostsDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["likes"]>
+
+  export type LikesSelectScalar = {
+    id_like?: boolean
+    type?: boolean
+    cree_le?: boolean
+    modifie_le?: boolean
+    id_post?: boolean
+    userId?: boolean
+  }
+
+  export type LikesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_like" | "type" | "cree_le" | "modifie_le" | "id_post" | "userId", ExtArgs["result"]["likes"]>
+  export type LikesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posts?: boolean | PostsDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type LikesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posts?: boolean | PostsDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type LikesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    posts?: boolean | PostsDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $LikesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Likes"
+    objects: {
+      posts: Prisma.$PostsPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_like: string
+      type: $Enums.LikeType
+      cree_le: Date
+      modifie_le: Date
+      id_post: string
+      userId: string
+    }, ExtArgs["result"]["likes"]>
+    composites: {}
+  }
+
+  type LikesGetPayload<S extends boolean | null | undefined | LikesDefaultArgs> = $Result.GetResult<Prisma.$LikesPayload, S>
+
+  type LikesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LikesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LikesCountAggregateInputType | true
+    }
+
+  export interface LikesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Likes'], meta: { name: 'Likes' } }
+    /**
+     * Find zero or one Likes that matches the filter.
+     * @param {LikesFindUniqueArgs} args - Arguments to find a Likes
+     * @example
+     * // Get one Likes
+     * const likes = await prisma.likes.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LikesFindUniqueArgs>(args: SelectSubset<T, LikesFindUniqueArgs<ExtArgs>>): Prisma__LikesClient<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Likes that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LikesFindUniqueOrThrowArgs} args - Arguments to find a Likes
+     * @example
+     * // Get one Likes
+     * const likes = await prisma.likes.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LikesFindUniqueOrThrowArgs>(args: SelectSubset<T, LikesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LikesClient<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Likes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikesFindFirstArgs} args - Arguments to find a Likes
+     * @example
+     * // Get one Likes
+     * const likes = await prisma.likes.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LikesFindFirstArgs>(args?: SelectSubset<T, LikesFindFirstArgs<ExtArgs>>): Prisma__LikesClient<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Likes that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikesFindFirstOrThrowArgs} args - Arguments to find a Likes
+     * @example
+     * // Get one Likes
+     * const likes = await prisma.likes.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LikesFindFirstOrThrowArgs>(args?: SelectSubset<T, LikesFindFirstOrThrowArgs<ExtArgs>>): Prisma__LikesClient<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Likes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Likes
+     * const likes = await prisma.likes.findMany()
+     * 
+     * // Get first 10 Likes
+     * const likes = await prisma.likes.findMany({ take: 10 })
+     * 
+     * // Only select the `id_like`
+     * const likesWithId_likeOnly = await prisma.likes.findMany({ select: { id_like: true } })
+     * 
+     */
+    findMany<T extends LikesFindManyArgs>(args?: SelectSubset<T, LikesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Likes.
+     * @param {LikesCreateArgs} args - Arguments to create a Likes.
+     * @example
+     * // Create one Likes
+     * const Likes = await prisma.likes.create({
+     *   data: {
+     *     // ... data to create a Likes
+     *   }
+     * })
+     * 
+     */
+    create<T extends LikesCreateArgs>(args: SelectSubset<T, LikesCreateArgs<ExtArgs>>): Prisma__LikesClient<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Likes.
+     * @param {LikesCreateManyArgs} args - Arguments to create many Likes.
+     * @example
+     * // Create many Likes
+     * const likes = await prisma.likes.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LikesCreateManyArgs>(args?: SelectSubset<T, LikesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Likes and returns the data saved in the database.
+     * @param {LikesCreateManyAndReturnArgs} args - Arguments to create many Likes.
+     * @example
+     * // Create many Likes
+     * const likes = await prisma.likes.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Likes and only return the `id_like`
+     * const likesWithId_likeOnly = await prisma.likes.createManyAndReturn({
+     *   select: { id_like: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LikesCreateManyAndReturnArgs>(args?: SelectSubset<T, LikesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Likes.
+     * @param {LikesDeleteArgs} args - Arguments to delete one Likes.
+     * @example
+     * // Delete one Likes
+     * const Likes = await prisma.likes.delete({
+     *   where: {
+     *     // ... filter to delete one Likes
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LikesDeleteArgs>(args: SelectSubset<T, LikesDeleteArgs<ExtArgs>>): Prisma__LikesClient<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Likes.
+     * @param {LikesUpdateArgs} args - Arguments to update one Likes.
+     * @example
+     * // Update one Likes
+     * const likes = await prisma.likes.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LikesUpdateArgs>(args: SelectSubset<T, LikesUpdateArgs<ExtArgs>>): Prisma__LikesClient<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Likes.
+     * @param {LikesDeleteManyArgs} args - Arguments to filter Likes to delete.
+     * @example
+     * // Delete a few Likes
+     * const { count } = await prisma.likes.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LikesDeleteManyArgs>(args?: SelectSubset<T, LikesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Likes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Likes
+     * const likes = await prisma.likes.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LikesUpdateManyArgs>(args: SelectSubset<T, LikesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Likes and returns the data updated in the database.
+     * @param {LikesUpdateManyAndReturnArgs} args - Arguments to update many Likes.
+     * @example
+     * // Update many Likes
+     * const likes = await prisma.likes.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Likes and only return the `id_like`
+     * const likesWithId_likeOnly = await prisma.likes.updateManyAndReturn({
+     *   select: { id_like: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LikesUpdateManyAndReturnArgs>(args: SelectSubset<T, LikesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Likes.
+     * @param {LikesUpsertArgs} args - Arguments to update or create a Likes.
+     * @example
+     * // Update or create a Likes
+     * const likes = await prisma.likes.upsert({
+     *   create: {
+     *     // ... data to create a Likes
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Likes we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LikesUpsertArgs>(args: SelectSubset<T, LikesUpsertArgs<ExtArgs>>): Prisma__LikesClient<$Result.GetResult<Prisma.$LikesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Likes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikesCountArgs} args - Arguments to filter Likes to count.
+     * @example
+     * // Count the number of Likes
+     * const count = await prisma.likes.count({
+     *   where: {
+     *     // ... the filter for the Likes we want to count
+     *   }
+     * })
+    **/
+    count<T extends LikesCountArgs>(
+      args?: Subset<T, LikesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LikesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Likes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LikesAggregateArgs>(args: Subset<T, LikesAggregateArgs>): Prisma.PrismaPromise<GetLikesAggregateType<T>>
+
+    /**
+     * Group by Likes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LikesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LikesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LikesGroupByArgs['orderBy'] }
+        : { orderBy?: LikesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LikesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLikesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Likes model
+   */
+  readonly fields: LikesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Likes.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LikesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    posts<T extends PostsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostsDefaultArgs<ExtArgs>>): Prisma__PostsClient<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Likes model
+   */
+  interface LikesFieldRefs {
+    readonly id_like: FieldRef<"Likes", 'String'>
+    readonly type: FieldRef<"Likes", 'LikeType'>
+    readonly cree_le: FieldRef<"Likes", 'DateTime'>
+    readonly modifie_le: FieldRef<"Likes", 'DateTime'>
+    readonly id_post: FieldRef<"Likes", 'String'>
+    readonly userId: FieldRef<"Likes", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Likes findUnique
+   */
+  export type LikesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    /**
+     * Filter, which Likes to fetch.
+     */
+    where: LikesWhereUniqueInput
+  }
+
+  /**
+   * Likes findUniqueOrThrow
+   */
+  export type LikesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    /**
+     * Filter, which Likes to fetch.
+     */
+    where: LikesWhereUniqueInput
+  }
+
+  /**
+   * Likes findFirst
+   */
+  export type LikesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    /**
+     * Filter, which Likes to fetch.
+     */
+    where?: LikesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Likes to fetch.
+     */
+    orderBy?: LikesOrderByWithRelationInput | LikesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Likes.
+     */
+    cursor?: LikesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Likes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Likes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Likes.
+     */
+    distinct?: LikesScalarFieldEnum | LikesScalarFieldEnum[]
+  }
+
+  /**
+   * Likes findFirstOrThrow
+   */
+  export type LikesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    /**
+     * Filter, which Likes to fetch.
+     */
+    where?: LikesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Likes to fetch.
+     */
+    orderBy?: LikesOrderByWithRelationInput | LikesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Likes.
+     */
+    cursor?: LikesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Likes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Likes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Likes.
+     */
+    distinct?: LikesScalarFieldEnum | LikesScalarFieldEnum[]
+  }
+
+  /**
+   * Likes findMany
+   */
+  export type LikesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    /**
+     * Filter, which Likes to fetch.
+     */
+    where?: LikesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Likes to fetch.
+     */
+    orderBy?: LikesOrderByWithRelationInput | LikesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Likes.
+     */
+    cursor?: LikesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Likes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Likes.
+     */
+    skip?: number
+    distinct?: LikesScalarFieldEnum | LikesScalarFieldEnum[]
+  }
+
+  /**
+   * Likes create
+   */
+  export type LikesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Likes.
+     */
+    data: XOR<LikesCreateInput, LikesUncheckedCreateInput>
+  }
+
+  /**
+   * Likes createMany
+   */
+  export type LikesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Likes.
+     */
+    data: LikesCreateManyInput | LikesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Likes createManyAndReturn
+   */
+  export type LikesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * The data used to create many Likes.
+     */
+    data: LikesCreateManyInput | LikesCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Likes update
+   */
+  export type LikesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Likes.
+     */
+    data: XOR<LikesUpdateInput, LikesUncheckedUpdateInput>
+    /**
+     * Choose, which Likes to update.
+     */
+    where: LikesWhereUniqueInput
+  }
+
+  /**
+   * Likes updateMany
+   */
+  export type LikesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Likes.
+     */
+    data: XOR<LikesUpdateManyMutationInput, LikesUncheckedUpdateManyInput>
+    /**
+     * Filter which Likes to update
+     */
+    where?: LikesWhereInput
+    /**
+     * Limit how many Likes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Likes updateManyAndReturn
+   */
+  export type LikesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * The data used to update Likes.
+     */
+    data: XOR<LikesUpdateManyMutationInput, LikesUncheckedUpdateManyInput>
+    /**
+     * Filter which Likes to update
+     */
+    where?: LikesWhereInput
+    /**
+     * Limit how many Likes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Likes upsert
+   */
+  export type LikesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Likes to update in case it exists.
+     */
+    where: LikesWhereUniqueInput
+    /**
+     * In case the Likes found by the `where` argument doesn't exist, create a new Likes with this data.
+     */
+    create: XOR<LikesCreateInput, LikesUncheckedCreateInput>
+    /**
+     * In case the Likes was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LikesUpdateInput, LikesUncheckedUpdateInput>
+  }
+
+  /**
+   * Likes delete
+   */
+  export type LikesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
+    /**
+     * Filter which Likes to delete.
+     */
+    where: LikesWhereUniqueInput
+  }
+
+  /**
+   * Likes deleteMany
+   */
+  export type LikesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Likes to delete
+     */
+    where?: LikesWhereInput
+    /**
+     * Limit how many Likes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Likes without action
+   */
+  export type LikesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Likes
+     */
+    select?: LikesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Likes
+     */
+    omit?: LikesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LikesInclude<ExtArgs> | null
   }
 
 
@@ -15819,8 +17041,6 @@ export namespace Prisma {
     description: 'description',
     lien_image: 'lien_image',
     star: 'star',
-    nombre_aime: 'nombre_aime',
-    nombre_non_aime: 'nombre_non_aime',
     nombre_vue: 'nombre_vue',
     cree_le: 'cree_le',
     modifie_le: 'modifie_le',
@@ -15828,6 +17048,18 @@ export namespace Prisma {
   };
 
   export type PostsScalarFieldEnum = (typeof PostsScalarFieldEnum)[keyof typeof PostsScalarFieldEnum]
+
+
+  export const LikesScalarFieldEnum: {
+    id_like: 'id_like',
+    type: 'type',
+    cree_le: 'cree_le',
+    modifie_le: 'modifie_le',
+    id_post: 'id_post',
+    userId: 'userId'
+  };
+
+  export type LikesScalarFieldEnum = (typeof LikesScalarFieldEnum)[keyof typeof LikesScalarFieldEnum]
 
 
   export const CommentairesScalarFieldEnum: {
@@ -15971,6 +17203,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'LikeType'
+   */
+  export type EnumLikeTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LikeType'>
+    
+
+
+  /**
+   * Reference to a field of type 'LikeType[]'
+   */
+  export type ListEnumLikeTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LikeType[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -16015,6 +17261,7 @@ export namespace Prisma {
     signalements?: SignalementsListRelationFilter
     patient?: PatientsListRelationFilter
     medecin?: MedecinsListRelationFilter
+    likes?: LikesListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -16042,6 +17289,7 @@ export namespace Prisma {
     signalements?: SignalementsOrderByRelationAggregateInput
     patient?: PatientsOrderByRelationAggregateInput
     medecin?: MedecinsOrderByRelationAggregateInput
+    likes?: LikesOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -16072,6 +17320,7 @@ export namespace Prisma {
     signalements?: SignalementsListRelationFilter
     patient?: PatientsListRelationFilter
     medecin?: MedecinsListRelationFilter
+    likes?: LikesListRelationFilter
   }, "id" | "email" | "slug">
 
   export type UserOrderByWithAggregationInput = {
@@ -16621,13 +17870,12 @@ export namespace Prisma {
     description?: StringFilter<"Posts"> | string
     lien_image?: StringNullableFilter<"Posts"> | string | null
     star?: IntFilter<"Posts"> | number
-    nombre_aime?: IntFilter<"Posts"> | number
-    nombre_non_aime?: IntFilter<"Posts"> | number
     nombre_vue?: IntFilter<"Posts"> | number
     cree_le?: DateTimeFilter<"Posts"> | Date | string
     modifie_le?: DateTimeFilter<"Posts"> | Date | string
     id_medecin?: StringFilter<"Posts"> | string
     medecins?: XOR<MedecinsScalarRelationFilter, MedecinsWhereInput>
+    likes?: LikesListRelationFilter
     commentaires?: CommentairesListRelationFilter
   }
 
@@ -16638,13 +17886,12 @@ export namespace Prisma {
     description?: SortOrder
     lien_image?: SortOrderInput | SortOrder
     star?: SortOrder
-    nombre_aime?: SortOrder
-    nombre_non_aime?: SortOrder
     nombre_vue?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
     id_medecin?: SortOrder
     medecins?: MedecinsOrderByWithRelationInput
+    likes?: LikesOrderByRelationAggregateInput
     commentaires?: CommentairesOrderByRelationAggregateInput
   }
 
@@ -16658,13 +17905,12 @@ export namespace Prisma {
     description?: StringFilter<"Posts"> | string
     lien_image?: StringNullableFilter<"Posts"> | string | null
     star?: IntFilter<"Posts"> | number
-    nombre_aime?: IntFilter<"Posts"> | number
-    nombre_non_aime?: IntFilter<"Posts"> | number
     nombre_vue?: IntFilter<"Posts"> | number
     cree_le?: DateTimeFilter<"Posts"> | Date | string
     modifie_le?: DateTimeFilter<"Posts"> | Date | string
     id_medecin?: StringFilter<"Posts"> | string
     medecins?: XOR<MedecinsScalarRelationFilter, MedecinsWhereInput>
+    likes?: LikesListRelationFilter
     commentaires?: CommentairesListRelationFilter
   }, "id_post" | "slug">
 
@@ -16675,8 +17921,6 @@ export namespace Prisma {
     description?: SortOrder
     lien_image?: SortOrderInput | SortOrder
     star?: SortOrder
-    nombre_aime?: SortOrder
-    nombre_non_aime?: SortOrder
     nombre_vue?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
@@ -16698,12 +17942,73 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Posts"> | string
     lien_image?: StringNullableWithAggregatesFilter<"Posts"> | string | null
     star?: IntWithAggregatesFilter<"Posts"> | number
-    nombre_aime?: IntWithAggregatesFilter<"Posts"> | number
-    nombre_non_aime?: IntWithAggregatesFilter<"Posts"> | number
     nombre_vue?: IntWithAggregatesFilter<"Posts"> | number
     cree_le?: DateTimeWithAggregatesFilter<"Posts"> | Date | string
     modifie_le?: DateTimeWithAggregatesFilter<"Posts"> | Date | string
     id_medecin?: StringWithAggregatesFilter<"Posts"> | string
+  }
+
+  export type LikesWhereInput = {
+    AND?: LikesWhereInput | LikesWhereInput[]
+    OR?: LikesWhereInput[]
+    NOT?: LikesWhereInput | LikesWhereInput[]
+    id_like?: StringFilter<"Likes"> | string
+    type?: EnumLikeTypeFilter<"Likes"> | $Enums.LikeType
+    cree_le?: DateTimeFilter<"Likes"> | Date | string
+    modifie_le?: DateTimeFilter<"Likes"> | Date | string
+    id_post?: StringFilter<"Likes"> | string
+    userId?: StringFilter<"Likes"> | string
+    posts?: XOR<PostsScalarRelationFilter, PostsWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type LikesOrderByWithRelationInput = {
+    id_like?: SortOrder
+    type?: SortOrder
+    cree_le?: SortOrder
+    modifie_le?: SortOrder
+    id_post?: SortOrder
+    userId?: SortOrder
+    posts?: PostsOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type LikesWhereUniqueInput = Prisma.AtLeast<{
+    id_like?: string
+    AND?: LikesWhereInput | LikesWhereInput[]
+    OR?: LikesWhereInput[]
+    NOT?: LikesWhereInput | LikesWhereInput[]
+    type?: EnumLikeTypeFilter<"Likes"> | $Enums.LikeType
+    cree_le?: DateTimeFilter<"Likes"> | Date | string
+    modifie_le?: DateTimeFilter<"Likes"> | Date | string
+    id_post?: StringFilter<"Likes"> | string
+    userId?: StringFilter<"Likes"> | string
+    posts?: XOR<PostsScalarRelationFilter, PostsWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id_like">
+
+  export type LikesOrderByWithAggregationInput = {
+    id_like?: SortOrder
+    type?: SortOrder
+    cree_le?: SortOrder
+    modifie_le?: SortOrder
+    id_post?: SortOrder
+    userId?: SortOrder
+    _count?: LikesCountOrderByAggregateInput
+    _max?: LikesMaxOrderByAggregateInput
+    _min?: LikesMinOrderByAggregateInput
+  }
+
+  export type LikesScalarWhereWithAggregatesInput = {
+    AND?: LikesScalarWhereWithAggregatesInput | LikesScalarWhereWithAggregatesInput[]
+    OR?: LikesScalarWhereWithAggregatesInput[]
+    NOT?: LikesScalarWhereWithAggregatesInput | LikesScalarWhereWithAggregatesInput[]
+    id_like?: StringWithAggregatesFilter<"Likes"> | string
+    type?: EnumLikeTypeWithAggregatesFilter<"Likes"> | $Enums.LikeType
+    cree_le?: DateTimeWithAggregatesFilter<"Likes"> | Date | string
+    modifie_le?: DateTimeWithAggregatesFilter<"Likes"> | Date | string
+    id_post?: StringWithAggregatesFilter<"Likes"> | string
+    userId?: StringWithAggregatesFilter<"Likes"> | string
   }
 
   export type CommentairesWhereInput = {
@@ -16907,6 +18212,7 @@ export namespace Prisma {
     signalements?: SignalementsCreateNestedManyWithoutUserInput
     patient?: PatientsCreateNestedManyWithoutUserInput
     medecin?: MedecinsCreateNestedManyWithoutUserInput
+    likes?: LikesCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -16934,6 +18240,7 @@ export namespace Prisma {
     signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
     patient?: PatientsUncheckedCreateNestedManyWithoutUserInput
     medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
+    likes?: LikesUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -16961,6 +18268,7 @@ export namespace Prisma {
     signalements?: SignalementsUpdateManyWithoutUserNestedInput
     patient?: PatientsUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUpdateManyWithoutUserNestedInput
+    likes?: LikesUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -16988,6 +18296,7 @@ export namespace Prisma {
     signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
     patient?: PatientsUncheckedUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUncheckedUpdateManyWithoutUserNestedInput
+    likes?: LikesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -17587,12 +18896,11 @@ export namespace Prisma {
     description: string
     lien_image?: string | null
     star?: number
-    nombre_aime?: number
-    nombre_non_aime?: number
     nombre_vue?: number
     cree_le?: Date | string
     modifie_le?: Date | string
     medecins: MedecinsCreateNestedOneWithoutPostsInput
+    likes?: LikesCreateNestedManyWithoutPostsInput
     commentaires?: CommentairesCreateNestedManyWithoutPostsInput
   }
 
@@ -17603,12 +18911,11 @@ export namespace Prisma {
     description: string
     lien_image?: string | null
     star?: number
-    nombre_aime?: number
-    nombre_non_aime?: number
     nombre_vue?: number
     cree_le?: Date | string
     modifie_le?: Date | string
     id_medecin: string
+    likes?: LikesUncheckedCreateNestedManyWithoutPostsInput
     commentaires?: CommentairesUncheckedCreateNestedManyWithoutPostsInput
   }
 
@@ -17619,12 +18926,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     lien_image?: NullableStringFieldUpdateOperationsInput | string | null
     star?: IntFieldUpdateOperationsInput | number
-    nombre_aime?: IntFieldUpdateOperationsInput | number
-    nombre_non_aime?: IntFieldUpdateOperationsInput | number
     nombre_vue?: IntFieldUpdateOperationsInput | number
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     medecins?: MedecinsUpdateOneRequiredWithoutPostsNestedInput
+    likes?: LikesUpdateManyWithoutPostsNestedInput
     commentaires?: CommentairesUpdateManyWithoutPostsNestedInput
   }
 
@@ -17635,12 +18941,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     lien_image?: NullableStringFieldUpdateOperationsInput | string | null
     star?: IntFieldUpdateOperationsInput | number
-    nombre_aime?: IntFieldUpdateOperationsInput | number
-    nombre_non_aime?: IntFieldUpdateOperationsInput | number
     nombre_vue?: IntFieldUpdateOperationsInput | number
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     id_medecin?: StringFieldUpdateOperationsInput | string
+    likes?: LikesUncheckedUpdateManyWithoutPostsNestedInput
     commentaires?: CommentairesUncheckedUpdateManyWithoutPostsNestedInput
   }
 
@@ -17651,8 +18956,6 @@ export namespace Prisma {
     description: string
     lien_image?: string | null
     star?: number
-    nombre_aime?: number
-    nombre_non_aime?: number
     nombre_vue?: number
     cree_le?: Date | string
     modifie_le?: Date | string
@@ -17666,8 +18969,6 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     lien_image?: NullableStringFieldUpdateOperationsInput | string | null
     star?: IntFieldUpdateOperationsInput | number
-    nombre_aime?: IntFieldUpdateOperationsInput | number
-    nombre_non_aime?: IntFieldUpdateOperationsInput | number
     nombre_vue?: IntFieldUpdateOperationsInput | number
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17680,12 +18981,71 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     lien_image?: NullableStringFieldUpdateOperationsInput | string | null
     star?: IntFieldUpdateOperationsInput | number
-    nombre_aime?: IntFieldUpdateOperationsInput | number
-    nombre_non_aime?: IntFieldUpdateOperationsInput | number
     nombre_vue?: IntFieldUpdateOperationsInput | number
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     id_medecin?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LikesCreateInput = {
+    id_like?: string
+    type: $Enums.LikeType
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    posts: PostsCreateNestedOneWithoutLikesInput
+    user: UserCreateNestedOneWithoutLikesInput
+  }
+
+  export type LikesUncheckedCreateInput = {
+    id_like?: string
+    type: $Enums.LikeType
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    id_post: string
+    userId: string
+  }
+
+  export type LikesUpdateInput = {
+    id_like?: StringFieldUpdateOperationsInput | string
+    type?: EnumLikeTypeFieldUpdateOperationsInput | $Enums.LikeType
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    posts?: PostsUpdateOneRequiredWithoutLikesNestedInput
+    user?: UserUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type LikesUncheckedUpdateInput = {
+    id_like?: StringFieldUpdateOperationsInput | string
+    type?: EnumLikeTypeFieldUpdateOperationsInput | $Enums.LikeType
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_post?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LikesCreateManyInput = {
+    id_like?: string
+    type: $Enums.LikeType
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    id_post: string
+    userId: string
+  }
+
+  export type LikesUpdateManyMutationInput = {
+    id_like?: StringFieldUpdateOperationsInput | string
+    type?: EnumLikeTypeFieldUpdateOperationsInput | $Enums.LikeType
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LikesUncheckedUpdateManyInput = {
+    id_like?: StringFieldUpdateOperationsInput | string
+    type?: EnumLikeTypeFieldUpdateOperationsInput | $Enums.LikeType
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_post?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentairesCreateInput = {
@@ -17962,6 +19322,12 @@ export namespace Prisma {
     none?: MedecinsWhereInput
   }
 
+  export type LikesListRelationFilter = {
+    every?: LikesWhereInput
+    some?: LikesWhereInput
+    none?: LikesWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -17984,6 +19350,10 @@ export namespace Prisma {
   }
 
   export type MedecinsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LikesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18476,8 +19846,6 @@ export namespace Prisma {
     description?: SortOrder
     lien_image?: SortOrder
     star?: SortOrder
-    nombre_aime?: SortOrder
-    nombre_non_aime?: SortOrder
     nombre_vue?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
@@ -18486,8 +19854,6 @@ export namespace Prisma {
 
   export type PostsAvgOrderByAggregateInput = {
     star?: SortOrder
-    nombre_aime?: SortOrder
-    nombre_non_aime?: SortOrder
     nombre_vue?: SortOrder
   }
 
@@ -18498,8 +19864,6 @@ export namespace Prisma {
     description?: SortOrder
     lien_image?: SortOrder
     star?: SortOrder
-    nombre_aime?: SortOrder
-    nombre_non_aime?: SortOrder
     nombre_vue?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
@@ -18513,8 +19877,6 @@ export namespace Prisma {
     description?: SortOrder
     lien_image?: SortOrder
     star?: SortOrder
-    nombre_aime?: SortOrder
-    nombre_non_aime?: SortOrder
     nombre_vue?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
@@ -18523,14 +19885,56 @@ export namespace Prisma {
 
   export type PostsSumOrderByAggregateInput = {
     star?: SortOrder
-    nombre_aime?: SortOrder
-    nombre_non_aime?: SortOrder
     nombre_vue?: SortOrder
+  }
+
+  export type EnumLikeTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.LikeType | EnumLikeTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.LikeType[] | ListEnumLikeTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LikeType[] | ListEnumLikeTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumLikeTypeFilter<$PrismaModel> | $Enums.LikeType
   }
 
   export type PostsScalarRelationFilter = {
     is?: PostsWhereInput
     isNot?: PostsWhereInput
+  }
+
+  export type LikesCountOrderByAggregateInput = {
+    id_like?: SortOrder
+    type?: SortOrder
+    cree_le?: SortOrder
+    modifie_le?: SortOrder
+    id_post?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type LikesMaxOrderByAggregateInput = {
+    id_like?: SortOrder
+    type?: SortOrder
+    cree_le?: SortOrder
+    modifie_le?: SortOrder
+    id_post?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type LikesMinOrderByAggregateInput = {
+    id_like?: SortOrder
+    type?: SortOrder
+    cree_le?: SortOrder
+    modifie_le?: SortOrder
+    id_post?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type EnumLikeTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LikeType | EnumLikeTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.LikeType[] | ListEnumLikeTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LikeType[] | ListEnumLikeTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumLikeTypeWithAggregatesFilter<$PrismaModel> | $Enums.LikeType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLikeTypeFilter<$PrismaModel>
+    _max?: NestedEnumLikeTypeFilter<$PrismaModel>
   }
 
   export type CommentairesCountOrderByAggregateInput = {
@@ -18658,6 +20062,13 @@ export namespace Prisma {
     connect?: MedecinsWhereUniqueInput | MedecinsWhereUniqueInput[]
   }
 
+  export type LikesCreateNestedManyWithoutUserInput = {
+    create?: XOR<LikesCreateWithoutUserInput, LikesUncheckedCreateWithoutUserInput> | LikesCreateWithoutUserInput[] | LikesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LikesCreateOrConnectWithoutUserInput | LikesCreateOrConnectWithoutUserInput[]
+    createMany?: LikesCreateManyUserInputEnvelope
+    connect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+  }
+
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -18691,6 +20102,13 @@ export namespace Prisma {
     connectOrCreate?: MedecinsCreateOrConnectWithoutUserInput | MedecinsCreateOrConnectWithoutUserInput[]
     createMany?: MedecinsCreateManyUserInputEnvelope
     connect?: MedecinsWhereUniqueInput | MedecinsWhereUniqueInput[]
+  }
+
+  export type LikesUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<LikesCreateWithoutUserInput, LikesUncheckedCreateWithoutUserInput> | LikesCreateWithoutUserInput[] | LikesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LikesCreateOrConnectWithoutUserInput | LikesCreateOrConnectWithoutUserInput[]
+    createMany?: LikesCreateManyUserInputEnvelope
+    connect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -18791,6 +20209,20 @@ export namespace Prisma {
     deleteMany?: MedecinsScalarWhereInput | MedecinsScalarWhereInput[]
   }
 
+  export type LikesUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LikesCreateWithoutUserInput, LikesUncheckedCreateWithoutUserInput> | LikesCreateWithoutUserInput[] | LikesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LikesCreateOrConnectWithoutUserInput | LikesCreateOrConnectWithoutUserInput[]
+    upsert?: LikesUpsertWithWhereUniqueWithoutUserInput | LikesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LikesCreateManyUserInputEnvelope
+    set?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    disconnect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    delete?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    connect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    update?: LikesUpdateWithWhereUniqueWithoutUserInput | LikesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LikesUpdateManyWithWhereWithoutUserInput | LikesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LikesScalarWhereInput | LikesScalarWhereInput[]
+  }
+
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -18859,6 +20291,20 @@ export namespace Prisma {
     update?: MedecinsUpdateWithWhereUniqueWithoutUserInput | MedecinsUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: MedecinsUpdateManyWithWhereWithoutUserInput | MedecinsUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: MedecinsScalarWhereInput | MedecinsScalarWhereInput[]
+  }
+
+  export type LikesUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LikesCreateWithoutUserInput, LikesUncheckedCreateWithoutUserInput> | LikesCreateWithoutUserInput[] | LikesUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LikesCreateOrConnectWithoutUserInput | LikesCreateOrConnectWithoutUserInput[]
+    upsert?: LikesUpsertWithWhereUniqueWithoutUserInput | LikesUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LikesCreateManyUserInputEnvelope
+    set?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    disconnect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    delete?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    connect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    update?: LikesUpdateWithWhereUniqueWithoutUserInput | LikesUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LikesUpdateManyWithWhereWithoutUserInput | LikesUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LikesScalarWhereInput | LikesScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -19187,11 +20633,25 @@ export namespace Prisma {
     connect?: MedecinsWhereUniqueInput
   }
 
+  export type LikesCreateNestedManyWithoutPostsInput = {
+    create?: XOR<LikesCreateWithoutPostsInput, LikesUncheckedCreateWithoutPostsInput> | LikesCreateWithoutPostsInput[] | LikesUncheckedCreateWithoutPostsInput[]
+    connectOrCreate?: LikesCreateOrConnectWithoutPostsInput | LikesCreateOrConnectWithoutPostsInput[]
+    createMany?: LikesCreateManyPostsInputEnvelope
+    connect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+  }
+
   export type CommentairesCreateNestedManyWithoutPostsInput = {
     create?: XOR<CommentairesCreateWithoutPostsInput, CommentairesUncheckedCreateWithoutPostsInput> | CommentairesCreateWithoutPostsInput[] | CommentairesUncheckedCreateWithoutPostsInput[]
     connectOrCreate?: CommentairesCreateOrConnectWithoutPostsInput | CommentairesCreateOrConnectWithoutPostsInput[]
     createMany?: CommentairesCreateManyPostsInputEnvelope
     connect?: CommentairesWhereUniqueInput | CommentairesWhereUniqueInput[]
+  }
+
+  export type LikesUncheckedCreateNestedManyWithoutPostsInput = {
+    create?: XOR<LikesCreateWithoutPostsInput, LikesUncheckedCreateWithoutPostsInput> | LikesCreateWithoutPostsInput[] | LikesUncheckedCreateWithoutPostsInput[]
+    connectOrCreate?: LikesCreateOrConnectWithoutPostsInput | LikesCreateOrConnectWithoutPostsInput[]
+    createMany?: LikesCreateManyPostsInputEnvelope
+    connect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
   }
 
   export type CommentairesUncheckedCreateNestedManyWithoutPostsInput = {
@@ -19209,6 +20669,20 @@ export namespace Prisma {
     update?: XOR<XOR<MedecinsUpdateToOneWithWhereWithoutPostsInput, MedecinsUpdateWithoutPostsInput>, MedecinsUncheckedUpdateWithoutPostsInput>
   }
 
+  export type LikesUpdateManyWithoutPostsNestedInput = {
+    create?: XOR<LikesCreateWithoutPostsInput, LikesUncheckedCreateWithoutPostsInput> | LikesCreateWithoutPostsInput[] | LikesUncheckedCreateWithoutPostsInput[]
+    connectOrCreate?: LikesCreateOrConnectWithoutPostsInput | LikesCreateOrConnectWithoutPostsInput[]
+    upsert?: LikesUpsertWithWhereUniqueWithoutPostsInput | LikesUpsertWithWhereUniqueWithoutPostsInput[]
+    createMany?: LikesCreateManyPostsInputEnvelope
+    set?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    disconnect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    delete?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    connect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    update?: LikesUpdateWithWhereUniqueWithoutPostsInput | LikesUpdateWithWhereUniqueWithoutPostsInput[]
+    updateMany?: LikesUpdateManyWithWhereWithoutPostsInput | LikesUpdateManyWithWhereWithoutPostsInput[]
+    deleteMany?: LikesScalarWhereInput | LikesScalarWhereInput[]
+  }
+
   export type CommentairesUpdateManyWithoutPostsNestedInput = {
     create?: XOR<CommentairesCreateWithoutPostsInput, CommentairesUncheckedCreateWithoutPostsInput> | CommentairesCreateWithoutPostsInput[] | CommentairesUncheckedCreateWithoutPostsInput[]
     connectOrCreate?: CommentairesCreateOrConnectWithoutPostsInput | CommentairesCreateOrConnectWithoutPostsInput[]
@@ -19223,6 +20697,20 @@ export namespace Prisma {
     deleteMany?: CommentairesScalarWhereInput | CommentairesScalarWhereInput[]
   }
 
+  export type LikesUncheckedUpdateManyWithoutPostsNestedInput = {
+    create?: XOR<LikesCreateWithoutPostsInput, LikesUncheckedCreateWithoutPostsInput> | LikesCreateWithoutPostsInput[] | LikesUncheckedCreateWithoutPostsInput[]
+    connectOrCreate?: LikesCreateOrConnectWithoutPostsInput | LikesCreateOrConnectWithoutPostsInput[]
+    upsert?: LikesUpsertWithWhereUniqueWithoutPostsInput | LikesUpsertWithWhereUniqueWithoutPostsInput[]
+    createMany?: LikesCreateManyPostsInputEnvelope
+    set?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    disconnect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    delete?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    connect?: LikesWhereUniqueInput | LikesWhereUniqueInput[]
+    update?: LikesUpdateWithWhereUniqueWithoutPostsInput | LikesUpdateWithWhereUniqueWithoutPostsInput[]
+    updateMany?: LikesUpdateManyWithWhereWithoutPostsInput | LikesUpdateManyWithWhereWithoutPostsInput[]
+    deleteMany?: LikesScalarWhereInput | LikesScalarWhereInput[]
+  }
+
   export type CommentairesUncheckedUpdateManyWithoutPostsNestedInput = {
     create?: XOR<CommentairesCreateWithoutPostsInput, CommentairesUncheckedCreateWithoutPostsInput> | CommentairesCreateWithoutPostsInput[] | CommentairesUncheckedCreateWithoutPostsInput[]
     connectOrCreate?: CommentairesCreateOrConnectWithoutPostsInput | CommentairesCreateOrConnectWithoutPostsInput[]
@@ -19235,6 +20723,38 @@ export namespace Prisma {
     update?: CommentairesUpdateWithWhereUniqueWithoutPostsInput | CommentairesUpdateWithWhereUniqueWithoutPostsInput[]
     updateMany?: CommentairesUpdateManyWithWhereWithoutPostsInput | CommentairesUpdateManyWithWhereWithoutPostsInput[]
     deleteMany?: CommentairesScalarWhereInput | CommentairesScalarWhereInput[]
+  }
+
+  export type PostsCreateNestedOneWithoutLikesInput = {
+    create?: XOR<PostsCreateWithoutLikesInput, PostsUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: PostsCreateOrConnectWithoutLikesInput
+    connect?: PostsWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutLikesInput = {
+    create?: XOR<UserCreateWithoutLikesInput, UserUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLikesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumLikeTypeFieldUpdateOperationsInput = {
+    set?: $Enums.LikeType
+  }
+
+  export type PostsUpdateOneRequiredWithoutLikesNestedInput = {
+    create?: XOR<PostsCreateWithoutLikesInput, PostsUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: PostsCreateOrConnectWithoutLikesInput
+    upsert?: PostsUpsertWithoutLikesInput
+    connect?: PostsWhereUniqueInput
+    update?: XOR<XOR<PostsUpdateToOneWithWhereWithoutLikesInput, PostsUpdateWithoutLikesInput>, PostsUncheckedUpdateWithoutLikesInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutLikesNestedInput = {
+    create?: XOR<UserCreateWithoutLikesInput, UserUncheckedCreateWithoutLikesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLikesInput
+    upsert?: UserUpsertWithoutLikesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLikesInput, UserUpdateWithoutLikesInput>, UserUncheckedUpdateWithoutLikesInput>
   }
 
   export type PostsCreateNestedOneWithoutCommentairesInput = {
@@ -19556,6 +21076,23 @@ export namespace Prisma {
     _max?: NestedEnumStatusRvdFilter<$PrismaModel>
   }
 
+  export type NestedEnumLikeTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.LikeType | EnumLikeTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.LikeType[] | ListEnumLikeTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LikeType[] | ListEnumLikeTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumLikeTypeFilter<$PrismaModel> | $Enums.LikeType
+  }
+
+  export type NestedEnumLikeTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.LikeType | EnumLikeTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.LikeType[] | ListEnumLikeTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.LikeType[] | ListEnumLikeTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumLikeTypeWithAggregatesFilter<$PrismaModel> | $Enums.LikeType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumLikeTypeFilter<$PrismaModel>
+    _max?: NestedEnumLikeTypeFilter<$PrismaModel>
+  }
+
   export type SessionCreateWithoutUserInput = {
     id: string
     expiresAt: Date | string
@@ -19714,6 +21251,32 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type LikesCreateWithoutUserInput = {
+    id_like?: string
+    type: $Enums.LikeType
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    posts: PostsCreateNestedOneWithoutLikesInput
+  }
+
+  export type LikesUncheckedCreateWithoutUserInput = {
+    id_like?: string
+    type: $Enums.LikeType
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    id_post: string
+  }
+
+  export type LikesCreateOrConnectWithoutUserInput = {
+    where: LikesWhereUniqueInput
+    create: XOR<LikesCreateWithoutUserInput, LikesUncheckedCreateWithoutUserInput>
+  }
+
+  export type LikesCreateManyUserInputEnvelope = {
+    data: LikesCreateManyUserInput | LikesCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
     where: SessionWhereUniqueInput
     update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
@@ -19863,6 +21426,34 @@ export namespace Prisma {
     userId?: StringFilter<"Medecins"> | string
   }
 
+  export type LikesUpsertWithWhereUniqueWithoutUserInput = {
+    where: LikesWhereUniqueInput
+    update: XOR<LikesUpdateWithoutUserInput, LikesUncheckedUpdateWithoutUserInput>
+    create: XOR<LikesCreateWithoutUserInput, LikesUncheckedCreateWithoutUserInput>
+  }
+
+  export type LikesUpdateWithWhereUniqueWithoutUserInput = {
+    where: LikesWhereUniqueInput
+    data: XOR<LikesUpdateWithoutUserInput, LikesUncheckedUpdateWithoutUserInput>
+  }
+
+  export type LikesUpdateManyWithWhereWithoutUserInput = {
+    where: LikesScalarWhereInput
+    data: XOR<LikesUpdateManyMutationInput, LikesUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type LikesScalarWhereInput = {
+    AND?: LikesScalarWhereInput | LikesScalarWhereInput[]
+    OR?: LikesScalarWhereInput[]
+    NOT?: LikesScalarWhereInput | LikesScalarWhereInput[]
+    id_like?: StringFilter<"Likes"> | string
+    type?: EnumLikeTypeFilter<"Likes"> | $Enums.LikeType
+    cree_le?: DateTimeFilter<"Likes"> | Date | string
+    modifie_le?: DateTimeFilter<"Likes"> | Date | string
+    id_post?: StringFilter<"Likes"> | string
+    userId?: StringFilter<"Likes"> | string
+  }
+
   export type UserCreateWithoutSessionsInput = {
     id: string
     createdAt?: Date | string
@@ -19887,6 +21478,7 @@ export namespace Prisma {
     signalements?: SignalementsCreateNestedManyWithoutUserInput
     patient?: PatientsCreateNestedManyWithoutUserInput
     medecin?: MedecinsCreateNestedManyWithoutUserInput
+    likes?: LikesCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -19913,6 +21505,7 @@ export namespace Prisma {
     signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
     patient?: PatientsUncheckedCreateNestedManyWithoutUserInput
     medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
+    likes?: LikesUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -19955,6 +21548,7 @@ export namespace Prisma {
     signalements?: SignalementsUpdateManyWithoutUserNestedInput
     patient?: PatientsUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUpdateManyWithoutUserNestedInput
+    likes?: LikesUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -19981,6 +21575,7 @@ export namespace Prisma {
     signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
     patient?: PatientsUncheckedUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUncheckedUpdateManyWithoutUserNestedInput
+    likes?: LikesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -20007,6 +21602,7 @@ export namespace Prisma {
     signalements?: SignalementsCreateNestedManyWithoutUserInput
     patient?: PatientsCreateNestedManyWithoutUserInput
     medecin?: MedecinsCreateNestedManyWithoutUserInput
+    likes?: LikesCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -20033,6 +21629,7 @@ export namespace Prisma {
     signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
     patient?: PatientsUncheckedCreateNestedManyWithoutUserInput
     medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
+    likes?: LikesUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -20075,6 +21672,7 @@ export namespace Prisma {
     signalements?: SignalementsUpdateManyWithoutUserNestedInput
     patient?: PatientsUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUpdateManyWithoutUserNestedInput
+    likes?: LikesUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -20101,6 +21699,7 @@ export namespace Prisma {
     signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
     patient?: PatientsUncheckedUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUncheckedUpdateManyWithoutUserNestedInput
+    likes?: LikesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSignalementsInput = {
@@ -20127,6 +21726,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     patient?: PatientsCreateNestedManyWithoutUserInput
     medecin?: MedecinsCreateNestedManyWithoutUserInput
+    likes?: LikesCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSignalementsInput = {
@@ -20153,6 +21753,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     patient?: PatientsUncheckedCreateNestedManyWithoutUserInput
     medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
+    likes?: LikesUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSignalementsInput = {
@@ -20195,6 +21796,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     patient?: PatientsUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUpdateManyWithoutUserNestedInput
+    likes?: LikesUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSignalementsInput = {
@@ -20221,6 +21823,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     patient?: PatientsUncheckedUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUncheckedUpdateManyWithoutUserNestedInput
+    likes?: LikesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutPatientInput = {
@@ -20247,6 +21850,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     signalements?: SignalementsCreateNestedManyWithoutUserInput
     medecin?: MedecinsCreateNestedManyWithoutUserInput
+    likes?: LikesCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPatientInput = {
@@ -20273,6 +21877,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
     medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
+    likes?: LikesUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPatientInput = {
@@ -20371,6 +21976,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     signalements?: SignalementsUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUpdateManyWithoutUserNestedInput
+    likes?: LikesUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPatientInput = {
@@ -20397,6 +22003,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
     medecin?: MedecinsUncheckedUpdateManyWithoutUserNestedInput
+    likes?: LikesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type RendezVousUpsertWithWhereUniqueWithoutPatientsInput = {
@@ -20480,6 +22087,7 @@ export namespace Prisma {
     accounts?: AccountCreateNestedManyWithoutUserInput
     signalements?: SignalementsCreateNestedManyWithoutUserInput
     patient?: PatientsCreateNestedManyWithoutUserInput
+    likes?: LikesCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMedecinInput = {
@@ -20506,6 +22114,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
     patient?: PatientsUncheckedCreateNestedManyWithoutUserInput
+    likes?: LikesUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMedecinInput = {
@@ -20548,11 +22157,10 @@ export namespace Prisma {
     description: string
     lien_image?: string | null
     star?: number
-    nombre_aime?: number
-    nombre_non_aime?: number
     nombre_vue?: number
     cree_le?: Date | string
     modifie_le?: Date | string
+    likes?: LikesCreateNestedManyWithoutPostsInput
     commentaires?: CommentairesCreateNestedManyWithoutPostsInput
   }
 
@@ -20563,11 +22171,10 @@ export namespace Prisma {
     description: string
     lien_image?: string | null
     star?: number
-    nombre_aime?: number
-    nombre_non_aime?: number
     nombre_vue?: number
     cree_le?: Date | string
     modifie_le?: Date | string
+    likes?: LikesUncheckedCreateNestedManyWithoutPostsInput
     commentaires?: CommentairesUncheckedCreateNestedManyWithoutPostsInput
   }
 
@@ -20644,6 +22251,7 @@ export namespace Prisma {
     accounts?: AccountUpdateManyWithoutUserNestedInput
     signalements?: SignalementsUpdateManyWithoutUserNestedInput
     patient?: PatientsUpdateManyWithoutUserNestedInput
+    likes?: LikesUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMedecinInput = {
@@ -20670,6 +22278,7 @@ export namespace Prisma {
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
     patient?: PatientsUncheckedUpdateManyWithoutUserNestedInput
+    likes?: LikesUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type RendezVousUpsertWithWhereUniqueWithoutMedecinsInput = {
@@ -20714,8 +22323,6 @@ export namespace Prisma {
     description?: StringFilter<"Posts"> | string
     lien_image?: StringNullableFilter<"Posts"> | string | null
     star?: IntFilter<"Posts"> | number
-    nombre_aime?: IntFilter<"Posts"> | number
-    nombre_non_aime?: IntFilter<"Posts"> | number
     nombre_vue?: IntFilter<"Posts"> | number
     cree_le?: DateTimeFilter<"Posts"> | Date | string
     modifie_le?: DateTimeFilter<"Posts"> | Date | string
@@ -20879,6 +22486,32 @@ export namespace Prisma {
     create: XOR<MedecinsCreateWithoutPostsInput, MedecinsUncheckedCreateWithoutPostsInput>
   }
 
+  export type LikesCreateWithoutPostsInput = {
+    id_like?: string
+    type: $Enums.LikeType
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    user: UserCreateNestedOneWithoutLikesInput
+  }
+
+  export type LikesUncheckedCreateWithoutPostsInput = {
+    id_like?: string
+    type: $Enums.LikeType
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    userId: string
+  }
+
+  export type LikesCreateOrConnectWithoutPostsInput = {
+    where: LikesWhereUniqueInput
+    create: XOR<LikesCreateWithoutPostsInput, LikesUncheckedCreateWithoutPostsInput>
+  }
+
+  export type LikesCreateManyPostsInputEnvelope = {
+    data: LikesCreateManyPostsInput | LikesCreateManyPostsInput[]
+    skipDuplicates?: boolean
+  }
+
   export type CommentairesCreateWithoutPostsInput = {
     id_commentaire?: string
     commentaire: string
@@ -20938,6 +22571,22 @@ export namespace Prisma {
     consultations?: ConsultationsUncheckedUpdateManyWithoutMedecinNestedInput
   }
 
+  export type LikesUpsertWithWhereUniqueWithoutPostsInput = {
+    where: LikesWhereUniqueInput
+    update: XOR<LikesUpdateWithoutPostsInput, LikesUncheckedUpdateWithoutPostsInput>
+    create: XOR<LikesCreateWithoutPostsInput, LikesUncheckedCreateWithoutPostsInput>
+  }
+
+  export type LikesUpdateWithWhereUniqueWithoutPostsInput = {
+    where: LikesWhereUniqueInput
+    data: XOR<LikesUpdateWithoutPostsInput, LikesUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type LikesUpdateManyWithWhereWithoutPostsInput = {
+    where: LikesScalarWhereInput
+    data: XOR<LikesUpdateManyMutationInput, LikesUncheckedUpdateManyWithoutPostsInput>
+  }
+
   export type CommentairesUpsertWithWhereUniqueWithoutPostsInput = {
     where: CommentairesWhereUniqueInput
     update: XOR<CommentairesUpdateWithoutPostsInput, CommentairesUncheckedUpdateWithoutPostsInput>
@@ -20965,6 +22614,202 @@ export namespace Prisma {
     id_post?: StringFilter<"Commentaires"> | string
   }
 
+  export type PostsCreateWithoutLikesInput = {
+    id_post?: string
+    slug: string
+    titre: string
+    description: string
+    lien_image?: string | null
+    star?: number
+    nombre_vue?: number
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    medecins: MedecinsCreateNestedOneWithoutPostsInput
+    commentaires?: CommentairesCreateNestedManyWithoutPostsInput
+  }
+
+  export type PostsUncheckedCreateWithoutLikesInput = {
+    id_post?: string
+    slug: string
+    titre: string
+    description: string
+    lien_image?: string | null
+    star?: number
+    nombre_vue?: number
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    id_medecin: string
+    commentaires?: CommentairesUncheckedCreateNestedManyWithoutPostsInput
+  }
+
+  export type PostsCreateOrConnectWithoutLikesInput = {
+    where: PostsWhereUniqueInput
+    create: XOR<PostsCreateWithoutLikesInput, PostsUncheckedCreateWithoutLikesInput>
+  }
+
+  export type UserCreateWithoutLikesInput = {
+    id: string
+    createdAt?: Date | string
+    email: string
+    name?: string | null
+    postnom?: string | null
+    prenom?: string | null
+    slug?: string | null
+    numero_telephone?: string | null
+    date_de_naissance?: Date | string | null
+    adresse_residence?: string | null
+    emailVerified?: boolean
+    image?: string | null
+    sexe?: $Enums.SEXE | null
+    updatedAt?: Date | string
+    is_active?: boolean
+    role?: string | null
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    signalements?: SignalementsCreateNestedManyWithoutUserInput
+    patient?: PatientsCreateNestedManyWithoutUserInput
+    medecin?: MedecinsCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutLikesInput = {
+    id: string
+    createdAt?: Date | string
+    email: string
+    name?: string | null
+    postnom?: string | null
+    prenom?: string | null
+    slug?: string | null
+    numero_telephone?: string | null
+    date_de_naissance?: Date | string | null
+    adresse_residence?: string | null
+    emailVerified?: boolean
+    image?: string | null
+    sexe?: $Enums.SEXE | null
+    updatedAt?: Date | string
+    is_active?: boolean
+    role?: string | null
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    signalements?: SignalementsUncheckedCreateNestedManyWithoutUserInput
+    patient?: PatientsUncheckedCreateNestedManyWithoutUserInput
+    medecin?: MedecinsUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutLikesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLikesInput, UserUncheckedCreateWithoutLikesInput>
+  }
+
+  export type PostsUpsertWithoutLikesInput = {
+    update: XOR<PostsUpdateWithoutLikesInput, PostsUncheckedUpdateWithoutLikesInput>
+    create: XOR<PostsCreateWithoutLikesInput, PostsUncheckedCreateWithoutLikesInput>
+    where?: PostsWhereInput
+  }
+
+  export type PostsUpdateToOneWithWhereWithoutLikesInput = {
+    where?: PostsWhereInput
+    data: XOR<PostsUpdateWithoutLikesInput, PostsUncheckedUpdateWithoutLikesInput>
+  }
+
+  export type PostsUpdateWithoutLikesInput = {
+    id_post?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    titre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    lien_image?: NullableStringFieldUpdateOperationsInput | string | null
+    star?: IntFieldUpdateOperationsInput | number
+    nombre_vue?: IntFieldUpdateOperationsInput | number
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    medecins?: MedecinsUpdateOneRequiredWithoutPostsNestedInput
+    commentaires?: CommentairesUpdateManyWithoutPostsNestedInput
+  }
+
+  export type PostsUncheckedUpdateWithoutLikesInput = {
+    id_post?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    titre?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    lien_image?: NullableStringFieldUpdateOperationsInput | string | null
+    star?: IntFieldUpdateOperationsInput | number
+    nombre_vue?: IntFieldUpdateOperationsInput | number
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_medecin?: StringFieldUpdateOperationsInput | string
+    commentaires?: CommentairesUncheckedUpdateManyWithoutPostsNestedInput
+  }
+
+  export type UserUpsertWithoutLikesInput = {
+    update: XOR<UserUpdateWithoutLikesInput, UserUncheckedUpdateWithoutLikesInput>
+    create: XOR<UserCreateWithoutLikesInput, UserUncheckedCreateWithoutLikesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutLikesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutLikesInput, UserUncheckedUpdateWithoutLikesInput>
+  }
+
+  export type UserUpdateWithoutLikesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    postnom?: NullableStringFieldUpdateOperationsInput | string | null
+    prenom?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    numero_telephone?: NullableStringFieldUpdateOperationsInput | string | null
+    date_de_naissance?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    adresse_residence?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    sexe?: NullableEnumSEXEFieldUpdateOperationsInput | $Enums.SEXE | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUpdateManyWithoutUserNestedInput
+    patient?: PatientsUpdateManyWithoutUserNestedInput
+    medecin?: MedecinsUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutLikesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    postnom?: NullableStringFieldUpdateOperationsInput | string | null
+    prenom?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    numero_telephone?: NullableStringFieldUpdateOperationsInput | string | null
+    date_de_naissance?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    adresse_residence?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    sexe?: NullableEnumSEXEFieldUpdateOperationsInput | $Enums.SEXE | null
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    signalements?: SignalementsUncheckedUpdateManyWithoutUserNestedInput
+    patient?: PatientsUncheckedUpdateManyWithoutUserNestedInput
+    medecin?: MedecinsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type PostsCreateWithoutCommentairesInput = {
     id_post?: string
     slug: string
@@ -20972,12 +22817,11 @@ export namespace Prisma {
     description: string
     lien_image?: string | null
     star?: number
-    nombre_aime?: number
-    nombre_non_aime?: number
     nombre_vue?: number
     cree_le?: Date | string
     modifie_le?: Date | string
     medecins: MedecinsCreateNestedOneWithoutPostsInput
+    likes?: LikesCreateNestedManyWithoutPostsInput
   }
 
   export type PostsUncheckedCreateWithoutCommentairesInput = {
@@ -20987,12 +22831,11 @@ export namespace Prisma {
     description: string
     lien_image?: string | null
     star?: number
-    nombre_aime?: number
-    nombre_non_aime?: number
     nombre_vue?: number
     cree_le?: Date | string
     modifie_le?: Date | string
     id_medecin: string
+    likes?: LikesUncheckedCreateNestedManyWithoutPostsInput
   }
 
   export type PostsCreateOrConnectWithoutCommentairesInput = {
@@ -21018,12 +22861,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     lien_image?: NullableStringFieldUpdateOperationsInput | string | null
     star?: IntFieldUpdateOperationsInput | number
-    nombre_aime?: IntFieldUpdateOperationsInput | number
-    nombre_non_aime?: IntFieldUpdateOperationsInput | number
     nombre_vue?: IntFieldUpdateOperationsInput | number
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     medecins?: MedecinsUpdateOneRequiredWithoutPostsNestedInput
+    likes?: LikesUpdateManyWithoutPostsNestedInput
   }
 
   export type PostsUncheckedUpdateWithoutCommentairesInput = {
@@ -21033,12 +22875,11 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     lien_image?: NullableStringFieldUpdateOperationsInput | string | null
     star?: IntFieldUpdateOperationsInput | number
-    nombre_aime?: IntFieldUpdateOperationsInput | number
-    nombre_non_aime?: IntFieldUpdateOperationsInput | number
     nombre_vue?: IntFieldUpdateOperationsInput | number
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     id_medecin?: StringFieldUpdateOperationsInput | string
+    likes?: LikesUncheckedUpdateManyWithoutPostsNestedInput
   }
 
   export type PatientsCreateWithoutConsultationsInput = {
@@ -21305,6 +23146,14 @@ export namespace Prisma {
     modifie_le?: Date | string
   }
 
+  export type LikesCreateManyUserInput = {
+    id_like?: string
+    type: $Enums.LikeType
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    id_post: string
+  }
+
   export type SessionUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21462,6 +23311,30 @@ export namespace Prisma {
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LikesUpdateWithoutUserInput = {
+    id_like?: StringFieldUpdateOperationsInput | string
+    type?: EnumLikeTypeFieldUpdateOperationsInput | $Enums.LikeType
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    posts?: PostsUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type LikesUncheckedUpdateWithoutUserInput = {
+    id_like?: StringFieldUpdateOperationsInput | string
+    type?: EnumLikeTypeFieldUpdateOperationsInput | $Enums.LikeType
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_post?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LikesUncheckedUpdateManyWithoutUserInput = {
+    id_like?: StringFieldUpdateOperationsInput | string
+    type?: EnumLikeTypeFieldUpdateOperationsInput | $Enums.LikeType
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    id_post?: StringFieldUpdateOperationsInput | string
+  }
+
   export type RendezVousCreateManyPatientsInput = {
     id_rdv?: string
     motif: string
@@ -21548,8 +23421,6 @@ export namespace Prisma {
     description: string
     lien_image?: string | null
     star?: number
-    nombre_aime?: number
-    nombre_non_aime?: number
     nombre_vue?: number
     cree_le?: Date | string
     modifie_le?: Date | string
@@ -21597,11 +23468,10 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     lien_image?: NullableStringFieldUpdateOperationsInput | string | null
     star?: IntFieldUpdateOperationsInput | number
-    nombre_aime?: IntFieldUpdateOperationsInput | number
-    nombre_non_aime?: IntFieldUpdateOperationsInput | number
     nombre_vue?: IntFieldUpdateOperationsInput | number
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    likes?: LikesUpdateManyWithoutPostsNestedInput
     commentaires?: CommentairesUpdateManyWithoutPostsNestedInput
   }
 
@@ -21612,11 +23482,10 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     lien_image?: NullableStringFieldUpdateOperationsInput | string | null
     star?: IntFieldUpdateOperationsInput | number
-    nombre_aime?: IntFieldUpdateOperationsInput | number
-    nombre_non_aime?: IntFieldUpdateOperationsInput | number
     nombre_vue?: IntFieldUpdateOperationsInput | number
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    likes?: LikesUncheckedUpdateManyWithoutPostsNestedInput
     commentaires?: CommentairesUncheckedUpdateManyWithoutPostsNestedInput
   }
 
@@ -21627,8 +23496,6 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     lien_image?: NullableStringFieldUpdateOperationsInput | string | null
     star?: IntFieldUpdateOperationsInput | number
-    nombre_aime?: IntFieldUpdateOperationsInput | number
-    nombre_non_aime?: IntFieldUpdateOperationsInput | number
     nombre_vue?: IntFieldUpdateOperationsInput | number
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -21660,11 +23527,43 @@ export namespace Prisma {
     id_patient?: StringFieldUpdateOperationsInput | string
   }
 
+  export type LikesCreateManyPostsInput = {
+    id_like?: string
+    type: $Enums.LikeType
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    userId: string
+  }
+
   export type CommentairesCreateManyPostsInput = {
     id_commentaire?: string
     commentaire: string
     cree_le?: Date | string
     modifie_le?: Date | string
+  }
+
+  export type LikesUpdateWithoutPostsInput = {
+    id_like?: StringFieldUpdateOperationsInput | string
+    type?: EnumLikeTypeFieldUpdateOperationsInput | $Enums.LikeType
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLikesNestedInput
+  }
+
+  export type LikesUncheckedUpdateWithoutPostsInput = {
+    id_like?: StringFieldUpdateOperationsInput | string
+    type?: EnumLikeTypeFieldUpdateOperationsInput | $Enums.LikeType
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LikesUncheckedUpdateManyWithoutPostsInput = {
+    id_like?: StringFieldUpdateOperationsInput | string
+    type?: EnumLikeTypeFieldUpdateOperationsInput | $Enums.LikeType
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentairesUpdateWithoutPostsInput = {

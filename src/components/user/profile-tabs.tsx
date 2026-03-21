@@ -1,12 +1,15 @@
 "use client";
 import { Calendar, Plus, ReceiptText, Stethoscope } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function ProfilTabs({
+  user_slug,
   postsTabContent,
   rdvTabContent,
   consultationsTabContent,
 }: {
+  user_slug: string ;
   postsTabContent: React.ReactNode;
   rdvTabContent: React.ReactNode;
   consultationsTabContent: React.ReactNode;
@@ -23,7 +26,7 @@ export default function ProfilTabs({
           <span className="material-symbols-outlined text-xl">
             <ReceiptText size={15} />
           </span>
-          Posts <span className="p-1 rounded-full border border-slate-200 dark:border-slate-800"><Plus size={15}/></span>
+          Posts <Link href={`${user_slug}/posts/create`} className="p-1 rounded-full border border-slate-200 dark:border-slate-800"><Plus size={15}/></Link>
         </button>
         <button
           onClick={() => setActiveTab("rendez-vous")}

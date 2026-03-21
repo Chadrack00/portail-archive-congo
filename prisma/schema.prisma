@@ -33,6 +33,7 @@ model User {
   signalements    Signalements[]
   patient           Patients[]
   medecin           Medecins[]
+  likes             Likes[]
 
   role       String?
   banned     Boolean?  @default(false)
@@ -190,8 +191,6 @@ model Posts {
   description     String
   lien_image      String?
   star            Int      @default(0)
-  nombre_aime     Int      @default(0)
-  nombre_non_aime Int      @default(0)
   nombre_vue      Int      @default(0)
   cree_le         DateTime @default(now())
   modifie_le      DateTime @updatedAt
@@ -199,9 +198,30 @@ model Posts {
   id_medecin String
   medecins   Medecins @relation(fields: [id_medecin], references: [id_medecin], onDelete: Cascade)
 
+  likes        Likes[]
   commentaires Commentaires[]
 
   @@map("posts")
+}
+
+enum LikeType {
+  aime
+  non_aime
+}
+
+model Likes {
+  id_like String @id @default(uuid())
+  type    LikeType
+  cree_le DateTime @default(now())
+  modifie_le DateTime @updatedAt
+
+  id_post String
+  posts   Posts  @relation(fields: [id_post], references: [id_post], onDelete: Cascade)
+
+  userId  String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("likes")
 }
 
 //////////////////////////////////////////

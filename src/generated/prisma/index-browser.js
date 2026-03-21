@@ -222,12 +222,19 @@ exports.Prisma.PostsScalarFieldEnum = {
   description: 'description',
   lien_image: 'lien_image',
   star: 'star',
-  nombre_aime: 'nombre_aime',
-  nombre_non_aime: 'nombre_non_aime',
   nombre_vue: 'nombre_vue',
   cree_le: 'cree_le',
   modifie_le: 'modifie_le',
   id_medecin: 'id_medecin'
+};
+
+exports.Prisma.LikesScalarFieldEnum = {
+  id_like: 'id_like',
+  type: 'type',
+  cree_le: 'cree_le',
+  modifie_le: 'modifie_le',
+  id_post: 'id_post',
+  userId: 'userId'
 };
 
 exports.Prisma.CommentairesScalarFieldEnum = {
@@ -281,6 +288,11 @@ exports.StatusRvd = exports.$Enums.StatusRvd = {
   termine: 'termine'
 };
 
+exports.LikeType = exports.$Enums.LikeType = {
+  aime: 'aime',
+  non_aime: 'non_aime'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Session: 'Session',
@@ -291,6 +303,7 @@ exports.Prisma.ModelName = {
   Medecins: 'Medecins',
   RendezVous: 'RendezVous',
   Posts: 'Posts',
+  Likes: 'Likes',
   Commentaires: 'Commentaires',
   Consultations: 'Consultations',
   Fichiers: 'Fichiers'

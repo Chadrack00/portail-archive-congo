@@ -17,12 +17,12 @@ export default async function Page({
   const { user_slug } = await params;
   // await new Promise((resolve) => setTimeout(resolve, 10000));
   console.log(user_slug);
-  const user = await checkSlug(user_slug)
+  const user = await checkSlug(user_slug);
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  console.log(user.id === session?.user.id)
-  console.log(session?.user.role)
+  console.log(user.id === session?.user.id);
+  console.log(session?.user.role);
   const isOwner = user.id === session?.user.id;
   const d =
     user?.role === "medecin"
@@ -50,11 +50,16 @@ export default async function Page({
       <main className="flex-1 w-full max-w-5xl mx-auto px-4 py-8">
         {/* Header Profil */}
         <Suspense fallback={<p>Loading...</p>}>
-          <HeaderProfil isDoctor={user?.role === "medecin"} user={data} isOwner={isOwner}/>
+          <HeaderProfil
+            isDoctor={user?.role === "medecin"}
+            user={data}
+            isOwner={isOwner}
+          />
         </Suspense>
 
         {/* <!-- Profile Tabs Content --> */}
         <ProfilTabs
+          user_slug={user_slug}
           postsTabContent={
             <Suspense fallback={<p>Chargement des posts...</p>}>
               <StaticPostPage slug={user_slug} />
@@ -73,7 +78,9 @@ export default async function Page({
         />
 
         {/* <!-- Report / Support Area --> */}
-        {(!isOwner && (user.role === "medecin")) && <ReportUser id_medecin={user.id} />}
+        {!isOwner && user.role === "medecin" && (
+          <ReportUser id_medecin={user.id} />
+        )}
       </main>
     </div>
   );

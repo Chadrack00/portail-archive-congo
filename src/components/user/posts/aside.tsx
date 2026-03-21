@@ -1,20 +1,58 @@
 "use client";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Field } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { deletePost } from "@/lib/posts/edit-post";
+import { Edit2, Loader2, MoreVertical, Trash2 } from "lucide-react";
 import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { type TypePosts } from "./container-post";
 
 export default function AsidePosts({
+  isOwner,
   posts,
   selectedPost,
   onSelectPost,
 }: {
+  isOwner: boolean;
   posts: TypePosts[];
   selectedPost: TypePosts | null;
   onSelectPost: (post: TypePosts) => void;
 }) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [postToDelete, setPostToDelete] = useState<TypePosts | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const params = useParams();
+  const router = useRouter();
+
+  const handleDelete = async () => {
+    if (!postToDelete) return;
+    setIsDeleting(true);
+    const result = await deletePost(
+      postToDelete.id,
+      params.user_slug as string,
+    );
+    setIsDeleting(false);
+    if (result.success) {
+      setPostToDelete(null);
+    }
+  };
 
   const filteredPosts = posts.filter(
     (post) =>
@@ -50,7 +88,7 @@ export default function AsidePosts({
                   : "bg-transparent border-transparent hover:bg-slate-50 dark:hover:bg-slate-800"
               }`}
             >
-              <div className="flex gap-3">
+              <div className="flex gap-3 relative pr-6">
                 {post.image ? (
                   <div className="w-28 h-20 rounded-lg overflow-hidden shrink-0">
                     <Image
@@ -68,9 +106,9 @@ export default function AsidePosts({
                     </span>
                   </div>
                 )}
-                <div className="flex flex-col justify-between">
+                <div className="flex flex-col justify-between flex-1">
                   <h3
-                    className={`text-sm font-bold leading-tight line-clamp-2 ${isActive ? "text-primary" : ""}`}
+                    className={`text-sm font-bold leading-tight line-clamp-2 pr-4 ${isActive ? "text-primary" : ""}`}
                   >
                     {post.title}
                   </h3>
@@ -78,6 +116,37 @@ export default function AsidePosts({
                     {post.author} • {new Date(post.time).toLocaleDateString()}
                   </p>
                 </div>
+
+                {isOwner && (
+                  <div
+                    className="absolute right-0 top-0"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <button className="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors focus:outline-none">
+                        <MoreVertical size={16} className="text-slate-500" />
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem
+                        onClick={() =>
+                          router.push(`/${params.user_slug}/posts/${post.slug}`)
+                        }
+                      >
+                        <Edit2 size={14} className="mr-2" />
+                        Éditer
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        className="text-red-500 focus:bg-red-50 focus:text-red-600 dark:focus:bg-red-950"
+                        onClick={() => setPostToDelete(post)}
+                      >
+                        <Trash2 size={14} className="mr-2" />
+                        Supprimer
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>)}
               </div>
             </div>
           );
@@ -88,6 +157,37 @@ export default function AsidePosts({
           </div>
         )}
       </div>
+
+      <AlertDialog
+        open={!!postToDelete}
+        onOpenChange={(open) => !open && setPostToDelete(null)}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Êtes-vous sûr ?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Cette action est irréversible. Cela supprimera définitivement la
+              publication et toutes ses données associées.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={isDeleting}>Annuler</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={(e) => {
+                e.preventDefault();
+                handleDelete();
+              }}
+              disabled={isDeleting}
+              className="bg-red-500 text-white hover:bg-red-600 focus:ring-red-500"
+            >
+              {isDeleting ? (
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+              ) : null}
+              Supprimer
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </aside>
   );
 }
