@@ -200,6 +200,7 @@ exports.Prisma.MedecinsScalarFieldEnum = {
   specialite: 'specialite',
   description: 'description',
   nombre_signalement: 'nombre_signalement',
+  disponible: 'disponible',
   cree_le: 'cree_le',
   modifie_le: 'modifie_le',
   userId: 'userId'

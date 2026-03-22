@@ -9107,6 +9107,7 @@ export namespace Prisma {
     specialite: string | null
     description: string | null
     nombre_signalement: number | null
+    disponible: boolean | null
     cree_le: Date | null
     modifie_le: Date | null
     userId: string | null
@@ -9117,6 +9118,7 @@ export namespace Prisma {
     specialite: string | null
     description: string | null
     nombre_signalement: number | null
+    disponible: boolean | null
     cree_le: Date | null
     modifie_le: Date | null
     userId: string | null
@@ -9127,6 +9129,7 @@ export namespace Prisma {
     specialite: number
     description: number
     nombre_signalement: number
+    disponible: number
     cree_le: number
     modifie_le: number
     userId: number
@@ -9147,6 +9150,7 @@ export namespace Prisma {
     specialite?: true
     description?: true
     nombre_signalement?: true
+    disponible?: true
     cree_le?: true
     modifie_le?: true
     userId?: true
@@ -9157,6 +9161,7 @@ export namespace Prisma {
     specialite?: true
     description?: true
     nombre_signalement?: true
+    disponible?: true
     cree_le?: true
     modifie_le?: true
     userId?: true
@@ -9167,6 +9172,7 @@ export namespace Prisma {
     specialite?: true
     description?: true
     nombre_signalement?: true
+    disponible?: true
     cree_le?: true
     modifie_le?: true
     userId?: true
@@ -9264,6 +9270,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement: number
+    disponible: boolean
     cree_le: Date
     modifie_le: Date
     userId: string
@@ -9293,6 +9300,7 @@ export namespace Prisma {
     specialite?: boolean
     description?: boolean
     nombre_signalement?: boolean
+    disponible?: boolean
     cree_le?: boolean
     modifie_le?: boolean
     userId?: boolean
@@ -9308,6 +9316,7 @@ export namespace Prisma {
     specialite?: boolean
     description?: boolean
     nombre_signalement?: boolean
+    disponible?: boolean
     cree_le?: boolean
     modifie_le?: boolean
     userId?: boolean
@@ -9319,6 +9328,7 @@ export namespace Prisma {
     specialite?: boolean
     description?: boolean
     nombre_signalement?: boolean
+    disponible?: boolean
     cree_le?: boolean
     modifie_le?: boolean
     userId?: boolean
@@ -9330,12 +9340,13 @@ export namespace Prisma {
     specialite?: boolean
     description?: boolean
     nombre_signalement?: boolean
+    disponible?: boolean
     cree_le?: boolean
     modifie_le?: boolean
     userId?: boolean
   }
 
-  export type MedecinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_medecin" | "specialite" | "description" | "nombre_signalement" | "cree_le" | "modifie_le" | "userId", ExtArgs["result"]["medecins"]>
+  export type MedecinsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_medecin" | "specialite" | "description" | "nombre_signalement" | "disponible" | "cree_le" | "modifie_le" | "userId", ExtArgs["result"]["medecins"]>
   export type MedecinsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     rendezVous?: boolean | Medecins$rendezVousArgs<ExtArgs>
@@ -9363,6 +9374,7 @@ export namespace Prisma {
       specialite: string
       description: string
       nombre_signalement: number
+      disponible: boolean
       cree_le: Date
       modifie_le: Date
       userId: string
@@ -9797,6 +9809,7 @@ export namespace Prisma {
     readonly specialite: FieldRef<"Medecins", 'String'>
     readonly description: FieldRef<"Medecins", 'String'>
     readonly nombre_signalement: FieldRef<"Medecins", 'Int'>
+    readonly disponible: FieldRef<"Medecins", 'Boolean'>
     readonly cree_le: FieldRef<"Medecins", 'DateTime'>
     readonly modifie_le: FieldRef<"Medecins", 'DateTime'>
     readonly userId: FieldRef<"Medecins", 'String'>
@@ -17013,6 +17026,7 @@ export namespace Prisma {
     specialite: 'specialite',
     description: 'description',
     nombre_signalement: 'nombre_signalement',
+    disponible: 'disponible',
     cree_le: 'cree_le',
     modifie_le: 'modifie_le',
     userId: 'userId'
@@ -17724,6 +17738,7 @@ export namespace Prisma {
     specialite?: StringFilter<"Medecins"> | string
     description?: StringFilter<"Medecins"> | string
     nombre_signalement?: IntFilter<"Medecins"> | number
+    disponible?: BoolFilter<"Medecins"> | boolean
     cree_le?: DateTimeFilter<"Medecins"> | Date | string
     modifie_le?: DateTimeFilter<"Medecins"> | Date | string
     userId?: StringFilter<"Medecins"> | string
@@ -17738,6 +17753,7 @@ export namespace Prisma {
     specialite?: SortOrder
     description?: SortOrder
     nombre_signalement?: SortOrder
+    disponible?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
     userId?: SortOrder
@@ -17756,6 +17772,7 @@ export namespace Prisma {
     specialite?: StringFilter<"Medecins"> | string
     description?: StringFilter<"Medecins"> | string
     nombre_signalement?: IntFilter<"Medecins"> | number
+    disponible?: BoolFilter<"Medecins"> | boolean
     cree_le?: DateTimeFilter<"Medecins"> | Date | string
     modifie_le?: DateTimeFilter<"Medecins"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -17769,6 +17786,7 @@ export namespace Prisma {
     specialite?: SortOrder
     description?: SortOrder
     nombre_signalement?: SortOrder
+    disponible?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
     userId?: SortOrder
@@ -17787,6 +17805,7 @@ export namespace Prisma {
     specialite?: StringWithAggregatesFilter<"Medecins"> | string
     description?: StringWithAggregatesFilter<"Medecins"> | string
     nombre_signalement?: IntWithAggregatesFilter<"Medecins"> | number
+    disponible?: BoolWithAggregatesFilter<"Medecins"> | boolean
     cree_le?: DateTimeWithAggregatesFilter<"Medecins"> | Date | string
     modifie_le?: DateTimeWithAggregatesFilter<"Medecins"> | Date | string
     userId?: StringWithAggregatesFilter<"Medecins"> | string
@@ -18745,6 +18764,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     user: UserCreateNestedOneWithoutMedecinInput
@@ -18758,6 +18778,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     userId: string
@@ -18771,6 +18792,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutMedecinNestedInput
@@ -18784,6 +18806,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -18797,6 +18820,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     userId: string
@@ -18807,6 +18831,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18816,6 +18841,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -19723,6 +19749,7 @@ export namespace Prisma {
     specialite?: SortOrder
     description?: SortOrder
     nombre_signalement?: SortOrder
+    disponible?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
     userId?: SortOrder
@@ -19737,6 +19764,7 @@ export namespace Prisma {
     specialite?: SortOrder
     description?: SortOrder
     nombre_signalement?: SortOrder
+    disponible?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
     userId?: SortOrder
@@ -19747,6 +19775,7 @@ export namespace Prisma {
     specialite?: SortOrder
     description?: SortOrder
     nombre_signalement?: SortOrder
+    disponible?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
     userId?: SortOrder
@@ -21222,6 +21251,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     rendezVous?: RendezVousCreateNestedManyWithoutMedecinsInput
@@ -21234,6 +21264,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     rendezVous?: RendezVousUncheckedCreateNestedManyWithoutMedecinsInput
@@ -21421,6 +21452,7 @@ export namespace Prisma {
     specialite?: StringFilter<"Medecins"> | string
     description?: StringFilter<"Medecins"> | string
     nombre_signalement?: IntFilter<"Medecins"> | number
+    disponible?: BoolFilter<"Medecins"> | boolean
     cree_le?: DateTimeFilter<"Medecins"> | Date | string
     modifie_le?: DateTimeFilter<"Medecins"> | Date | string
     userId?: StringFilter<"Medecins"> | string
@@ -22371,6 +22403,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     user: UserCreateNestedOneWithoutMedecinInput
@@ -22383,6 +22416,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     userId: string
@@ -22438,6 +22472,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutMedecinNestedInput
@@ -22450,6 +22485,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -22462,6 +22498,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     user: UserCreateNestedOneWithoutMedecinInput
@@ -22474,6 +22511,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     userId: string
@@ -22552,6 +22590,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutMedecinNestedInput
@@ -22564,6 +22603,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -22908,6 +22948,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     user: UserCreateNestedOneWithoutMedecinInput
@@ -22920,6 +22961,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
     userId: string
@@ -22999,6 +23041,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutMedecinNestedInput
@@ -23011,6 +23054,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -23142,6 +23186,7 @@ export namespace Prisma {
     specialite: string
     description: string
     nombre_signalement?: number
+    disponible?: boolean
     cree_le?: Date | string
     modifie_le?: Date | string
   }
@@ -23283,6 +23328,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     rendezVous?: RendezVousUpdateManyWithoutMedecinsNestedInput
@@ -23295,6 +23341,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     rendezVous?: RendezVousUncheckedUpdateManyWithoutMedecinsNestedInput
@@ -23307,6 +23354,7 @@ export namespace Prisma {
     specialite?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     nombre_signalement?: IntFieldUpdateOperationsInput | number
+    disponible?: BoolFieldUpdateOperationsInput | boolean
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
   }

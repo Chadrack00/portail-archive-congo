@@ -140,6 +140,7 @@ model Medecins {
   specialite         String
   description        String
   nombre_signalement Int      @default(0)
+  disponible         Boolean  @default(true)
   cree_le            DateTime @default(now())
   modifie_le         DateTime @updatedAt
 
