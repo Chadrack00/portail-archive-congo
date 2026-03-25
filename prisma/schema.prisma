@@ -126,7 +126,6 @@ model Patients {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   rendezVous    RendezVous[]
-  consultations Consultations[]
 
   @@map("patients")
 }
@@ -149,7 +148,6 @@ model Medecins {
 
   rendezVous    RendezVous[]
   posts         Posts[]
-  consultations Consultations[]
 
   @@index([specialite])
   @@map("medecins")
@@ -169,14 +167,16 @@ model RendezVous {
   id_rdv     String    @id @default(uuid())
   motif      String
   cree_le    DateTime  @default(now())
+  date_rdv   DateTime
   status     StatusRvd @default(attente)
   modifie_le DateTime  @updatedAt
 
   id_patient String
   id_medecin String
 
-  patients Patients @relation(fields: [id_patient], references: [id_patient], onDelete: Cascade)
-  medecins Medecins @relation(fields: [id_medecin], references: [id_medecin], onDelete: Cascade)
+  patients    Patients      @relation(fields: [id_patient], references: [id_patient], onDelete: Cascade)
+  medecins    Medecins      @relation(fields: [id_medecin], references: [id_medecin], onDelete: Cascade)
+  consultations Consultations[]
 
   @@map("rendez-vous")
 }
@@ -252,10 +252,8 @@ model Consultations {
   cree_le         DateTime @default(now())
   modifie_le      DateTime @updatedAt
 
-  id_patient String
-  id_medecin String
-  patient    Patients   @relation(fields: [id_patient], references: [id_patient], onDelete: Cascade)
-  medecin    Medecins   @relation(fields: [id_medecin], references: [id_medecin], onDelete: Cascade)
+  id_rdv String
+  rdv    RendezVous @relation(fields: [id_rdv], references: [id_rdv], onDelete: Cascade)
   fichiers   Fichiers[]
 
   @@index([diagnostique])

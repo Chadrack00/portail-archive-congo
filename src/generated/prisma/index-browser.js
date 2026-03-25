@@ -210,6 +210,7 @@ exports.Prisma.RendezVousScalarFieldEnum = {
   id_rdv: 'id_rdv',
   motif: 'motif',
   cree_le: 'cree_le',
+  date_rdv: 'date_rdv',
   status: 'status',
   modifie_le: 'modifie_le',
   id_patient: 'id_patient',
@@ -251,8 +252,7 @@ exports.Prisma.ConsultationsScalarFieldEnum = {
   diagnostique: 'diagnostique',
   cree_le: 'cree_le',
   modifie_le: 'modifie_le',
-  id_patient: 'id_patient',
-  id_medecin: 'id_medecin'
+  id_rdv: 'id_rdv'
 };
 
 exports.Prisma.FichiersScalarFieldEnum = {

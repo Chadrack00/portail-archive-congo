@@ -1,6 +1,7 @@
 "use server";
 import { signupSchema, SignupSchema } from "@/types/zod-types/auth-types";
 import { auth } from "../auth";
+import { revalidateTag } from "next/cache";
 
 export async function signUp(data: SignupSchema) {
   const schema = await signupSchema.safeParseAsync(data);
@@ -12,7 +13,7 @@ export async function signUp(data: SignupSchema) {
       role: "",
     };
   }
- 
+  
   let response;
   try {
     response = await auth.api.signUpEmail({
@@ -67,7 +68,7 @@ export async function signUp(data: SignupSchema) {
     const responseData = await response.json();
     role = responseData.user?.role || "user";
   }
-
+  revalidateTag("rating", "rating ") 
   return {
     status: response.status,
     message: message,

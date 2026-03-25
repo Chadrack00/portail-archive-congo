@@ -1,5 +1,8 @@
+"use client";
 import { BadgeCheck, CalendarClock } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import DialogToTakeRdv from "../auth/dialog-to-take-rdv";
 type UserProps = {
   nom: string;
   prenom: string;
@@ -11,13 +14,21 @@ type UserProps = {
 
 export default function HeaderProfil({
   isDoctor,
+  isSessionUser,
   user,
   isOwner,
+  id_medecin,
+  isOpen,
 }: {
   isDoctor: boolean;
+  isSessionUser: boolean;
   user: UserProps;
-  isOwner: boolean,
+  isOwner: boolean;
+  id_medecin?: string;
+  isOpen: boolean;
 }) {
+  console.log("Medcin ID : ", id_medecin);
+  const [open, setOpen] = useState(isOpen);
   return (
     <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden mb-6">
       <div
@@ -49,14 +60,19 @@ export default function HeaderProfil({
                 </span>
               </h1>
               <p className="text-primary font-semibold">
-                {user?.specialite} * {user?.adresse_residence}
+                {user?.specialite + " * "} {user?.adresse_residence}
               </p>
-              {user?.description && <p className="text-slate-500 dark:text-slate-400 text-sm max-w-xl mt-1">
-                {user?.description}
-              </p>}
+              {user?.description && (
+                <p className="text-slate-500 dark:text-slate-400 text-sm max-w-xl mt-1">
+                  {user?.description}
+                </p>
+              )}
             </div>
-            {!isDoctor && !isOwner && (
-              <button className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold shadow-md shadow-primary/20 flex items-center gap-2 transition-all">
+            {isDoctor && !isOwner && isSessionUser && (
+              <button
+                onClick={() => setOpen(!open)}
+                className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold shadow-md shadow-primary/20 flex items-center gap-2 transition-all"
+              >
                 <span className="material-symbols-outlined text-xl">
                   <CalendarClock />
                 </span>
@@ -66,6 +82,14 @@ export default function HeaderProfil({
           </div>
         </div>
       </div>
+
+      {id_medecin && (
+        <DialogToTakeRdv
+          id_medecin={id_medecin}
+          isOpen={open}
+          onOpenChange={setOpen}
+        />
+      )}
     </div>
   );
 }

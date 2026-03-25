@@ -14,7 +14,7 @@ export async function getOverviewMedecins() {
     return medecinsList.map((m) => ({
       nom:
         `${m.user.name || ""} ${m.user.postnom || ""}`.trim() || "Dr. Inconnu",
-      slug: m.user.id,
+      slug: m.user.slug,
       image: m.user.image ?? "",
       specialite: m.specialite ?? "Spécialité non renseignée",
       adresse: m.user.adresse_residence ?? "Adresse non renseignée",

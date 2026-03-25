@@ -23,10 +23,10 @@ export default function LeadingSection() {
           </div>
           <div className="flex flex-wrap gap-4">
             <Button className="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-base font-bold shadow-xl shadow-primary/30 hover:scale-[1.02] transition-transform">
-              <Link href="/home">Découvrir</Link>
+              <Link href="/overview">Découvrir</Link>
             </Button>
             <Button className="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-base font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-              <Link href="/home">En savoir plus</Link>
+              <Link href="/overview">En savoir plus</Link>
             </Button>
           </div>
         </div>

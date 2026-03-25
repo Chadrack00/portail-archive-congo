@@ -9,10 +9,10 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export function DatePickerSimple({date, setDate, open, setOpen}: {date: Date | undefined,  setDate: (date: Date | undefined) => void, open: boolean, setOpen: (open: boolean) => void}) {
+export function DatePickerSimple({date, setDate, open, setOpen, title}: {date: Date | undefined,  setDate: (date: Date | undefined) => void, open: boolean, setOpen: (open: boolean) => void, title?: string}) {
   return (
     <Field className="mx-auto w-44">
-      <FieldLabel htmlFor="date">Date de naissance</FieldLabel>
+      <FieldLabel htmlFor="date">{title || "Date de naissance"}</FieldLabel>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button

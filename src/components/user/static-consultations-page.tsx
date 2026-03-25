@@ -40,7 +40,10 @@ export default async function StaticConsultationsPage({
               </div>
             </div>
           ))}
-          <Link href={`/`} className="absolute bottom-1 right-1 gap-2 flex-end">
+          <Link
+            href={`/${slug}/cons-rdv`}
+            className="absolute bottom-1 right-1 gap-2 flex-end"
+          >
             <Button>
               Voir plus <Plus size={15} />
             </Button>
@@ -64,13 +67,13 @@ export default async function StaticConsultationsPage({
         </div>
       )}
 
-      {consultations.length > 0 && (
-        <Link href={`/`} className="flex gap-2 justify-end col-span-full mt-2">
+      {/* {consultations.length > 0 && (
+        <Link href={`/${slug}/cons-rdv`} className="flex gap-2 justify-end col-span-full mt-2">
           <Button variant="outline" className="gap-2">
             Voir plus <Plus size={15} />
           </Button>
         </Link>
-      )}
+      )} */}
     </>
   );
 }
@@ -80,10 +83,10 @@ const getStaticConsultations = async ({ slug }: { slug: string }) => {
     where: {
       OR: [
         {
-          medecin: { user: { slug: slug } },
+          rdv: { medecins: { user: { slug: slug } } },
         },
         {
-          patient: { user: { slug: slug } },
+          rdv: { patients: { user: { slug: slug } } },
         },
       ],
     },

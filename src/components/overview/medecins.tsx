@@ -61,7 +61,7 @@ export default async function Medecins() {
                 key={index}
                 className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg transition-all flex flex-col group h-fit"
               >
-                <div className="p-6 flex gap-5">
+                <Link href={`/${slug}`} className="p-6 flex gap-5 pointer-cursor">
                   <div className="h-24 w-24 rounded-2xl overflow-hidden shrink-0 ring-4 ring-slate-50 dark:ring-slate-800">
                     <Image
                       width={100}
@@ -109,7 +109,7 @@ export default async function Medecins() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
                 <div className="p-6 pt-0 mt-auto grid grid-cols-2 gap-3">
                   <Link
                     href={`/${slug}/posts`}
@@ -117,9 +117,12 @@ export default async function Medecins() {
                   >
                     <Mail className="text-base!" size={15} /> Voir ses posts
                   </Link>
-                  <Button className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white py-2.5 rounded-lg text-sm font-bold transition-all shadow-md shadow-primary/20">
+                  <Link
+                    href={`/${slug}?showRdvModal=true`}
+                    className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white py-2.5 rounded-lg text-sm font-bold transition-all shadow-md shadow-primary/20"
+                  >
                     Rendez-vous
-                  </Button>
+                  </Link>
                 </div>
               </div>
             ),

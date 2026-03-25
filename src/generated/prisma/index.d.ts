@@ -2078,12 +2078,10 @@ export namespace Prisma {
 
   export type PatientsCountOutputType = {
     rendezVous: number
-    consultations: number
   }
 
   export type PatientsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     rendezVous?: boolean | PatientsCountOutputTypeCountRendezVousArgs
-    consultations?: boolean | PatientsCountOutputTypeCountConsultationsArgs
   }
 
   // Custom InputTypes
@@ -2104,13 +2102,6 @@ export namespace Prisma {
     where?: RendezVousWhereInput
   }
 
-  /**
-   * PatientsCountOutputType without action
-   */
-  export type PatientsCountOutputTypeCountConsultationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ConsultationsWhereInput
-  }
-
 
   /**
    * Count Type MedecinsCountOutputType
@@ -2119,13 +2110,11 @@ export namespace Prisma {
   export type MedecinsCountOutputType = {
     rendezVous: number
     posts: number
-    consultations: number
   }
 
   export type MedecinsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     rendezVous?: boolean | MedecinsCountOutputTypeCountRendezVousArgs
     posts?: boolean | MedecinsCountOutputTypeCountPostsArgs
-    consultations?: boolean | MedecinsCountOutputTypeCountConsultationsArgs
   }
 
   // Custom InputTypes
@@ -2153,10 +2142,34 @@ export namespace Prisma {
     where?: PostsWhereInput
   }
 
+
   /**
-   * MedecinsCountOutputType without action
+   * Count Type RendezVousCountOutputType
    */
-  export type MedecinsCountOutputTypeCountConsultationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+
+  export type RendezVousCountOutputType = {
+    consultations: number
+  }
+
+  export type RendezVousCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    consultations?: boolean | RendezVousCountOutputTypeCountConsultationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * RendezVousCountOutputType without action
+   */
+  export type RendezVousCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RendezVousCountOutputType
+     */
+    select?: RendezVousCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * RendezVousCountOutputType without action
+   */
+  export type RendezVousCountOutputTypeCountConsultationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ConsultationsWhereInput
   }
 
@@ -8137,7 +8150,6 @@ export namespace Prisma {
     userId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     rendezVous?: boolean | Patients$rendezVousArgs<ExtArgs>
-    consultations?: boolean | Patients$consultationsArgs<ExtArgs>
     _count?: boolean | PatientsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["patients"]>
 
@@ -8168,7 +8180,6 @@ export namespace Prisma {
   export type PatientsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     rendezVous?: boolean | Patients$rendezVousArgs<ExtArgs>
-    consultations?: boolean | Patients$consultationsArgs<ExtArgs>
     _count?: boolean | PatientsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PatientsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8183,7 +8194,6 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       rendezVous: Prisma.$RendezVousPayload<ExtArgs>[]
-      consultations: Prisma.$ConsultationsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_patient: string
@@ -8586,7 +8596,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     rendezVous<T extends Patients$rendezVousArgs<ExtArgs> = {}>(args?: Subset<T, Patients$rendezVousArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RendezVousPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    consultations<T extends Patients$consultationsArgs<ExtArgs> = {}>(args?: Subset<T, Patients$consultationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConsultationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9040,30 +9049,6 @@ export namespace Prisma {
   }
 
   /**
-   * Patients.consultations
-   */
-  export type Patients$consultationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Consultations
-     */
-    select?: ConsultationsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Consultations
-     */
-    omit?: ConsultationsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ConsultationsInclude<ExtArgs> | null
-    where?: ConsultationsWhereInput
-    orderBy?: ConsultationsOrderByWithRelationInput | ConsultationsOrderByWithRelationInput[]
-    cursor?: ConsultationsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ConsultationsScalarFieldEnum | ConsultationsScalarFieldEnum[]
-  }
-
-  /**
    * Patients without action
    */
   export type PatientsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9307,7 +9292,6 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     rendezVous?: boolean | Medecins$rendezVousArgs<ExtArgs>
     posts?: boolean | Medecins$postsArgs<ExtArgs>
-    consultations?: boolean | Medecins$consultationsArgs<ExtArgs>
     _count?: boolean | MedecinsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["medecins"]>
 
@@ -9351,7 +9335,6 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
     rendezVous?: boolean | Medecins$rendezVousArgs<ExtArgs>
     posts?: boolean | Medecins$postsArgs<ExtArgs>
-    consultations?: boolean | Medecins$consultationsArgs<ExtArgs>
     _count?: boolean | MedecinsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type MedecinsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9367,7 +9350,6 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
       rendezVous: Prisma.$RendezVousPayload<ExtArgs>[]
       posts: Prisma.$PostsPayload<ExtArgs>[]
-      consultations: Prisma.$ConsultationsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_medecin: string
@@ -9775,7 +9757,6 @@ export namespace Prisma {
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     rendezVous<T extends Medecins$rendezVousArgs<ExtArgs> = {}>(args?: Subset<T, Medecins$rendezVousArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RendezVousPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     posts<T extends Medecins$postsArgs<ExtArgs> = {}>(args?: Subset<T, Medecins$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    consultations<T extends Medecins$consultationsArgs<ExtArgs> = {}>(args?: Subset<T, Medecins$consultationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConsultationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10257,30 +10238,6 @@ export namespace Prisma {
   }
 
   /**
-   * Medecins.consultations
-   */
-  export type Medecins$consultationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Consultations
-     */
-    select?: ConsultationsSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Consultations
-     */
-    omit?: ConsultationsOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ConsultationsInclude<ExtArgs> | null
-    where?: ConsultationsWhereInput
-    orderBy?: ConsultationsOrderByWithRelationInput | ConsultationsOrderByWithRelationInput[]
-    cursor?: ConsultationsWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ConsultationsScalarFieldEnum | ConsultationsScalarFieldEnum[]
-  }
-
-  /**
    * Medecins without action
    */
   export type MedecinsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10313,6 +10270,7 @@ export namespace Prisma {
     id_rdv: string | null
     motif: string | null
     cree_le: Date | null
+    date_rdv: Date | null
     status: $Enums.StatusRvd | null
     modifie_le: Date | null
     id_patient: string | null
@@ -10323,6 +10281,7 @@ export namespace Prisma {
     id_rdv: string | null
     motif: string | null
     cree_le: Date | null
+    date_rdv: Date | null
     status: $Enums.StatusRvd | null
     modifie_le: Date | null
     id_patient: string | null
@@ -10333,6 +10292,7 @@ export namespace Prisma {
     id_rdv: number
     motif: number
     cree_le: number
+    date_rdv: number
     status: number
     modifie_le: number
     id_patient: number
@@ -10345,6 +10305,7 @@ export namespace Prisma {
     id_rdv?: true
     motif?: true
     cree_le?: true
+    date_rdv?: true
     status?: true
     modifie_le?: true
     id_patient?: true
@@ -10355,6 +10316,7 @@ export namespace Prisma {
     id_rdv?: true
     motif?: true
     cree_le?: true
+    date_rdv?: true
     status?: true
     modifie_le?: true
     id_patient?: true
@@ -10365,6 +10327,7 @@ export namespace Prisma {
     id_rdv?: true
     motif?: true
     cree_le?: true
+    date_rdv?: true
     status?: true
     modifie_le?: true
     id_patient?: true
@@ -10448,6 +10411,7 @@ export namespace Prisma {
     id_rdv: string
     motif: string
     cree_le: Date
+    date_rdv: Date
     status: $Enums.StatusRvd
     modifie_le: Date
     id_patient: string
@@ -10475,18 +10439,22 @@ export namespace Prisma {
     id_rdv?: boolean
     motif?: boolean
     cree_le?: boolean
+    date_rdv?: boolean
     status?: boolean
     modifie_le?: boolean
     id_patient?: boolean
     id_medecin?: boolean
     patients?: boolean | PatientsDefaultArgs<ExtArgs>
     medecins?: boolean | MedecinsDefaultArgs<ExtArgs>
+    consultations?: boolean | RendezVous$consultationsArgs<ExtArgs>
+    _count?: boolean | RendezVousCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["rendezVous"]>
 
   export type RendezVousSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id_rdv?: boolean
     motif?: boolean
     cree_le?: boolean
+    date_rdv?: boolean
     status?: boolean
     modifie_le?: boolean
     id_patient?: boolean
@@ -10499,6 +10467,7 @@ export namespace Prisma {
     id_rdv?: boolean
     motif?: boolean
     cree_le?: boolean
+    date_rdv?: boolean
     status?: boolean
     modifie_le?: boolean
     id_patient?: boolean
@@ -10511,16 +10480,19 @@ export namespace Prisma {
     id_rdv?: boolean
     motif?: boolean
     cree_le?: boolean
+    date_rdv?: boolean
     status?: boolean
     modifie_le?: boolean
     id_patient?: boolean
     id_medecin?: boolean
   }
 
-  export type RendezVousOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_rdv" | "motif" | "cree_le" | "status" | "modifie_le" | "id_patient" | "id_medecin", ExtArgs["result"]["rendezVous"]>
+  export type RendezVousOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_rdv" | "motif" | "cree_le" | "date_rdv" | "status" | "modifie_le" | "id_patient" | "id_medecin", ExtArgs["result"]["rendezVous"]>
   export type RendezVousInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patients?: boolean | PatientsDefaultArgs<ExtArgs>
     medecins?: boolean | MedecinsDefaultArgs<ExtArgs>
+    consultations?: boolean | RendezVous$consultationsArgs<ExtArgs>
+    _count?: boolean | RendezVousCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type RendezVousIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     patients?: boolean | PatientsDefaultArgs<ExtArgs>
@@ -10536,11 +10508,13 @@ export namespace Prisma {
     objects: {
       patients: Prisma.$PatientsPayload<ExtArgs>
       medecins: Prisma.$MedecinsPayload<ExtArgs>
+      consultations: Prisma.$ConsultationsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_rdv: string
       motif: string
       cree_le: Date
+      date_rdv: Date
       status: $Enums.StatusRvd
       modifie_le: Date
       id_patient: string
@@ -10941,6 +10915,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     patients<T extends PatientsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientsDefaultArgs<ExtArgs>>): Prisma__PatientsClient<$Result.GetResult<Prisma.$PatientsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     medecins<T extends MedecinsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MedecinsDefaultArgs<ExtArgs>>): Prisma__MedecinsClient<$Result.GetResult<Prisma.$MedecinsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    consultations<T extends RendezVous$consultationsArgs<ExtArgs> = {}>(args?: Subset<T, RendezVous$consultationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ConsultationsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10973,6 +10948,7 @@ export namespace Prisma {
     readonly id_rdv: FieldRef<"RendezVous", 'String'>
     readonly motif: FieldRef<"RendezVous", 'String'>
     readonly cree_le: FieldRef<"RendezVous", 'DateTime'>
+    readonly date_rdv: FieldRef<"RendezVous", 'DateTime'>
     readonly status: FieldRef<"RendezVous", 'StatusRvd'>
     readonly modifie_le: FieldRef<"RendezVous", 'DateTime'>
     readonly id_patient: FieldRef<"RendezVous", 'String'>
@@ -11370,6 +11346,30 @@ export namespace Prisma {
      * Limit how many RendezVous to delete.
      */
     limit?: number
+  }
+
+  /**
+   * RendezVous.consultations
+   */
+  export type RendezVous$consultationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Consultations
+     */
+    select?: ConsultationsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Consultations
+     */
+    omit?: ConsultationsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ConsultationsInclude<ExtArgs> | null
+    where?: ConsultationsWhereInput
+    orderBy?: ConsultationsOrderByWithRelationInput | ConsultationsOrderByWithRelationInput[]
+    cursor?: ConsultationsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ConsultationsScalarFieldEnum | ConsultationsScalarFieldEnum[]
   }
 
   /**
@@ -14762,8 +14762,7 @@ export namespace Prisma {
     diagnostique: string | null
     cree_le: Date | null
     modifie_le: Date | null
-    id_patient: string | null
-    id_medecin: string | null
+    id_rdv: string | null
   }
 
   export type ConsultationsMaxAggregateOutputType = {
@@ -14771,8 +14770,7 @@ export namespace Prisma {
     diagnostique: string | null
     cree_le: Date | null
     modifie_le: Date | null
-    id_patient: string | null
-    id_medecin: string | null
+    id_rdv: string | null
   }
 
   export type ConsultationsCountAggregateOutputType = {
@@ -14780,8 +14778,7 @@ export namespace Prisma {
     diagnostique: number
     cree_le: number
     modifie_le: number
-    id_patient: number
-    id_medecin: number
+    id_rdv: number
     _all: number
   }
 
@@ -14791,8 +14788,7 @@ export namespace Prisma {
     diagnostique?: true
     cree_le?: true
     modifie_le?: true
-    id_patient?: true
-    id_medecin?: true
+    id_rdv?: true
   }
 
   export type ConsultationsMaxAggregateInputType = {
@@ -14800,8 +14796,7 @@ export namespace Prisma {
     diagnostique?: true
     cree_le?: true
     modifie_le?: true
-    id_patient?: true
-    id_medecin?: true
+    id_rdv?: true
   }
 
   export type ConsultationsCountAggregateInputType = {
@@ -14809,8 +14804,7 @@ export namespace Prisma {
     diagnostique?: true
     cree_le?: true
     modifie_le?: true
-    id_patient?: true
-    id_medecin?: true
+    id_rdv?: true
     _all?: true
   }
 
@@ -14891,8 +14885,7 @@ export namespace Prisma {
     diagnostique: string
     cree_le: Date
     modifie_le: Date
-    id_patient: string
-    id_medecin: string
+    id_rdv: string
     _count: ConsultationsCountAggregateOutputType | null
     _min: ConsultationsMinAggregateOutputType | null
     _max: ConsultationsMaxAggregateOutputType | null
@@ -14917,10 +14910,8 @@ export namespace Prisma {
     diagnostique?: boolean
     cree_le?: boolean
     modifie_le?: boolean
-    id_patient?: boolean
-    id_medecin?: boolean
-    patient?: boolean | PatientsDefaultArgs<ExtArgs>
-    medecin?: boolean | MedecinsDefaultArgs<ExtArgs>
+    id_rdv?: boolean
+    rdv?: boolean | RendezVousDefaultArgs<ExtArgs>
     fichiers?: boolean | Consultations$fichiersArgs<ExtArgs>
     _count?: boolean | ConsultationsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["consultations"]>
@@ -14930,10 +14921,8 @@ export namespace Prisma {
     diagnostique?: boolean
     cree_le?: boolean
     modifie_le?: boolean
-    id_patient?: boolean
-    id_medecin?: boolean
-    patient?: boolean | PatientsDefaultArgs<ExtArgs>
-    medecin?: boolean | MedecinsDefaultArgs<ExtArgs>
+    id_rdv?: boolean
+    rdv?: boolean | RendezVousDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["consultations"]>
 
   export type ConsultationsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -14941,10 +14930,8 @@ export namespace Prisma {
     diagnostique?: boolean
     cree_le?: boolean
     modifie_le?: boolean
-    id_patient?: boolean
-    id_medecin?: boolean
-    patient?: boolean | PatientsDefaultArgs<ExtArgs>
-    medecin?: boolean | MedecinsDefaultArgs<ExtArgs>
+    id_rdv?: boolean
+    rdv?: boolean | RendezVousDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["consultations"]>
 
   export type ConsultationsSelectScalar = {
@@ -14952,31 +14939,26 @@ export namespace Prisma {
     diagnostique?: boolean
     cree_le?: boolean
     modifie_le?: boolean
-    id_patient?: boolean
-    id_medecin?: boolean
+    id_rdv?: boolean
   }
 
-  export type ConsultationsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_consultation" | "diagnostique" | "cree_le" | "modifie_le" | "id_patient" | "id_medecin", ExtArgs["result"]["consultations"]>
+  export type ConsultationsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_consultation" | "diagnostique" | "cree_le" | "modifie_le" | "id_rdv", ExtArgs["result"]["consultations"]>
   export type ConsultationsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    patient?: boolean | PatientsDefaultArgs<ExtArgs>
-    medecin?: boolean | MedecinsDefaultArgs<ExtArgs>
+    rdv?: boolean | RendezVousDefaultArgs<ExtArgs>
     fichiers?: boolean | Consultations$fichiersArgs<ExtArgs>
     _count?: boolean | ConsultationsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ConsultationsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    patient?: boolean | PatientsDefaultArgs<ExtArgs>
-    medecin?: boolean | MedecinsDefaultArgs<ExtArgs>
+    rdv?: boolean | RendezVousDefaultArgs<ExtArgs>
   }
   export type ConsultationsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    patient?: boolean | PatientsDefaultArgs<ExtArgs>
-    medecin?: boolean | MedecinsDefaultArgs<ExtArgs>
+    rdv?: boolean | RendezVousDefaultArgs<ExtArgs>
   }
 
   export type $ConsultationsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Consultations"
     objects: {
-      patient: Prisma.$PatientsPayload<ExtArgs>
-      medecin: Prisma.$MedecinsPayload<ExtArgs>
+      rdv: Prisma.$RendezVousPayload<ExtArgs>
       fichiers: Prisma.$FichiersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -14984,8 +14966,7 @@ export namespace Prisma {
       diagnostique: string
       cree_le: Date
       modifie_le: Date
-      id_patient: string
-      id_medecin: string
+      id_rdv: string
     }, ExtArgs["result"]["consultations"]>
     composites: {}
   }
@@ -15380,8 +15361,7 @@ export namespace Prisma {
    */
   export interface Prisma__ConsultationsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    patient<T extends PatientsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientsDefaultArgs<ExtArgs>>): Prisma__PatientsClient<$Result.GetResult<Prisma.$PatientsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    medecin<T extends MedecinsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MedecinsDefaultArgs<ExtArgs>>): Prisma__MedecinsClient<$Result.GetResult<Prisma.$MedecinsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    rdv<T extends RendezVousDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RendezVousDefaultArgs<ExtArgs>>): Prisma__RendezVousClient<$Result.GetResult<Prisma.$RendezVousPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     fichiers<T extends Consultations$fichiersArgs<ExtArgs> = {}>(args?: Subset<T, Consultations$fichiersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FichiersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -15416,8 +15396,7 @@ export namespace Prisma {
     readonly diagnostique: FieldRef<"Consultations", 'String'>
     readonly cree_le: FieldRef<"Consultations", 'DateTime'>
     readonly modifie_le: FieldRef<"Consultations", 'DateTime'>
-    readonly id_patient: FieldRef<"Consultations", 'String'>
-    readonly id_medecin: FieldRef<"Consultations", 'String'>
+    readonly id_rdv: FieldRef<"Consultations", 'String'>
   }
     
 
@@ -17039,6 +17018,7 @@ export namespace Prisma {
     id_rdv: 'id_rdv',
     motif: 'motif',
     cree_le: 'cree_le',
+    date_rdv: 'date_rdv',
     status: 'status',
     modifie_le: 'modifie_le',
     id_patient: 'id_patient',
@@ -17092,8 +17072,7 @@ export namespace Prisma {
     diagnostique: 'diagnostique',
     cree_le: 'cree_le',
     modifie_le: 'modifie_le',
-    id_patient: 'id_patient',
-    id_medecin: 'id_medecin'
+    id_rdv: 'id_rdv'
   };
 
   export type ConsultationsScalarFieldEnum = (typeof ConsultationsScalarFieldEnum)[keyof typeof ConsultationsScalarFieldEnum]
@@ -17684,7 +17663,6 @@ export namespace Prisma {
     userId?: StringFilter<"Patients"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     rendezVous?: RendezVousListRelationFilter
-    consultations?: ConsultationsListRelationFilter
   }
 
   export type PatientsOrderByWithRelationInput = {
@@ -17694,7 +17672,6 @@ export namespace Prisma {
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
     rendezVous?: RendezVousOrderByRelationAggregateInput
-    consultations?: ConsultationsOrderByRelationAggregateInput
   }
 
   export type PatientsWhereUniqueInput = Prisma.AtLeast<{
@@ -17707,7 +17684,6 @@ export namespace Prisma {
     modifie_le?: DateTimeFilter<"Patients"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     rendezVous?: RendezVousListRelationFilter
-    consultations?: ConsultationsListRelationFilter
   }, "id_patient" | "userId">
 
   export type PatientsOrderByWithAggregationInput = {
@@ -17745,7 +17721,6 @@ export namespace Prisma {
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     rendezVous?: RendezVousListRelationFilter
     posts?: PostsListRelationFilter
-    consultations?: ConsultationsListRelationFilter
   }
 
   export type MedecinsOrderByWithRelationInput = {
@@ -17760,7 +17735,6 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     rendezVous?: RendezVousOrderByRelationAggregateInput
     posts?: PostsOrderByRelationAggregateInput
-    consultations?: ConsultationsOrderByRelationAggregateInput
   }
 
   export type MedecinsWhereUniqueInput = Prisma.AtLeast<{
@@ -17778,7 +17752,6 @@ export namespace Prisma {
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     rendezVous?: RendezVousListRelationFilter
     posts?: PostsListRelationFilter
-    consultations?: ConsultationsListRelationFilter
   }, "id_medecin" | "userId">
 
   export type MedecinsOrderByWithAggregationInput = {
@@ -17818,24 +17791,28 @@ export namespace Prisma {
     id_rdv?: StringFilter<"RendezVous"> | string
     motif?: StringFilter<"RendezVous"> | string
     cree_le?: DateTimeFilter<"RendezVous"> | Date | string
+    date_rdv?: DateTimeFilter<"RendezVous"> | Date | string
     status?: EnumStatusRvdFilter<"RendezVous"> | $Enums.StatusRvd
     modifie_le?: DateTimeFilter<"RendezVous"> | Date | string
     id_patient?: StringFilter<"RendezVous"> | string
     id_medecin?: StringFilter<"RendezVous"> | string
     patients?: XOR<PatientsScalarRelationFilter, PatientsWhereInput>
     medecins?: XOR<MedecinsScalarRelationFilter, MedecinsWhereInput>
+    consultations?: ConsultationsListRelationFilter
   }
 
   export type RendezVousOrderByWithRelationInput = {
     id_rdv?: SortOrder
     motif?: SortOrder
     cree_le?: SortOrder
+    date_rdv?: SortOrder
     status?: SortOrder
     modifie_le?: SortOrder
     id_patient?: SortOrder
     id_medecin?: SortOrder
     patients?: PatientsOrderByWithRelationInput
     medecins?: MedecinsOrderByWithRelationInput
+    consultations?: ConsultationsOrderByRelationAggregateInput
   }
 
   export type RendezVousWhereUniqueInput = Prisma.AtLeast<{
@@ -17845,18 +17822,21 @@ export namespace Prisma {
     NOT?: RendezVousWhereInput | RendezVousWhereInput[]
     motif?: StringFilter<"RendezVous"> | string
     cree_le?: DateTimeFilter<"RendezVous"> | Date | string
+    date_rdv?: DateTimeFilter<"RendezVous"> | Date | string
     status?: EnumStatusRvdFilter<"RendezVous"> | $Enums.StatusRvd
     modifie_le?: DateTimeFilter<"RendezVous"> | Date | string
     id_patient?: StringFilter<"RendezVous"> | string
     id_medecin?: StringFilter<"RendezVous"> | string
     patients?: XOR<PatientsScalarRelationFilter, PatientsWhereInput>
     medecins?: XOR<MedecinsScalarRelationFilter, MedecinsWhereInput>
+    consultations?: ConsultationsListRelationFilter
   }, "id_rdv">
 
   export type RendezVousOrderByWithAggregationInput = {
     id_rdv?: SortOrder
     motif?: SortOrder
     cree_le?: SortOrder
+    date_rdv?: SortOrder
     status?: SortOrder
     modifie_le?: SortOrder
     id_patient?: SortOrder
@@ -17873,6 +17853,7 @@ export namespace Prisma {
     id_rdv?: StringWithAggregatesFilter<"RendezVous"> | string
     motif?: StringWithAggregatesFilter<"RendezVous"> | string
     cree_le?: DateTimeWithAggregatesFilter<"RendezVous"> | Date | string
+    date_rdv?: DateTimeWithAggregatesFilter<"RendezVous"> | Date | string
     status?: EnumStatusRvdWithAggregatesFilter<"RendezVous"> | $Enums.StatusRvd
     modifie_le?: DateTimeWithAggregatesFilter<"RendezVous"> | Date | string
     id_patient?: StringWithAggregatesFilter<"RendezVous"> | string
@@ -18093,10 +18074,8 @@ export namespace Prisma {
     diagnostique?: StringFilter<"Consultations"> | string
     cree_le?: DateTimeFilter<"Consultations"> | Date | string
     modifie_le?: DateTimeFilter<"Consultations"> | Date | string
-    id_patient?: StringFilter<"Consultations"> | string
-    id_medecin?: StringFilter<"Consultations"> | string
-    patient?: XOR<PatientsScalarRelationFilter, PatientsWhereInput>
-    medecin?: XOR<MedecinsScalarRelationFilter, MedecinsWhereInput>
+    id_rdv?: StringFilter<"Consultations"> | string
+    rdv?: XOR<RendezVousScalarRelationFilter, RendezVousWhereInput>
     fichiers?: FichiersListRelationFilter
   }
 
@@ -18105,10 +18084,8 @@ export namespace Prisma {
     diagnostique?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
-    id_patient?: SortOrder
-    id_medecin?: SortOrder
-    patient?: PatientsOrderByWithRelationInput
-    medecin?: MedecinsOrderByWithRelationInput
+    id_rdv?: SortOrder
+    rdv?: RendezVousOrderByWithRelationInput
     fichiers?: FichiersOrderByRelationAggregateInput
   }
 
@@ -18120,10 +18097,8 @@ export namespace Prisma {
     diagnostique?: StringFilter<"Consultations"> | string
     cree_le?: DateTimeFilter<"Consultations"> | Date | string
     modifie_le?: DateTimeFilter<"Consultations"> | Date | string
-    id_patient?: StringFilter<"Consultations"> | string
-    id_medecin?: StringFilter<"Consultations"> | string
-    patient?: XOR<PatientsScalarRelationFilter, PatientsWhereInput>
-    medecin?: XOR<MedecinsScalarRelationFilter, MedecinsWhereInput>
+    id_rdv?: StringFilter<"Consultations"> | string
+    rdv?: XOR<RendezVousScalarRelationFilter, RendezVousWhereInput>
     fichiers?: FichiersListRelationFilter
   }, "id_consultation">
 
@@ -18132,8 +18107,7 @@ export namespace Prisma {
     diagnostique?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
-    id_patient?: SortOrder
-    id_medecin?: SortOrder
+    id_rdv?: SortOrder
     _count?: ConsultationsCountOrderByAggregateInput
     _max?: ConsultationsMaxOrderByAggregateInput
     _min?: ConsultationsMinOrderByAggregateInput
@@ -18147,8 +18121,7 @@ export namespace Prisma {
     diagnostique?: StringWithAggregatesFilter<"Consultations"> | string
     cree_le?: DateTimeWithAggregatesFilter<"Consultations"> | Date | string
     modifie_le?: DateTimeWithAggregatesFilter<"Consultations"> | Date | string
-    id_patient?: StringWithAggregatesFilter<"Consultations"> | string
-    id_medecin?: StringWithAggregatesFilter<"Consultations"> | string
+    id_rdv?: StringWithAggregatesFilter<"Consultations"> | string
   }
 
   export type FichiersWhereInput = {
@@ -18709,7 +18682,6 @@ export namespace Prisma {
     modifie_le?: Date | string
     user: UserCreateNestedOneWithoutPatientInput
     rendezVous?: RendezVousCreateNestedManyWithoutPatientsInput
-    consultations?: ConsultationsCreateNestedManyWithoutPatientInput
   }
 
   export type PatientsUncheckedCreateInput = {
@@ -18718,7 +18690,6 @@ export namespace Prisma {
     modifie_le?: Date | string
     userId: string
     rendezVous?: RendezVousUncheckedCreateNestedManyWithoutPatientsInput
-    consultations?: ConsultationsUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientsUpdateInput = {
@@ -18727,7 +18698,6 @@ export namespace Prisma {
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPatientNestedInput
     rendezVous?: RendezVousUpdateManyWithoutPatientsNestedInput
-    consultations?: ConsultationsUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientsUncheckedUpdateInput = {
@@ -18736,7 +18706,6 @@ export namespace Prisma {
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     rendezVous?: RendezVousUncheckedUpdateManyWithoutPatientsNestedInput
-    consultations?: ConsultationsUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientsCreateManyInput = {
@@ -18770,7 +18739,6 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutMedecinInput
     rendezVous?: RendezVousCreateNestedManyWithoutMedecinsInput
     posts?: PostsCreateNestedManyWithoutMedecinsInput
-    consultations?: ConsultationsCreateNestedManyWithoutMedecinInput
   }
 
   export type MedecinsUncheckedCreateInput = {
@@ -18784,7 +18752,6 @@ export namespace Prisma {
     userId: string
     rendezVous?: RendezVousUncheckedCreateNestedManyWithoutMedecinsInput
     posts?: PostsUncheckedCreateNestedManyWithoutMedecinsInput
-    consultations?: ConsultationsUncheckedCreateNestedManyWithoutMedecinInput
   }
 
   export type MedecinsUpdateInput = {
@@ -18798,7 +18765,6 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutMedecinNestedInput
     rendezVous?: RendezVousUpdateManyWithoutMedecinsNestedInput
     posts?: PostsUpdateManyWithoutMedecinsNestedInput
-    consultations?: ConsultationsUpdateManyWithoutMedecinNestedInput
   }
 
   export type MedecinsUncheckedUpdateInput = {
@@ -18812,7 +18778,6 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     rendezVous?: RendezVousUncheckedUpdateManyWithoutMedecinsNestedInput
     posts?: PostsUncheckedUpdateManyWithoutMedecinsNestedInput
-    consultations?: ConsultationsUncheckedUpdateManyWithoutMedecinNestedInput
   }
 
   export type MedecinsCreateManyInput = {
@@ -18851,46 +18816,55 @@ export namespace Prisma {
     id_rdv?: string
     motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
     status?: $Enums.StatusRvd
     modifie_le?: Date | string
     patients: PatientsCreateNestedOneWithoutRendezVousInput
     medecins: MedecinsCreateNestedOneWithoutRendezVousInput
+    consultations?: ConsultationsCreateNestedManyWithoutRdvInput
   }
 
   export type RendezVousUncheckedCreateInput = {
     id_rdv?: string
     motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
     status?: $Enums.StatusRvd
     modifie_le?: Date | string
     id_patient: string
     id_medecin: string
+    consultations?: ConsultationsUncheckedCreateNestedManyWithoutRdvInput
   }
 
   export type RendezVousUpdateInput = {
     id_rdv?: StringFieldUpdateOperationsInput | string
     motif?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     patients?: PatientsUpdateOneRequiredWithoutRendezVousNestedInput
     medecins?: MedecinsUpdateOneRequiredWithoutRendezVousNestedInput
+    consultations?: ConsultationsUpdateManyWithoutRdvNestedInput
   }
 
   export type RendezVousUncheckedUpdateInput = {
     id_rdv?: StringFieldUpdateOperationsInput | string
     motif?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     id_patient?: StringFieldUpdateOperationsInput | string
     id_medecin?: StringFieldUpdateOperationsInput | string
+    consultations?: ConsultationsUncheckedUpdateManyWithoutRdvNestedInput
   }
 
   export type RendezVousCreateManyInput = {
     id_rdv?: string
     motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
     status?: $Enums.StatusRvd
     modifie_le?: Date | string
     id_patient: string
@@ -18901,6 +18875,7 @@ export namespace Prisma {
     id_rdv?: StringFieldUpdateOperationsInput | string
     motif?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18909,6 +18884,7 @@ export namespace Prisma {
     id_rdv?: StringFieldUpdateOperationsInput | string
     motif?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     id_patient?: StringFieldUpdateOperationsInput | string
@@ -19134,8 +19110,7 @@ export namespace Prisma {
     diagnostique: string
     cree_le?: Date | string
     modifie_le?: Date | string
-    patient: PatientsCreateNestedOneWithoutConsultationsInput
-    medecin: MedecinsCreateNestedOneWithoutConsultationsInput
+    rdv: RendezVousCreateNestedOneWithoutConsultationsInput
     fichiers?: FichiersCreateNestedManyWithoutConsultationsInput
   }
 
@@ -19144,8 +19119,7 @@ export namespace Prisma {
     diagnostique: string
     cree_le?: Date | string
     modifie_le?: Date | string
-    id_patient: string
-    id_medecin: string
+    id_rdv: string
     fichiers?: FichiersUncheckedCreateNestedManyWithoutConsultationsInput
   }
 
@@ -19154,8 +19128,7 @@ export namespace Prisma {
     diagnostique?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    patient?: PatientsUpdateOneRequiredWithoutConsultationsNestedInput
-    medecin?: MedecinsUpdateOneRequiredWithoutConsultationsNestedInput
+    rdv?: RendezVousUpdateOneRequiredWithoutConsultationsNestedInput
     fichiers?: FichiersUpdateManyWithoutConsultationsNestedInput
   }
 
@@ -19164,8 +19137,7 @@ export namespace Prisma {
     diagnostique?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_patient?: StringFieldUpdateOperationsInput | string
-    id_medecin?: StringFieldUpdateOperationsInput | string
+    id_rdv?: StringFieldUpdateOperationsInput | string
     fichiers?: FichiersUncheckedUpdateManyWithoutConsultationsNestedInput
   }
 
@@ -19174,8 +19146,7 @@ export namespace Prisma {
     diagnostique: string
     cree_le?: Date | string
     modifie_le?: Date | string
-    id_patient: string
-    id_medecin: string
+    id_rdv: string
   }
 
   export type ConsultationsUpdateManyMutationInput = {
@@ -19190,8 +19161,7 @@ export namespace Prisma {
     diagnostique?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_patient?: StringFieldUpdateOperationsInput | string
-    id_medecin?: StringFieldUpdateOperationsInput | string
+    id_rdv?: StringFieldUpdateOperationsInput | string
   }
 
   export type FichiersCreateInput = {
@@ -19688,17 +19658,7 @@ export namespace Prisma {
     none?: RendezVousWhereInput
   }
 
-  export type ConsultationsListRelationFilter = {
-    every?: ConsultationsWhereInput
-    some?: ConsultationsWhereInput
-    none?: ConsultationsWhereInput
-  }
-
   export type RendezVousOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type ConsultationsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19818,10 +19778,21 @@ export namespace Prisma {
     isNot?: MedecinsWhereInput
   }
 
+  export type ConsultationsListRelationFilter = {
+    every?: ConsultationsWhereInput
+    some?: ConsultationsWhereInput
+    none?: ConsultationsWhereInput
+  }
+
+  export type ConsultationsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type RendezVousCountOrderByAggregateInput = {
     id_rdv?: SortOrder
     motif?: SortOrder
     cree_le?: SortOrder
+    date_rdv?: SortOrder
     status?: SortOrder
     modifie_le?: SortOrder
     id_patient?: SortOrder
@@ -19832,6 +19803,7 @@ export namespace Prisma {
     id_rdv?: SortOrder
     motif?: SortOrder
     cree_le?: SortOrder
+    date_rdv?: SortOrder
     status?: SortOrder
     modifie_le?: SortOrder
     id_patient?: SortOrder
@@ -19842,6 +19814,7 @@ export namespace Prisma {
     id_rdv?: SortOrder
     motif?: SortOrder
     cree_le?: SortOrder
+    date_rdv?: SortOrder
     status?: SortOrder
     modifie_le?: SortOrder
     id_patient?: SortOrder
@@ -19990,6 +19963,11 @@ export namespace Prisma {
     id_post?: SortOrder
   }
 
+  export type RendezVousScalarRelationFilter = {
+    is?: RendezVousWhereInput
+    isNot?: RendezVousWhereInput
+  }
+
   export type FichiersListRelationFilter = {
     every?: FichiersWhereInput
     some?: FichiersWhereInput
@@ -20005,8 +19983,7 @@ export namespace Prisma {
     diagnostique?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
-    id_patient?: SortOrder
-    id_medecin?: SortOrder
+    id_rdv?: SortOrder
   }
 
   export type ConsultationsMaxOrderByAggregateInput = {
@@ -20014,8 +19991,7 @@ export namespace Prisma {
     diagnostique?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
-    id_patient?: SortOrder
-    id_medecin?: SortOrder
+    id_rdv?: SortOrder
   }
 
   export type ConsultationsMinOrderByAggregateInput = {
@@ -20023,8 +19999,7 @@ export namespace Prisma {
     diagnostique?: SortOrder
     cree_le?: SortOrder
     modifie_le?: SortOrder
-    id_patient?: SortOrder
-    id_medecin?: SortOrder
+    id_rdv?: SortOrder
   }
 
   export type ConsultationsScalarRelationFilter = {
@@ -20391,25 +20366,11 @@ export namespace Prisma {
     connect?: RendezVousWhereUniqueInput | RendezVousWhereUniqueInput[]
   }
 
-  export type ConsultationsCreateNestedManyWithoutPatientInput = {
-    create?: XOR<ConsultationsCreateWithoutPatientInput, ConsultationsUncheckedCreateWithoutPatientInput> | ConsultationsCreateWithoutPatientInput[] | ConsultationsUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: ConsultationsCreateOrConnectWithoutPatientInput | ConsultationsCreateOrConnectWithoutPatientInput[]
-    createMany?: ConsultationsCreateManyPatientInputEnvelope
-    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-  }
-
   export type RendezVousUncheckedCreateNestedManyWithoutPatientsInput = {
     create?: XOR<RendezVousCreateWithoutPatientsInput, RendezVousUncheckedCreateWithoutPatientsInput> | RendezVousCreateWithoutPatientsInput[] | RendezVousUncheckedCreateWithoutPatientsInput[]
     connectOrCreate?: RendezVousCreateOrConnectWithoutPatientsInput | RendezVousCreateOrConnectWithoutPatientsInput[]
     createMany?: RendezVousCreateManyPatientsInputEnvelope
     connect?: RendezVousWhereUniqueInput | RendezVousWhereUniqueInput[]
-  }
-
-  export type ConsultationsUncheckedCreateNestedManyWithoutPatientInput = {
-    create?: XOR<ConsultationsCreateWithoutPatientInput, ConsultationsUncheckedCreateWithoutPatientInput> | ConsultationsCreateWithoutPatientInput[] | ConsultationsUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: ConsultationsCreateOrConnectWithoutPatientInput | ConsultationsCreateOrConnectWithoutPatientInput[]
-    createMany?: ConsultationsCreateManyPatientInputEnvelope
-    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutPatientNestedInput = {
@@ -20434,20 +20395,6 @@ export namespace Prisma {
     deleteMany?: RendezVousScalarWhereInput | RendezVousScalarWhereInput[]
   }
 
-  export type ConsultationsUpdateManyWithoutPatientNestedInput = {
-    create?: XOR<ConsultationsCreateWithoutPatientInput, ConsultationsUncheckedCreateWithoutPatientInput> | ConsultationsCreateWithoutPatientInput[] | ConsultationsUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: ConsultationsCreateOrConnectWithoutPatientInput | ConsultationsCreateOrConnectWithoutPatientInput[]
-    upsert?: ConsultationsUpsertWithWhereUniqueWithoutPatientInput | ConsultationsUpsertWithWhereUniqueWithoutPatientInput[]
-    createMany?: ConsultationsCreateManyPatientInputEnvelope
-    set?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    disconnect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    delete?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    update?: ConsultationsUpdateWithWhereUniqueWithoutPatientInput | ConsultationsUpdateWithWhereUniqueWithoutPatientInput[]
-    updateMany?: ConsultationsUpdateManyWithWhereWithoutPatientInput | ConsultationsUpdateManyWithWhereWithoutPatientInput[]
-    deleteMany?: ConsultationsScalarWhereInput | ConsultationsScalarWhereInput[]
-  }
-
   export type RendezVousUncheckedUpdateManyWithoutPatientsNestedInput = {
     create?: XOR<RendezVousCreateWithoutPatientsInput, RendezVousUncheckedCreateWithoutPatientsInput> | RendezVousCreateWithoutPatientsInput[] | RendezVousUncheckedCreateWithoutPatientsInput[]
     connectOrCreate?: RendezVousCreateOrConnectWithoutPatientsInput | RendezVousCreateOrConnectWithoutPatientsInput[]
@@ -20460,20 +20407,6 @@ export namespace Prisma {
     update?: RendezVousUpdateWithWhereUniqueWithoutPatientsInput | RendezVousUpdateWithWhereUniqueWithoutPatientsInput[]
     updateMany?: RendezVousUpdateManyWithWhereWithoutPatientsInput | RendezVousUpdateManyWithWhereWithoutPatientsInput[]
     deleteMany?: RendezVousScalarWhereInput | RendezVousScalarWhereInput[]
-  }
-
-  export type ConsultationsUncheckedUpdateManyWithoutPatientNestedInput = {
-    create?: XOR<ConsultationsCreateWithoutPatientInput, ConsultationsUncheckedCreateWithoutPatientInput> | ConsultationsCreateWithoutPatientInput[] | ConsultationsUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: ConsultationsCreateOrConnectWithoutPatientInput | ConsultationsCreateOrConnectWithoutPatientInput[]
-    upsert?: ConsultationsUpsertWithWhereUniqueWithoutPatientInput | ConsultationsUpsertWithWhereUniqueWithoutPatientInput[]
-    createMany?: ConsultationsCreateManyPatientInputEnvelope
-    set?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    disconnect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    delete?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    update?: ConsultationsUpdateWithWhereUniqueWithoutPatientInput | ConsultationsUpdateWithWhereUniqueWithoutPatientInput[]
-    updateMany?: ConsultationsUpdateManyWithWhereWithoutPatientInput | ConsultationsUpdateManyWithWhereWithoutPatientInput[]
-    deleteMany?: ConsultationsScalarWhereInput | ConsultationsScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutMedecinInput = {
@@ -20496,13 +20429,6 @@ export namespace Prisma {
     connect?: PostsWhereUniqueInput | PostsWhereUniqueInput[]
   }
 
-  export type ConsultationsCreateNestedManyWithoutMedecinInput = {
-    create?: XOR<ConsultationsCreateWithoutMedecinInput, ConsultationsUncheckedCreateWithoutMedecinInput> | ConsultationsCreateWithoutMedecinInput[] | ConsultationsUncheckedCreateWithoutMedecinInput[]
-    connectOrCreate?: ConsultationsCreateOrConnectWithoutMedecinInput | ConsultationsCreateOrConnectWithoutMedecinInput[]
-    createMany?: ConsultationsCreateManyMedecinInputEnvelope
-    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-  }
-
   export type RendezVousUncheckedCreateNestedManyWithoutMedecinsInput = {
     create?: XOR<RendezVousCreateWithoutMedecinsInput, RendezVousUncheckedCreateWithoutMedecinsInput> | RendezVousCreateWithoutMedecinsInput[] | RendezVousUncheckedCreateWithoutMedecinsInput[]
     connectOrCreate?: RendezVousCreateOrConnectWithoutMedecinsInput | RendezVousCreateOrConnectWithoutMedecinsInput[]
@@ -20515,13 +20441,6 @@ export namespace Prisma {
     connectOrCreate?: PostsCreateOrConnectWithoutMedecinsInput | PostsCreateOrConnectWithoutMedecinsInput[]
     createMany?: PostsCreateManyMedecinsInputEnvelope
     connect?: PostsWhereUniqueInput | PostsWhereUniqueInput[]
-  }
-
-  export type ConsultationsUncheckedCreateNestedManyWithoutMedecinInput = {
-    create?: XOR<ConsultationsCreateWithoutMedecinInput, ConsultationsUncheckedCreateWithoutMedecinInput> | ConsultationsCreateWithoutMedecinInput[] | ConsultationsUncheckedCreateWithoutMedecinInput[]
-    connectOrCreate?: ConsultationsCreateOrConnectWithoutMedecinInput | ConsultationsCreateOrConnectWithoutMedecinInput[]
-    createMany?: ConsultationsCreateManyMedecinInputEnvelope
-    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -20568,20 +20487,6 @@ export namespace Prisma {
     deleteMany?: PostsScalarWhereInput | PostsScalarWhereInput[]
   }
 
-  export type ConsultationsUpdateManyWithoutMedecinNestedInput = {
-    create?: XOR<ConsultationsCreateWithoutMedecinInput, ConsultationsUncheckedCreateWithoutMedecinInput> | ConsultationsCreateWithoutMedecinInput[] | ConsultationsUncheckedCreateWithoutMedecinInput[]
-    connectOrCreate?: ConsultationsCreateOrConnectWithoutMedecinInput | ConsultationsCreateOrConnectWithoutMedecinInput[]
-    upsert?: ConsultationsUpsertWithWhereUniqueWithoutMedecinInput | ConsultationsUpsertWithWhereUniqueWithoutMedecinInput[]
-    createMany?: ConsultationsCreateManyMedecinInputEnvelope
-    set?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    disconnect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    delete?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    update?: ConsultationsUpdateWithWhereUniqueWithoutMedecinInput | ConsultationsUpdateWithWhereUniqueWithoutMedecinInput[]
-    updateMany?: ConsultationsUpdateManyWithWhereWithoutMedecinInput | ConsultationsUpdateManyWithWhereWithoutMedecinInput[]
-    deleteMany?: ConsultationsScalarWhereInput | ConsultationsScalarWhereInput[]
-  }
-
   export type RendezVousUncheckedUpdateManyWithoutMedecinsNestedInput = {
     create?: XOR<RendezVousCreateWithoutMedecinsInput, RendezVousUncheckedCreateWithoutMedecinsInput> | RendezVousCreateWithoutMedecinsInput[] | RendezVousUncheckedCreateWithoutMedecinsInput[]
     connectOrCreate?: RendezVousCreateOrConnectWithoutMedecinsInput | RendezVousCreateOrConnectWithoutMedecinsInput[]
@@ -20610,20 +20515,6 @@ export namespace Prisma {
     deleteMany?: PostsScalarWhereInput | PostsScalarWhereInput[]
   }
 
-  export type ConsultationsUncheckedUpdateManyWithoutMedecinNestedInput = {
-    create?: XOR<ConsultationsCreateWithoutMedecinInput, ConsultationsUncheckedCreateWithoutMedecinInput> | ConsultationsCreateWithoutMedecinInput[] | ConsultationsUncheckedCreateWithoutMedecinInput[]
-    connectOrCreate?: ConsultationsCreateOrConnectWithoutMedecinInput | ConsultationsCreateOrConnectWithoutMedecinInput[]
-    upsert?: ConsultationsUpsertWithWhereUniqueWithoutMedecinInput | ConsultationsUpsertWithWhereUniqueWithoutMedecinInput[]
-    createMany?: ConsultationsCreateManyMedecinInputEnvelope
-    set?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    disconnect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    delete?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
-    update?: ConsultationsUpdateWithWhereUniqueWithoutMedecinInput | ConsultationsUpdateWithWhereUniqueWithoutMedecinInput[]
-    updateMany?: ConsultationsUpdateManyWithWhereWithoutMedecinInput | ConsultationsUpdateManyWithWhereWithoutMedecinInput[]
-    deleteMany?: ConsultationsScalarWhereInput | ConsultationsScalarWhereInput[]
-  }
-
   export type PatientsCreateNestedOneWithoutRendezVousInput = {
     create?: XOR<PatientsCreateWithoutRendezVousInput, PatientsUncheckedCreateWithoutRendezVousInput>
     connectOrCreate?: PatientsCreateOrConnectWithoutRendezVousInput
@@ -20634,6 +20525,20 @@ export namespace Prisma {
     create?: XOR<MedecinsCreateWithoutRendezVousInput, MedecinsUncheckedCreateWithoutRendezVousInput>
     connectOrCreate?: MedecinsCreateOrConnectWithoutRendezVousInput
     connect?: MedecinsWhereUniqueInput
+  }
+
+  export type ConsultationsCreateNestedManyWithoutRdvInput = {
+    create?: XOR<ConsultationsCreateWithoutRdvInput, ConsultationsUncheckedCreateWithoutRdvInput> | ConsultationsCreateWithoutRdvInput[] | ConsultationsUncheckedCreateWithoutRdvInput[]
+    connectOrCreate?: ConsultationsCreateOrConnectWithoutRdvInput | ConsultationsCreateOrConnectWithoutRdvInput[]
+    createMany?: ConsultationsCreateManyRdvInputEnvelope
+    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
+  }
+
+  export type ConsultationsUncheckedCreateNestedManyWithoutRdvInput = {
+    create?: XOR<ConsultationsCreateWithoutRdvInput, ConsultationsUncheckedCreateWithoutRdvInput> | ConsultationsCreateWithoutRdvInput[] | ConsultationsUncheckedCreateWithoutRdvInput[]
+    connectOrCreate?: ConsultationsCreateOrConnectWithoutRdvInput | ConsultationsCreateOrConnectWithoutRdvInput[]
+    createMany?: ConsultationsCreateManyRdvInputEnvelope
+    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
   }
 
   export type EnumStatusRvdFieldUpdateOperationsInput = {
@@ -20654,6 +20559,34 @@ export namespace Prisma {
     upsert?: MedecinsUpsertWithoutRendezVousInput
     connect?: MedecinsWhereUniqueInput
     update?: XOR<XOR<MedecinsUpdateToOneWithWhereWithoutRendezVousInput, MedecinsUpdateWithoutRendezVousInput>, MedecinsUncheckedUpdateWithoutRendezVousInput>
+  }
+
+  export type ConsultationsUpdateManyWithoutRdvNestedInput = {
+    create?: XOR<ConsultationsCreateWithoutRdvInput, ConsultationsUncheckedCreateWithoutRdvInput> | ConsultationsCreateWithoutRdvInput[] | ConsultationsUncheckedCreateWithoutRdvInput[]
+    connectOrCreate?: ConsultationsCreateOrConnectWithoutRdvInput | ConsultationsCreateOrConnectWithoutRdvInput[]
+    upsert?: ConsultationsUpsertWithWhereUniqueWithoutRdvInput | ConsultationsUpsertWithWhereUniqueWithoutRdvInput[]
+    createMany?: ConsultationsCreateManyRdvInputEnvelope
+    set?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
+    disconnect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
+    delete?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
+    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
+    update?: ConsultationsUpdateWithWhereUniqueWithoutRdvInput | ConsultationsUpdateWithWhereUniqueWithoutRdvInput[]
+    updateMany?: ConsultationsUpdateManyWithWhereWithoutRdvInput | ConsultationsUpdateManyWithWhereWithoutRdvInput[]
+    deleteMany?: ConsultationsScalarWhereInput | ConsultationsScalarWhereInput[]
+  }
+
+  export type ConsultationsUncheckedUpdateManyWithoutRdvNestedInput = {
+    create?: XOR<ConsultationsCreateWithoutRdvInput, ConsultationsUncheckedCreateWithoutRdvInput> | ConsultationsCreateWithoutRdvInput[] | ConsultationsUncheckedCreateWithoutRdvInput[]
+    connectOrCreate?: ConsultationsCreateOrConnectWithoutRdvInput | ConsultationsCreateOrConnectWithoutRdvInput[]
+    upsert?: ConsultationsUpsertWithWhereUniqueWithoutRdvInput | ConsultationsUpsertWithWhereUniqueWithoutRdvInput[]
+    createMany?: ConsultationsCreateManyRdvInputEnvelope
+    set?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
+    disconnect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
+    delete?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
+    connect?: ConsultationsWhereUniqueInput | ConsultationsWhereUniqueInput[]
+    update?: ConsultationsUpdateWithWhereUniqueWithoutRdvInput | ConsultationsUpdateWithWhereUniqueWithoutRdvInput[]
+    updateMany?: ConsultationsUpdateManyWithWhereWithoutRdvInput | ConsultationsUpdateManyWithWhereWithoutRdvInput[]
+    deleteMany?: ConsultationsScalarWhereInput | ConsultationsScalarWhereInput[]
   }
 
   export type MedecinsCreateNestedOneWithoutPostsInput = {
@@ -20800,16 +20733,10 @@ export namespace Prisma {
     update?: XOR<XOR<PostsUpdateToOneWithWhereWithoutCommentairesInput, PostsUpdateWithoutCommentairesInput>, PostsUncheckedUpdateWithoutCommentairesInput>
   }
 
-  export type PatientsCreateNestedOneWithoutConsultationsInput = {
-    create?: XOR<PatientsCreateWithoutConsultationsInput, PatientsUncheckedCreateWithoutConsultationsInput>
-    connectOrCreate?: PatientsCreateOrConnectWithoutConsultationsInput
-    connect?: PatientsWhereUniqueInput
-  }
-
-  export type MedecinsCreateNestedOneWithoutConsultationsInput = {
-    create?: XOR<MedecinsCreateWithoutConsultationsInput, MedecinsUncheckedCreateWithoutConsultationsInput>
-    connectOrCreate?: MedecinsCreateOrConnectWithoutConsultationsInput
-    connect?: MedecinsWhereUniqueInput
+  export type RendezVousCreateNestedOneWithoutConsultationsInput = {
+    create?: XOR<RendezVousCreateWithoutConsultationsInput, RendezVousUncheckedCreateWithoutConsultationsInput>
+    connectOrCreate?: RendezVousCreateOrConnectWithoutConsultationsInput
+    connect?: RendezVousWhereUniqueInput
   }
 
   export type FichiersCreateNestedManyWithoutConsultationsInput = {
@@ -20826,20 +20753,12 @@ export namespace Prisma {
     connect?: FichiersWhereUniqueInput | FichiersWhereUniqueInput[]
   }
 
-  export type PatientsUpdateOneRequiredWithoutConsultationsNestedInput = {
-    create?: XOR<PatientsCreateWithoutConsultationsInput, PatientsUncheckedCreateWithoutConsultationsInput>
-    connectOrCreate?: PatientsCreateOrConnectWithoutConsultationsInput
-    upsert?: PatientsUpsertWithoutConsultationsInput
-    connect?: PatientsWhereUniqueInput
-    update?: XOR<XOR<PatientsUpdateToOneWithWhereWithoutConsultationsInput, PatientsUpdateWithoutConsultationsInput>, PatientsUncheckedUpdateWithoutConsultationsInput>
-  }
-
-  export type MedecinsUpdateOneRequiredWithoutConsultationsNestedInput = {
-    create?: XOR<MedecinsCreateWithoutConsultationsInput, MedecinsUncheckedCreateWithoutConsultationsInput>
-    connectOrCreate?: MedecinsCreateOrConnectWithoutConsultationsInput
-    upsert?: MedecinsUpsertWithoutConsultationsInput
-    connect?: MedecinsWhereUniqueInput
-    update?: XOR<XOR<MedecinsUpdateToOneWithWhereWithoutConsultationsInput, MedecinsUpdateWithoutConsultationsInput>, MedecinsUncheckedUpdateWithoutConsultationsInput>
+  export type RendezVousUpdateOneRequiredWithoutConsultationsNestedInput = {
+    create?: XOR<RendezVousCreateWithoutConsultationsInput, RendezVousUncheckedCreateWithoutConsultationsInput>
+    connectOrCreate?: RendezVousCreateOrConnectWithoutConsultationsInput
+    upsert?: RendezVousUpsertWithoutConsultationsInput
+    connect?: RendezVousWhereUniqueInput
+    update?: XOR<XOR<RendezVousUpdateToOneWithWhereWithoutConsultationsInput, RendezVousUpdateWithoutConsultationsInput>, RendezVousUncheckedUpdateWithoutConsultationsInput>
   }
 
   export type FichiersUpdateManyWithoutConsultationsNestedInput = {
@@ -21225,7 +21144,6 @@ export namespace Prisma {
     cree_le?: Date | string
     modifie_le?: Date | string
     rendezVous?: RendezVousCreateNestedManyWithoutPatientsInput
-    consultations?: ConsultationsCreateNestedManyWithoutPatientInput
   }
 
   export type PatientsUncheckedCreateWithoutUserInput = {
@@ -21233,7 +21151,6 @@ export namespace Prisma {
     cree_le?: Date | string
     modifie_le?: Date | string
     rendezVous?: RendezVousUncheckedCreateNestedManyWithoutPatientsInput
-    consultations?: ConsultationsUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientsCreateOrConnectWithoutUserInput = {
@@ -21256,7 +21173,6 @@ export namespace Prisma {
     modifie_le?: Date | string
     rendezVous?: RendezVousCreateNestedManyWithoutMedecinsInput
     posts?: PostsCreateNestedManyWithoutMedecinsInput
-    consultations?: ConsultationsCreateNestedManyWithoutMedecinInput
   }
 
   export type MedecinsUncheckedCreateWithoutUserInput = {
@@ -21269,7 +21185,6 @@ export namespace Prisma {
     modifie_le?: Date | string
     rendezVous?: RendezVousUncheckedCreateNestedManyWithoutMedecinsInput
     posts?: PostsUncheckedCreateNestedManyWithoutMedecinsInput
-    consultations?: ConsultationsUncheckedCreateNestedManyWithoutMedecinInput
   }
 
   export type MedecinsCreateOrConnectWithoutUserInput = {
@@ -21921,18 +21836,22 @@ export namespace Prisma {
     id_rdv?: string
     motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
     status?: $Enums.StatusRvd
     modifie_le?: Date | string
     medecins: MedecinsCreateNestedOneWithoutRendezVousInput
+    consultations?: ConsultationsCreateNestedManyWithoutRdvInput
   }
 
   export type RendezVousUncheckedCreateWithoutPatientsInput = {
     id_rdv?: string
     motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
     status?: $Enums.StatusRvd
     modifie_le?: Date | string
     id_medecin: string
+    consultations?: ConsultationsUncheckedCreateNestedManyWithoutRdvInput
   }
 
   export type RendezVousCreateOrConnectWithoutPatientsInput = {
@@ -21942,34 +21861,6 @@ export namespace Prisma {
 
   export type RendezVousCreateManyPatientsInputEnvelope = {
     data: RendezVousCreateManyPatientsInput | RendezVousCreateManyPatientsInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ConsultationsCreateWithoutPatientInput = {
-    id_consultation?: string
-    diagnostique: string
-    cree_le?: Date | string
-    modifie_le?: Date | string
-    medecin: MedecinsCreateNestedOneWithoutConsultationsInput
-    fichiers?: FichiersCreateNestedManyWithoutConsultationsInput
-  }
-
-  export type ConsultationsUncheckedCreateWithoutPatientInput = {
-    id_consultation?: string
-    diagnostique: string
-    cree_le?: Date | string
-    modifie_le?: Date | string
-    id_medecin: string
-    fichiers?: FichiersUncheckedCreateNestedManyWithoutConsultationsInput
-  }
-
-  export type ConsultationsCreateOrConnectWithoutPatientInput = {
-    where: ConsultationsWhereUniqueInput
-    create: XOR<ConsultationsCreateWithoutPatientInput, ConsultationsUncheckedCreateWithoutPatientInput>
-  }
-
-  export type ConsultationsCreateManyPatientInputEnvelope = {
-    data: ConsultationsCreateManyPatientInput | ConsultationsCreateManyPatientInput[]
     skipDuplicates?: boolean
   }
 
@@ -22061,38 +21952,11 @@ export namespace Prisma {
     id_rdv?: StringFilter<"RendezVous"> | string
     motif?: StringFilter<"RendezVous"> | string
     cree_le?: DateTimeFilter<"RendezVous"> | Date | string
+    date_rdv?: DateTimeFilter<"RendezVous"> | Date | string
     status?: EnumStatusRvdFilter<"RendezVous"> | $Enums.StatusRvd
     modifie_le?: DateTimeFilter<"RendezVous"> | Date | string
     id_patient?: StringFilter<"RendezVous"> | string
     id_medecin?: StringFilter<"RendezVous"> | string
-  }
-
-  export type ConsultationsUpsertWithWhereUniqueWithoutPatientInput = {
-    where: ConsultationsWhereUniqueInput
-    update: XOR<ConsultationsUpdateWithoutPatientInput, ConsultationsUncheckedUpdateWithoutPatientInput>
-    create: XOR<ConsultationsCreateWithoutPatientInput, ConsultationsUncheckedCreateWithoutPatientInput>
-  }
-
-  export type ConsultationsUpdateWithWhereUniqueWithoutPatientInput = {
-    where: ConsultationsWhereUniqueInput
-    data: XOR<ConsultationsUpdateWithoutPatientInput, ConsultationsUncheckedUpdateWithoutPatientInput>
-  }
-
-  export type ConsultationsUpdateManyWithWhereWithoutPatientInput = {
-    where: ConsultationsScalarWhereInput
-    data: XOR<ConsultationsUpdateManyMutationInput, ConsultationsUncheckedUpdateManyWithoutPatientInput>
-  }
-
-  export type ConsultationsScalarWhereInput = {
-    AND?: ConsultationsScalarWhereInput | ConsultationsScalarWhereInput[]
-    OR?: ConsultationsScalarWhereInput[]
-    NOT?: ConsultationsScalarWhereInput | ConsultationsScalarWhereInput[]
-    id_consultation?: StringFilter<"Consultations"> | string
-    diagnostique?: StringFilter<"Consultations"> | string
-    cree_le?: DateTimeFilter<"Consultations"> | Date | string
-    modifie_le?: DateTimeFilter<"Consultations"> | Date | string
-    id_patient?: StringFilter<"Consultations"> | string
-    id_medecin?: StringFilter<"Consultations"> | string
   }
 
   export type UserCreateWithoutMedecinInput = {
@@ -22158,18 +22022,22 @@ export namespace Prisma {
     id_rdv?: string
     motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
     status?: $Enums.StatusRvd
     modifie_le?: Date | string
     patients: PatientsCreateNestedOneWithoutRendezVousInput
+    consultations?: ConsultationsCreateNestedManyWithoutRdvInput
   }
 
   export type RendezVousUncheckedCreateWithoutMedecinsInput = {
     id_rdv?: string
     motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
     status?: $Enums.StatusRvd
     modifie_le?: Date | string
     id_patient: string
+    consultations?: ConsultationsUncheckedCreateNestedManyWithoutRdvInput
   }
 
   export type RendezVousCreateOrConnectWithoutMedecinsInput = {
@@ -22217,34 +22085,6 @@ export namespace Prisma {
 
   export type PostsCreateManyMedecinsInputEnvelope = {
     data: PostsCreateManyMedecinsInput | PostsCreateManyMedecinsInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ConsultationsCreateWithoutMedecinInput = {
-    id_consultation?: string
-    diagnostique: string
-    cree_le?: Date | string
-    modifie_le?: Date | string
-    patient: PatientsCreateNestedOneWithoutConsultationsInput
-    fichiers?: FichiersCreateNestedManyWithoutConsultationsInput
-  }
-
-  export type ConsultationsUncheckedCreateWithoutMedecinInput = {
-    id_consultation?: string
-    diagnostique: string
-    cree_le?: Date | string
-    modifie_le?: Date | string
-    id_patient: string
-    fichiers?: FichiersUncheckedCreateNestedManyWithoutConsultationsInput
-  }
-
-  export type ConsultationsCreateOrConnectWithoutMedecinInput = {
-    where: ConsultationsWhereUniqueInput
-    create: XOR<ConsultationsCreateWithoutMedecinInput, ConsultationsUncheckedCreateWithoutMedecinInput>
-  }
-
-  export type ConsultationsCreateManyMedecinInputEnvelope = {
-    data: ConsultationsCreateManyMedecinInput | ConsultationsCreateManyMedecinInput[]
     skipDuplicates?: boolean
   }
 
@@ -22361,28 +22201,11 @@ export namespace Prisma {
     id_medecin?: StringFilter<"Posts"> | string
   }
 
-  export type ConsultationsUpsertWithWhereUniqueWithoutMedecinInput = {
-    where: ConsultationsWhereUniqueInput
-    update: XOR<ConsultationsUpdateWithoutMedecinInput, ConsultationsUncheckedUpdateWithoutMedecinInput>
-    create: XOR<ConsultationsCreateWithoutMedecinInput, ConsultationsUncheckedCreateWithoutMedecinInput>
-  }
-
-  export type ConsultationsUpdateWithWhereUniqueWithoutMedecinInput = {
-    where: ConsultationsWhereUniqueInput
-    data: XOR<ConsultationsUpdateWithoutMedecinInput, ConsultationsUncheckedUpdateWithoutMedecinInput>
-  }
-
-  export type ConsultationsUpdateManyWithWhereWithoutMedecinInput = {
-    where: ConsultationsScalarWhereInput
-    data: XOR<ConsultationsUpdateManyMutationInput, ConsultationsUncheckedUpdateManyWithoutMedecinInput>
-  }
-
   export type PatientsCreateWithoutRendezVousInput = {
     id_patient?: string
     cree_le?: Date | string
     modifie_le?: Date | string
     user: UserCreateNestedOneWithoutPatientInput
-    consultations?: ConsultationsCreateNestedManyWithoutPatientInput
   }
 
   export type PatientsUncheckedCreateWithoutRendezVousInput = {
@@ -22390,7 +22213,6 @@ export namespace Prisma {
     cree_le?: Date | string
     modifie_le?: Date | string
     userId: string
-    consultations?: ConsultationsUncheckedCreateNestedManyWithoutPatientInput
   }
 
   export type PatientsCreateOrConnectWithoutRendezVousInput = {
@@ -22408,7 +22230,6 @@ export namespace Prisma {
     modifie_le?: Date | string
     user: UserCreateNestedOneWithoutMedecinInput
     posts?: PostsCreateNestedManyWithoutMedecinsInput
-    consultations?: ConsultationsCreateNestedManyWithoutMedecinInput
   }
 
   export type MedecinsUncheckedCreateWithoutRendezVousInput = {
@@ -22421,12 +22242,37 @@ export namespace Prisma {
     modifie_le?: Date | string
     userId: string
     posts?: PostsUncheckedCreateNestedManyWithoutMedecinsInput
-    consultations?: ConsultationsUncheckedCreateNestedManyWithoutMedecinInput
   }
 
   export type MedecinsCreateOrConnectWithoutRendezVousInput = {
     where: MedecinsWhereUniqueInput
     create: XOR<MedecinsCreateWithoutRendezVousInput, MedecinsUncheckedCreateWithoutRendezVousInput>
+  }
+
+  export type ConsultationsCreateWithoutRdvInput = {
+    id_consultation?: string
+    diagnostique: string
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    fichiers?: FichiersCreateNestedManyWithoutConsultationsInput
+  }
+
+  export type ConsultationsUncheckedCreateWithoutRdvInput = {
+    id_consultation?: string
+    diagnostique: string
+    cree_le?: Date | string
+    modifie_le?: Date | string
+    fichiers?: FichiersUncheckedCreateNestedManyWithoutConsultationsInput
+  }
+
+  export type ConsultationsCreateOrConnectWithoutRdvInput = {
+    where: ConsultationsWhereUniqueInput
+    create: XOR<ConsultationsCreateWithoutRdvInput, ConsultationsUncheckedCreateWithoutRdvInput>
+  }
+
+  export type ConsultationsCreateManyRdvInputEnvelope = {
+    data: ConsultationsCreateManyRdvInput | ConsultationsCreateManyRdvInput[]
+    skipDuplicates?: boolean
   }
 
   export type PatientsUpsertWithoutRendezVousInput = {
@@ -22445,7 +22291,6 @@ export namespace Prisma {
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPatientNestedInput
-    consultations?: ConsultationsUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientsUncheckedUpdateWithoutRendezVousInput = {
@@ -22453,7 +22298,6 @@ export namespace Prisma {
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
-    consultations?: ConsultationsUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type MedecinsUpsertWithoutRendezVousInput = {
@@ -22477,7 +22321,6 @@ export namespace Prisma {
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutMedecinNestedInput
     posts?: PostsUpdateManyWithoutMedecinsNestedInput
-    consultations?: ConsultationsUpdateManyWithoutMedecinNestedInput
   }
 
   export type MedecinsUncheckedUpdateWithoutRendezVousInput = {
@@ -22490,7 +22333,33 @@ export namespace Prisma {
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     posts?: PostsUncheckedUpdateManyWithoutMedecinsNestedInput
-    consultations?: ConsultationsUncheckedUpdateManyWithoutMedecinNestedInput
+  }
+
+  export type ConsultationsUpsertWithWhereUniqueWithoutRdvInput = {
+    where: ConsultationsWhereUniqueInput
+    update: XOR<ConsultationsUpdateWithoutRdvInput, ConsultationsUncheckedUpdateWithoutRdvInput>
+    create: XOR<ConsultationsCreateWithoutRdvInput, ConsultationsUncheckedCreateWithoutRdvInput>
+  }
+
+  export type ConsultationsUpdateWithWhereUniqueWithoutRdvInput = {
+    where: ConsultationsWhereUniqueInput
+    data: XOR<ConsultationsUpdateWithoutRdvInput, ConsultationsUncheckedUpdateWithoutRdvInput>
+  }
+
+  export type ConsultationsUpdateManyWithWhereWithoutRdvInput = {
+    where: ConsultationsScalarWhereInput
+    data: XOR<ConsultationsUpdateManyMutationInput, ConsultationsUncheckedUpdateManyWithoutRdvInput>
+  }
+
+  export type ConsultationsScalarWhereInput = {
+    AND?: ConsultationsScalarWhereInput | ConsultationsScalarWhereInput[]
+    OR?: ConsultationsScalarWhereInput[]
+    NOT?: ConsultationsScalarWhereInput | ConsultationsScalarWhereInput[]
+    id_consultation?: StringFilter<"Consultations"> | string
+    diagnostique?: StringFilter<"Consultations"> | string
+    cree_le?: DateTimeFilter<"Consultations"> | Date | string
+    modifie_le?: DateTimeFilter<"Consultations"> | Date | string
+    id_rdv?: StringFilter<"Consultations"> | string
   }
 
   export type MedecinsCreateWithoutPostsInput = {
@@ -22503,7 +22372,6 @@ export namespace Prisma {
     modifie_le?: Date | string
     user: UserCreateNestedOneWithoutMedecinInput
     rendezVous?: RendezVousCreateNestedManyWithoutMedecinsInput
-    consultations?: ConsultationsCreateNestedManyWithoutMedecinInput
   }
 
   export type MedecinsUncheckedCreateWithoutPostsInput = {
@@ -22516,7 +22384,6 @@ export namespace Prisma {
     modifie_le?: Date | string
     userId: string
     rendezVous?: RendezVousUncheckedCreateNestedManyWithoutMedecinsInput
-    consultations?: ConsultationsUncheckedCreateNestedManyWithoutMedecinInput
   }
 
   export type MedecinsCreateOrConnectWithoutPostsInput = {
@@ -22595,7 +22462,6 @@ export namespace Prisma {
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutMedecinNestedInput
     rendezVous?: RendezVousUpdateManyWithoutMedecinsNestedInput
-    consultations?: ConsultationsUpdateManyWithoutMedecinNestedInput
   }
 
   export type MedecinsUncheckedUpdateWithoutPostsInput = {
@@ -22608,7 +22474,6 @@ export namespace Prisma {
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     rendezVous?: RendezVousUncheckedUpdateManyWithoutMedecinsNestedInput
-    consultations?: ConsultationsUncheckedUpdateManyWithoutMedecinNestedInput
   }
 
   export type LikesUpsertWithWhereUniqueWithoutPostsInput = {
@@ -22922,56 +22787,31 @@ export namespace Prisma {
     likes?: LikesUncheckedUpdateManyWithoutPostsNestedInput
   }
 
-  export type PatientsCreateWithoutConsultationsInput = {
-    id_patient?: string
+  export type RendezVousCreateWithoutConsultationsInput = {
+    id_rdv?: string
+    motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
+    status?: $Enums.StatusRvd
     modifie_le?: Date | string
-    user: UserCreateNestedOneWithoutPatientInput
-    rendezVous?: RendezVousCreateNestedManyWithoutPatientsInput
+    patients: PatientsCreateNestedOneWithoutRendezVousInput
+    medecins: MedecinsCreateNestedOneWithoutRendezVousInput
   }
 
-  export type PatientsUncheckedCreateWithoutConsultationsInput = {
-    id_patient?: string
+  export type RendezVousUncheckedCreateWithoutConsultationsInput = {
+    id_rdv?: string
+    motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
+    status?: $Enums.StatusRvd
     modifie_le?: Date | string
-    userId: string
-    rendezVous?: RendezVousUncheckedCreateNestedManyWithoutPatientsInput
+    id_patient: string
+    id_medecin: string
   }
 
-  export type PatientsCreateOrConnectWithoutConsultationsInput = {
-    where: PatientsWhereUniqueInput
-    create: XOR<PatientsCreateWithoutConsultationsInput, PatientsUncheckedCreateWithoutConsultationsInput>
-  }
-
-  export type MedecinsCreateWithoutConsultationsInput = {
-    id_medecin?: string
-    specialite: string
-    description: string
-    nombre_signalement?: number
-    disponible?: boolean
-    cree_le?: Date | string
-    modifie_le?: Date | string
-    user: UserCreateNestedOneWithoutMedecinInput
-    rendezVous?: RendezVousCreateNestedManyWithoutMedecinsInput
-    posts?: PostsCreateNestedManyWithoutMedecinsInput
-  }
-
-  export type MedecinsUncheckedCreateWithoutConsultationsInput = {
-    id_medecin?: string
-    specialite: string
-    description: string
-    nombre_signalement?: number
-    disponible?: boolean
-    cree_le?: Date | string
-    modifie_le?: Date | string
-    userId: string
-    rendezVous?: RendezVousUncheckedCreateNestedManyWithoutMedecinsInput
-    posts?: PostsUncheckedCreateNestedManyWithoutMedecinsInput
-  }
-
-  export type MedecinsCreateOrConnectWithoutConsultationsInput = {
-    where: MedecinsWhereUniqueInput
-    create: XOR<MedecinsCreateWithoutConsultationsInput, MedecinsUncheckedCreateWithoutConsultationsInput>
+  export type RendezVousCreateOrConnectWithoutConsultationsInput = {
+    where: RendezVousWhereUniqueInput
+    create: XOR<RendezVousCreateWithoutConsultationsInput, RendezVousUncheckedCreateWithoutConsultationsInput>
   }
 
   export type FichiersCreateWithoutConsultationsInput = {
@@ -22998,68 +22838,37 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PatientsUpsertWithoutConsultationsInput = {
-    update: XOR<PatientsUpdateWithoutConsultationsInput, PatientsUncheckedUpdateWithoutConsultationsInput>
-    create: XOR<PatientsCreateWithoutConsultationsInput, PatientsUncheckedCreateWithoutConsultationsInput>
-    where?: PatientsWhereInput
+  export type RendezVousUpsertWithoutConsultationsInput = {
+    update: XOR<RendezVousUpdateWithoutConsultationsInput, RendezVousUncheckedUpdateWithoutConsultationsInput>
+    create: XOR<RendezVousCreateWithoutConsultationsInput, RendezVousUncheckedCreateWithoutConsultationsInput>
+    where?: RendezVousWhereInput
   }
 
-  export type PatientsUpdateToOneWithWhereWithoutConsultationsInput = {
-    where?: PatientsWhereInput
-    data: XOR<PatientsUpdateWithoutConsultationsInput, PatientsUncheckedUpdateWithoutConsultationsInput>
+  export type RendezVousUpdateToOneWithWhereWithoutConsultationsInput = {
+    where?: RendezVousWhereInput
+    data: XOR<RendezVousUpdateWithoutConsultationsInput, RendezVousUncheckedUpdateWithoutConsultationsInput>
   }
 
-  export type PatientsUpdateWithoutConsultationsInput = {
+  export type RendezVousUpdateWithoutConsultationsInput = {
+    id_rdv?: StringFieldUpdateOperationsInput | string
+    motif?: StringFieldUpdateOperationsInput | string
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    patients?: PatientsUpdateOneRequiredWithoutRendezVousNestedInput
+    medecins?: MedecinsUpdateOneRequiredWithoutRendezVousNestedInput
+  }
+
+  export type RendezVousUncheckedUpdateWithoutConsultationsInput = {
+    id_rdv?: StringFieldUpdateOperationsInput | string
+    motif?: StringFieldUpdateOperationsInput | string
+    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
+    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     id_patient?: StringFieldUpdateOperationsInput | string
-    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutPatientNestedInput
-    rendezVous?: RendezVousUpdateManyWithoutPatientsNestedInput
-  }
-
-  export type PatientsUncheckedUpdateWithoutConsultationsInput = {
-    id_patient?: StringFieldUpdateOperationsInput | string
-    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-    rendezVous?: RendezVousUncheckedUpdateManyWithoutPatientsNestedInput
-  }
-
-  export type MedecinsUpsertWithoutConsultationsInput = {
-    update: XOR<MedecinsUpdateWithoutConsultationsInput, MedecinsUncheckedUpdateWithoutConsultationsInput>
-    create: XOR<MedecinsCreateWithoutConsultationsInput, MedecinsUncheckedCreateWithoutConsultationsInput>
-    where?: MedecinsWhereInput
-  }
-
-  export type MedecinsUpdateToOneWithWhereWithoutConsultationsInput = {
-    where?: MedecinsWhereInput
-    data: XOR<MedecinsUpdateWithoutConsultationsInput, MedecinsUncheckedUpdateWithoutConsultationsInput>
-  }
-
-  export type MedecinsUpdateWithoutConsultationsInput = {
     id_medecin?: StringFieldUpdateOperationsInput | string
-    specialite?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    nombre_signalement?: IntFieldUpdateOperationsInput | number
-    disponible?: BoolFieldUpdateOperationsInput | boolean
-    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutMedecinNestedInput
-    rendezVous?: RendezVousUpdateManyWithoutMedecinsNestedInput
-    posts?: PostsUpdateManyWithoutMedecinsNestedInput
-  }
-
-  export type MedecinsUncheckedUpdateWithoutConsultationsInput = {
-    id_medecin?: StringFieldUpdateOperationsInput | string
-    specialite?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    nombre_signalement?: IntFieldUpdateOperationsInput | number
-    disponible?: BoolFieldUpdateOperationsInput | boolean
-    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
-    rendezVous?: RendezVousUncheckedUpdateManyWithoutMedecinsNestedInput
-    posts?: PostsUncheckedUpdateManyWithoutMedecinsNestedInput
   }
 
   export type FichiersUpsertWithWhereUniqueWithoutConsultationsInput = {
@@ -23094,8 +22903,7 @@ export namespace Prisma {
     diagnostique: string
     cree_le?: Date | string
     modifie_le?: Date | string
-    patient: PatientsCreateNestedOneWithoutConsultationsInput
-    medecin: MedecinsCreateNestedOneWithoutConsultationsInput
+    rdv: RendezVousCreateNestedOneWithoutConsultationsInput
   }
 
   export type ConsultationsUncheckedCreateWithoutFichiersInput = {
@@ -23103,8 +22911,7 @@ export namespace Prisma {
     diagnostique: string
     cree_le?: Date | string
     modifie_le?: Date | string
-    id_patient: string
-    id_medecin: string
+    id_rdv: string
   }
 
   export type ConsultationsCreateOrConnectWithoutFichiersInput = {
@@ -23128,8 +22935,7 @@ export namespace Prisma {
     diagnostique?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    patient?: PatientsUpdateOneRequiredWithoutConsultationsNestedInput
-    medecin?: MedecinsUpdateOneRequiredWithoutConsultationsNestedInput
+    rdv?: RendezVousUpdateOneRequiredWithoutConsultationsNestedInput
   }
 
   export type ConsultationsUncheckedUpdateWithoutFichiersInput = {
@@ -23137,8 +22943,7 @@ export namespace Prisma {
     diagnostique?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_patient?: StringFieldUpdateOperationsInput | string
-    id_medecin?: StringFieldUpdateOperationsInput | string
+    id_rdv?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionCreateManyUserInput = {
@@ -23306,7 +23111,6 @@ export namespace Prisma {
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     rendezVous?: RendezVousUpdateManyWithoutPatientsNestedInput
-    consultations?: ConsultationsUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientsUncheckedUpdateWithoutUserInput = {
@@ -23314,7 +23118,6 @@ export namespace Prisma {
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     rendezVous?: RendezVousUncheckedUpdateManyWithoutPatientsNestedInput
-    consultations?: ConsultationsUncheckedUpdateManyWithoutPatientNestedInput
   }
 
   export type PatientsUncheckedUpdateManyWithoutUserInput = {
@@ -23333,7 +23136,6 @@ export namespace Prisma {
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     rendezVous?: RendezVousUpdateManyWithoutMedecinsNestedInput
     posts?: PostsUpdateManyWithoutMedecinsNestedInput
-    consultations?: ConsultationsUpdateManyWithoutMedecinNestedInput
   }
 
   export type MedecinsUncheckedUpdateWithoutUserInput = {
@@ -23346,7 +23148,6 @@ export namespace Prisma {
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     rendezVous?: RendezVousUncheckedUpdateManyWithoutMedecinsNestedInput
     posts?: PostsUncheckedUpdateManyWithoutMedecinsNestedInput
-    consultations?: ConsultationsUncheckedUpdateManyWithoutMedecinNestedInput
   }
 
   export type MedecinsUncheckedUpdateManyWithoutUserInput = {
@@ -23387,15 +23188,8 @@ export namespace Prisma {
     id_rdv?: string
     motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
     status?: $Enums.StatusRvd
-    modifie_le?: Date | string
-    id_medecin: string
-  }
-
-  export type ConsultationsCreateManyPatientInput = {
-    id_consultation?: string
-    diagnostique: string
-    cree_le?: Date | string
     modifie_le?: Date | string
     id_medecin: string
   }
@@ -23404,51 +23198,30 @@ export namespace Prisma {
     id_rdv?: StringFieldUpdateOperationsInput | string
     motif?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     medecins?: MedecinsUpdateOneRequiredWithoutRendezVousNestedInput
+    consultations?: ConsultationsUpdateManyWithoutRdvNestedInput
   }
 
   export type RendezVousUncheckedUpdateWithoutPatientsInput = {
     id_rdv?: StringFieldUpdateOperationsInput | string
     motif?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     id_medecin?: StringFieldUpdateOperationsInput | string
+    consultations?: ConsultationsUncheckedUpdateManyWithoutRdvNestedInput
   }
 
   export type RendezVousUncheckedUpdateManyWithoutPatientsInput = {
     id_rdv?: StringFieldUpdateOperationsInput | string
     motif?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
-    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_medecin?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ConsultationsUpdateWithoutPatientInput = {
-    id_consultation?: StringFieldUpdateOperationsInput | string
-    diagnostique?: StringFieldUpdateOperationsInput | string
-    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    medecin?: MedecinsUpdateOneRequiredWithoutConsultationsNestedInput
-    fichiers?: FichiersUpdateManyWithoutConsultationsNestedInput
-  }
-
-  export type ConsultationsUncheckedUpdateWithoutPatientInput = {
-    id_consultation?: StringFieldUpdateOperationsInput | string
-    diagnostique?: StringFieldUpdateOperationsInput | string
-    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_medecin?: StringFieldUpdateOperationsInput | string
-    fichiers?: FichiersUncheckedUpdateManyWithoutConsultationsNestedInput
-  }
-
-  export type ConsultationsUncheckedUpdateManyWithoutPatientInput = {
-    id_consultation?: StringFieldUpdateOperationsInput | string
-    diagnostique?: StringFieldUpdateOperationsInput | string
-    cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     id_medecin?: StringFieldUpdateOperationsInput | string
   }
@@ -23457,6 +23230,7 @@ export namespace Prisma {
     id_rdv?: string
     motif: string
     cree_le?: Date | string
+    date_rdv: Date | string
     status?: $Enums.StatusRvd
     modifie_le?: Date | string
     id_patient: string
@@ -23474,36 +23248,33 @@ export namespace Prisma {
     modifie_le?: Date | string
   }
 
-  export type ConsultationsCreateManyMedecinInput = {
-    id_consultation?: string
-    diagnostique: string
-    cree_le?: Date | string
-    modifie_le?: Date | string
-    id_patient: string
-  }
-
   export type RendezVousUpdateWithoutMedecinsInput = {
     id_rdv?: StringFieldUpdateOperationsInput | string
     motif?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     patients?: PatientsUpdateOneRequiredWithoutRendezVousNestedInput
+    consultations?: ConsultationsUpdateManyWithoutRdvNestedInput
   }
 
   export type RendezVousUncheckedUpdateWithoutMedecinsInput = {
     id_rdv?: StringFieldUpdateOperationsInput | string
     motif?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     id_patient?: StringFieldUpdateOperationsInput | string
+    consultations?: ConsultationsUncheckedUpdateManyWithoutRdvNestedInput
   }
 
   export type RendezVousUncheckedUpdateManyWithoutMedecinsInput = {
     id_rdv?: StringFieldUpdateOperationsInput | string
     motif?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
+    date_rdv?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusRvdFieldUpdateOperationsInput | $Enums.StatusRvd
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
     id_patient?: StringFieldUpdateOperationsInput | string
@@ -23549,30 +23320,34 @@ export namespace Prisma {
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ConsultationsUpdateWithoutMedecinInput = {
+  export type ConsultationsCreateManyRdvInput = {
+    id_consultation?: string
+    diagnostique: string
+    cree_le?: Date | string
+    modifie_le?: Date | string
+  }
+
+  export type ConsultationsUpdateWithoutRdvInput = {
     id_consultation?: StringFieldUpdateOperationsInput | string
     diagnostique?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    patient?: PatientsUpdateOneRequiredWithoutConsultationsNestedInput
     fichiers?: FichiersUpdateManyWithoutConsultationsNestedInput
   }
 
-  export type ConsultationsUncheckedUpdateWithoutMedecinInput = {
+  export type ConsultationsUncheckedUpdateWithoutRdvInput = {
     id_consultation?: StringFieldUpdateOperationsInput | string
     diagnostique?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_patient?: StringFieldUpdateOperationsInput | string
     fichiers?: FichiersUncheckedUpdateManyWithoutConsultationsNestedInput
   }
 
-  export type ConsultationsUncheckedUpdateManyWithoutMedecinInput = {
+  export type ConsultationsUncheckedUpdateManyWithoutRdvInput = {
     id_consultation?: StringFieldUpdateOperationsInput | string
     diagnostique?: StringFieldUpdateOperationsInput | string
     cree_le?: DateTimeFieldUpdateOperationsInput | Date | string
     modifie_le?: DateTimeFieldUpdateOperationsInput | Date | string
-    id_patient?: StringFieldUpdateOperationsInput | string
   }
 
   export type LikesCreateManyPostsInput = {

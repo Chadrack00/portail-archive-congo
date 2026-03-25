@@ -4,16 +4,16 @@ import { Plus, ReceiptText, ThumbsDown, ThumbsUp } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
-export default async function StaticPostPage({ slug }: { slug: string }) {
+export default async function StaticPostPage({ slug }: { slug: string; }) {
   const posts: PostTypes[] = await getStaticPost({ slug });
   return (
     <> 
       {posts.length > 0 && (
-        <div className="relative flex-1">
+        <div className="relative grid grid-cols-3 w-[45vw] gap-2">
           {posts.map((post, index) => (
             <div
               key={index}
-              className="group flex flex-col gap-3 rounded-xl border border-slate-100 dark:border-slate-800 p-3 hover:shadow-md transition-shadow"
+              className="group flex flex-col justify-between gap-3 rounded-xl border border-slate-100 dark:border-slate-800 p-3 hover:shadow-md transition-shadow"
             >
               <div className="relative aspect-video rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <Image
@@ -26,7 +26,7 @@ export default async function StaticPostPage({ slug }: { slug: string }) {
                   height={100}
                 />
               </div>
-              <div className="px-1">
+              <div className="px-1 flex flex-col justify-between h-[50%]">
                 <h3 className="font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors">
                   {post.title}
                 </h3>

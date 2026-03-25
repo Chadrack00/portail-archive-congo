@@ -76,3 +76,21 @@ export const editPostSchema = z.object({
 });
 
 export type EditPostSchema = z.infer<typeof editPostSchema>;
+
+export const takeRdvSchema = z.object({
+  motif: z
+    .string()
+    .min(10, "Le motif doit contenir au moins 10 caractères")
+    .max(500, "Le motif est trop long"),
+  date_rdv: z
+    .date({
+      error: "Date requise",
+    })
+    .refine((date) => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return date >= today;
+    }, "La date du rendez-vous ne peut pas être dans le passé"),
+});
+
+export type TakeRdvSchema = z.infer<typeof takeRdvSchema>;
