@@ -1,5 +1,3 @@
-"use client";
-
 import Header from "@/components/header";
 import PrivacyTermsClient from "@/components/home/privacy-terms";
 import { Calendar } from "lucide-react";
