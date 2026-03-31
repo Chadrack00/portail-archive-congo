@@ -245,10 +245,10 @@ export default function ConsultationsList({
                       <Dialog>
                         <DialogTrigger asChild>
                           <Button
-                            className="p-2 hover:text-primary hover:bg-primary-fixed/30 rounded-lg transition-all"
+                            className="p-2 dark:text-white hover:text-primary hover:bg-primary-fixed/30 rounded-lg transition-all"
                             variant="ghost"
                           >
-                            <Eye className="h-4 w-4" />
+                            <Eye className="h-4 w-4 " />
                           </Button>
                         </DialogTrigger>
                         <DialogContent>
@@ -308,7 +308,7 @@ export default function ConsultationsList({
                       >
                         <DialogTrigger asChild>
                           <Button
-                            className="p-2 hover:text-blue-500 hover:bg-blue-100 dark:hover:bg-blue-500/10 rounded-lg transition-all"
+                            className="p-2 hover:text-blue-500 dark:text-white hover:bg-blue-100 dark:hover:bg-blue-500/10 rounded-lg transition-all"
                             variant="ghost"
                             onClick={() => openEditModal(cons)}
                           >
@@ -372,17 +372,17 @@ export default function ConsultationsList({
                       <Dialog>
                         <DialogTrigger asChild>
                           <Button
-                            className="p-2 hover:text-error hover:bg-error-container/50 rounded-lg transition-all"
+                            className="p-2 hover:text-error dark:text-white hover:bg-error-container/50 rounded-lg transition-all"
                             variant="ghost"
                           >
-                            <Trash2 className="h-4 w-4" />
+                            <Trash2 className="h-4 w-4 " />
                           </Button>
                         </DialogTrigger>
                         <DialogContent>
                           <DialogHeader>
                             <DialogTitle>
                               Supprimer la consultation ?
-                            </DialogTitle>
+                            </DialogTitle>tet
                             <DialogDescription>
                               Voulez-vous vraiment supprimer cette consultation
                               de l&apos;historique de {patient?.name} ?

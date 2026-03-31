@@ -1,4 +1,5 @@
 import FormEdit from "@/components/user/posts/form-edit";
+import { checkSlug } from "@/lib/posts/check-slug";
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 
@@ -8,6 +9,7 @@ export default async function EditPostPage({
   params: Promise<{ user_slug: string; edit_post: string }>;
 }) {
   const { user_slug, edit_post } = await params;
+  await checkSlug(user_slug);
 
   const post = await prisma.posts.findUnique({
     where: {

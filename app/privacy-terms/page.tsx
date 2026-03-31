@@ -1,33 +1,44 @@
-"use client"
+"use client";
 
-import {  Calendar, Cookie, Database, FingerprintPattern, Shield } from "lucide-react";
-import Link from "next/link";
 import Header from "@/components/header";
+import {
+  Calendar,
+  Cookie,
+  Database,
+  FingerprintPattern,
+  Shield,
+} from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 export default function PrivacyTerms() {
   const [activeNav, setActiveNav] = useState<string>("collecte");
-  const navs : {id: string ; icon : React.ReactNode;label : string}[] = [{
-    id:"collecte",
-    icon: <Database size={15}/>,
-    label: "Collecte des données"
-  },{
-    id: "utilisation",
-    icon: <FingerprintPattern size={15}/>,
-    label: "Utilisation des données"
-  },{
-    id: "cookies",
-    icon: <Cookie size={15}/>,
-    label: "Cookies"
-  },{
-    id:"responsabilites",
-    icon: <Shield size={15}/>,
-    label: "Responsabilités"
-  }] 
+  const navs: { id: string; icon: React.ReactNode; label: string }[] = [
+    {
+      id: "collecte",
+      icon: <Database size={15} />,
+      label: "Collecte des données",
+    },
+    {
+      id: "utilisation",
+      icon: <FingerprintPattern size={15} />,
+      label: "Utilisation des données",
+    },
+    {
+      id: "cookies",
+      icon: <Cookie size={15} />,
+      label: "Cookies",
+    },
+    {
+      id: "responsabilites",
+      icon: <Shield size={15} />,
+      label: "Responsabilités",
+    },
+  ];
   return (
-    <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300">
+    <div className="bg-background text-foreground font-display transition-colors duration-300">
       <div className="min-h-screen flex flex-col">
         {/* <!-- Top Navigation Bar --> */}
-        <Header/>
+        <Header />
         {/* <!-- Main Content Area --> */}
         <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col lg:flex-row gap-12">
@@ -76,7 +87,7 @@ export default function PrivacyTerms() {
                 </h2>
                 <p className="text-slate-500 font-medium flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm">
-                    <Calendar size={15} color="#137fec"/>
+                    <Calendar size={15} color="#137fec" />
                   </span>
                   <span>Dernière mise à jour : 24 Mai 2024</span>
                 </p>
@@ -93,21 +104,23 @@ export default function PrivacyTerms() {
                   <div className="space-y-4">
                     <p>
                       Nous collectons les informations nécessaires à la gestion
-                      de vos rendez-vous médicaux, notamment votre nom, prénom,
-                      adresse e-mail, numéro de téléphone et historique de
-                      navigation sur la plateforme pour améliorer nos services.
+                      et la consultation de vos archives, notamment votre nom,
+                      prénom, adresse e-mail, numéro de téléphone et historique
+                      de navigation sur la plateforme pour améliorer nos
+                      services.
                     </p>
                     <p>
-                      Les données de santé que vous partagez sont traitées avec
-                      le plus haut niveau de sécurité, conformément aux
-                      réglementations locales et européennes (RGPD).
+                      Les documents et informations que vous consultez sont
+                      traités avec le plus haut niveau de sécurité, conformément
+                      aux réglementations locales et internationales en vigueur.
                     </p>
                     <ul className="list-disc pl-5 space-y-2 mt-4 marker:text-primary">
                       <li>
                         Identifiants de compte et informations de contact.
                       </li>
                       <li>
-                        Historique des rendez-vous et des praticiens consultés.
+                        Historique de consultation des documents
+                        d&apos;archives.
                       </li>
                       <li>
                         Informations techniques (adresse IP, type de
@@ -126,21 +139,21 @@ export default function PrivacyTerms() {
                   </h3>
                   <div className="space-y-4">
                     <p>
-                      Vos données sont exclusivement utilisées pour faciliter la
-                      mise en relation avec les professionnels de santé, assurer
-                      le suivi de vos soins et vous notifier de vos rappels de
-                      rendez-vous.
+                      Vos données sont exclusivement utilisées pour faciliter
+                      l&apos;accès aux documents, gérer vos demandes de
+                      consultation et vous envoyer des notifications liées aux
+                      archives.
                     </p>
                     <div className="bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
                       <p className="text-sm font-medium text-slate-800 dark:text-slate-200">
-                        SantéConnect ne vendra jamais vos données personnelles
-                        ou médicales à des tiers à des fins marketing.
+                        Portail Archive Congo ne vendra jamais vos données
+                        personnelles à des tiers à des fins marketing.
                       </p>
                     </div>
                     <p>
                       Nous pouvons utiliser des données anonymisées pour
-                      réaliser des études statistiques sur l&apos;accès aux
-                      soins, sans jamais identifier d&apos;utilisateurs
+                      réaliser des études statistiques sur l&apos;utilisation
+                      des archives, sans jamais identifier d&apos;utilisateurs
                       individuels.
                     </p>
                   </div>
@@ -164,8 +177,8 @@ export default function PrivacyTerms() {
                         Cookies Essentiels
                       </p>
                       <p className="text-xs text-slate-500">
-                        Nécessaires au fonctionnement de la prise de
-                        rendez-vous.
+                        Nécessaires au fonctionnement du portail
+                        d&apos;archives.
                       </p>
                     </div>
                     <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800">
@@ -188,23 +201,23 @@ export default function PrivacyTerms() {
                   </h3>
                   <div className="space-y-4">
                     <p>
-                      SantéConnect agit en tant qu&apos;intermédiaire technique.
-                      Les diagnostics et conseils médicaux relèvent de la
-                      responsabilité exclusive des professionnels de santé
-                      inscrits sur la plateforme.
+                      Portail Archive Congo agit en tant qu&apos;intermédiaire
+                      technique. Le contenu des archives et leur exactitude
+                      relèvent de la responsabilité exclusive des institutions
+                      productrices de ces documents.
                     </p>
                     <p>
                       L&apos;utilisateur s&apos;engage à fournir des
-                      informations exactes lors de sa prise de rendez-vous et à
-                      honorer ses consultations ou les annuler dans les délais
-                      impartis par le praticien.
+                      informations exactes lors de son inscription et à
+                      respecter les conditions d&apos;utilisation et de
+                      consultation du portail.
                     </p>
                   </div>
                 </section>
               </div>
               <footer className="mt-16 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
                 <p className="text-xs text-slate-400">
-                  © 2024 SantéConnect. Tous droits réservés.
+                  © 2024 Portail Archive Congo. Tous droits réservés.
                 </p>
               </footer>
             </article>

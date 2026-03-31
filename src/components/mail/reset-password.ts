@@ -54,7 +54,7 @@ export const getResetPasswordEmailTemplate = (url: string, userName?: string) =>
                   </p>
                   
                   <p style="font-size: 14px; color: #999999; line-height: 1.6; margin: 30px 0 0;">
-                    Ce lien expirera dans <strong style="color: #666666;">2 heures</strong>.
+                    Ce lien expirera dans <strong style="color: #666666;">1 heures</strong>.
                   </p>
                   <p style="font-size: 14px; color: #ff6b6b; line-height: 1.6; margin: 20px 0 0;">
                     Si vous n'avez pas demandé cette réinitialisation, ignorez cet email.

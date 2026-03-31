@@ -1,10 +1,12 @@
 import TableConsRdv from "@/components/cons-rdv/table";
+import { checkSlug } from "@/lib/posts/check-slug";
 export default async function Page({
   params,
 }: {
   params: Promise<{ user_slug: string }>;
 }) {
   const { user_slug } = await params;
+  await checkSlug(user_slug);
   return (
     <div className=" text-on-background min-h-screen">
       {/* <!-- Layout Wrapper --> */}

@@ -35,14 +35,14 @@ export default async function StaticRdvPage({
         <Table className="border">
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[100px]">Date</TableHead>
-              <TableHead>
+              <TableHead className="w-[100px] text-slate-400">Date</TableHead>
+              <TableHead className="text-slate-400">
                 Nom {isSessionDoctor ? "Patient" : "Docteur"}
               </TableHead>
-              <TableHead>Motif</TableHead>
-              <TableHead className="text-right">Etat</TableHead>
+              <TableHead className="text-slate-400">Motif</TableHead>
+              <TableHead className="text-right text-slate-400">Etat</TableHead>
               {isSessionDoctor && (
-                <TableHead className="text-right">Action</TableHead>
+                <TableHead className="text-right text-slate-400">Action</TableHead>
               )}
             </TableRow>
           </TableHeader>
@@ -76,7 +76,7 @@ export default async function StaticRdvPage({
                 <TableCell>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="outline">Open</Button>
+                      <Button variant="outline" className="text-slate-400  dark:bg-transparent dark:border">Open</Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuGroup>

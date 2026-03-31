@@ -66,14 +66,6 @@ export default async function StaticConsultationsPage({
           </p>
         </div>
       )}
-
-      {/* {consultations.length > 0 && (
-        <Link href={`/${slug}/cons-rdv`} className="flex gap-2 justify-end col-span-full mt-2">
-          <Button variant="outline" className="gap-2">
-            Voir plus <Plus size={15} />
-          </Button>
-        </Link>
-      )} */}
     </>
   );
 }

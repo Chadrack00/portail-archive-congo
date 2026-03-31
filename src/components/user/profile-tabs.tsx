@@ -67,7 +67,7 @@ export default function ProfilTabs({
                 Consultations
               </button>
 
-              <Link href={`/`} className="p-0">
+              <Link href={`/${user_slug}/cons-rdv`} className="p-0">
                 <Button className="px-0">
                   <Eye size={13} />
                 </Button>

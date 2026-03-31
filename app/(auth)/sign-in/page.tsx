@@ -1,23 +1,16 @@
 import { LoginForm } from "@/components/auth/signin-form";
 import CardIcon from "@/components/card-icon";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SignInPage() {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
-          <a href="#" className="flex items-center gap-2 font-medium">
-            <div className="bg-primary text-primary-foreground flex size-24 items-center justify-center rounded-md">
-              <Image
-                src="/icons/archive-congo.png"
-                alt="Logo"
-                width={100}
-                height={100}
-              />
-            </div>
-            <CardIcon />
-          </a>
+          <Link href="/" className="flex items-center gap-2 font-medium">
+            <CardIcon showName={true} />
+          </Link>
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">

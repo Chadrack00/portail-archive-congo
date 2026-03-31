@@ -240,15 +240,16 @@ export default function TableConsRdv({ slug }: { slug: string }) {
             <Select
               value={view}
               onValueChange={(v: "rdv" | "consultation") => setView(v)}
+              
             >
-              <SelectTrigger className="w-full max-w-48">
+              <SelectTrigger className="w-full max-w-48 dark:text-slate-300">
                 <SelectValue placeholder="Selectionnez une option" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="dark:text-slate-300">
                 <SelectGroup>
                   <SelectLabel>Options :</SelectLabel>
-                  <SelectItem value="rdv">Rendez-vous</SelectItem>
-                  <SelectItem value="consultation">Consultation</SelectItem>
+                  <SelectItem value="rdv" className="dark:text-slate-300">Rendez-vous</SelectItem>
+                  <SelectItem value="consultation" className="dark:text-slate-300">Consultation</SelectItem>
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -352,7 +353,7 @@ export default function TableConsRdv({ slug }: { slug: string }) {
                           className="p-2 hover:text-primary hover:bg-primary-fixed/30 rounded-lg transition-all"
                           variant="ghost"
                         >
-                          <Eye className="h-4 w-4" />
+                          <Eye className="h-4 w-4 dark:text-white" />
                         </Button>
                       </DialogTrigger>
                       <DialogContent>
@@ -434,7 +435,7 @@ export default function TableConsRdv({ slug }: { slug: string }) {
                           className="p-2 hover:text-error hover:bg-error-container/50 rounded-lg transition-all"
                           variant="ghost"
                         >
-                          <Trash2 className="h-4 w-4" />
+                          <Trash2 className="h-4 w-4 dark:text-white" />
                         </Button>
                       </DialogTrigger>
                       <DialogContent>
@@ -467,7 +468,7 @@ export default function TableConsRdv({ slug }: { slug: string }) {
                           className="p-2 hover:text-yellow-500 hover:bg-yellow-100 dark:hover:bg-yellow-500/10 rounded-lg transition-all"
                           variant="ghost"
                         >
-                          <Ellipsis className="h-4 w-4" />
+                          <Ellipsis className="h-4 w-4 dark:text-white" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent>

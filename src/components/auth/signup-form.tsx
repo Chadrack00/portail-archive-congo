@@ -248,7 +248,7 @@ export function SignupForm({
                 Ou inscrivez-vous avec
               </FieldSeparator>
               <Button
-                className="bg-transparent text-black border border-black hover:text-white"
+                className="bg-transparent text-slate-500 border border-black hover:text-white"
                 type="button"
                 onClick={handleGoogleSignIn}
                 disabled={isGoogleLoading || isSubmitting}
@@ -275,8 +275,8 @@ export function SignupForm({
       </Card>
       <FieldDescription className="px-6 text-center">
         En continuant, vous acceptez nos{" "}
-        <Link href="#">Conditions d&apos;utilisation</Link> et notre{" "}
-        <Link href="https://inaco.cd/politique-confidentialite">
+        <Link href="/privacy-terms">Conditions d&apos;utilisation</Link> et notre{" "}
+        <Link href="/privacy-terms">
           Politique de confidentialité
         </Link>
       </FieldDescription>
