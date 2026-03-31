@@ -1,15 +1,14 @@
 "use client";
 import { DialogToCheckEmail } from "@/components/auth/dialog-to-check-link";
 import { authClient } from "@/lib/auth-client";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { redirect, useRouter } from "next/navigation";
+import { use, useEffect, useState } from "react";
 
-export default function Page() {
-  const searchParams = useSearchParams();
+export default function Page({searchParams}: {searchParams: Promise<{email: string, error: string}>}) {
   const router = useRouter();
 
-  const error = searchParams.get("error");
-  const email = searchParams.get("email");
+  const {error} = use(searchParams);
+  const {email} = use(searchParams);
 
   const [showSuccessDialog, setShowSuccessDialog] = useState(
     error === "token_expired",
