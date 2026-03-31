@@ -1,39 +1,12 @@
 "use client";
 
 import Header from "@/components/header";
-import {
-  Calendar,
-  Cookie,
-  Database,
-  FingerprintPattern,
-  Shield,
-} from "lucide-react";
+import PrivacyTermsClient from "@/components/home/privacy-terms";
+import { Calendar } from "lucide-react";
+
 import Link from "next/link";
-import { useState } from "react";
 export default function PrivacyTerms() {
-  const [activeNav, setActiveNav] = useState<string>("collecte");
-  const navs: { id: string; icon: React.ReactNode; label: string }[] = [
-    {
-      id: "collecte",
-      icon: <Database size={15} />,
-      label: "Collecte des données",
-    },
-    {
-      id: "utilisation",
-      icon: <FingerprintPattern size={15} />,
-      label: "Utilisation des données",
-    },
-    {
-      id: "cookies",
-      icon: <Cookie size={15} />,
-      label: "Cookies",
-    },
-    {
-      id: "responsabilites",
-      icon: <Shield size={15} />,
-      label: "Responsabilités",
-    },
-  ];
+
   return (
     <div className="bg-background text-foreground font-display transition-colors duration-300">
       <div className="min-h-screen flex flex-col">
@@ -49,21 +22,7 @@ export default function PrivacyTerms() {
                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4 px-3">
                     Navigation légale
                   </h3>
-                  <nav className="flex flex-col gap-1">
-                    {navs.map((nav) => (
-                      <Link
-                        key={nav.id}
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-lg sidebar-active font-medium text-sm ${activeNav === nav.id ? "bg-primary text-white" : ""}`}
-                        href={`#${nav.id}`}
-                        onClick={() => setActiveNav(nav.id)}
-                      >
-                        <span className="material-symbols-outlined text-[20px]">
-                          {nav.icon}
-                        </span>
-                        {nav.label}
-                      </Link>
-                    ))}
-                  </nav>
+                  <PrivacyTermsClient />
                 </div>
                 <div className="p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-800">
                   <p className="text-xs text-slate-500 leading-relaxed">
