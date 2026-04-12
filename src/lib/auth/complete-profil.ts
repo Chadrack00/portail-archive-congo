@@ -1,12 +1,10 @@
 "use server";
-
 import {
   CompleteProfilOutput,
   completeProfilSchema,
 } from "@/types/zod-types/complete-profil";
-import { writeFile } from "fs/promises";
+import { put } from "@vercel/blob";
 import { headers } from "next/headers";
-import { join } from "path";
 import { auth } from "../auth";
 import { prisma } from "../prisma";
 
@@ -36,34 +34,24 @@ export async function completeProfilAction(values: CompleteProfilOutput) {
     // 1. Sauvegarder l'image
     let imagePath = "";
     if (data.image_profile && typeof window === "undefined") {
-      const uploadDir = join(process.cwd(), "public/uploads/profiles");
+      // const uploadDir = join(process.cwd(), "public/uploads/profiles");
       // Extraction the file blob Server-side
       const file = values.image_profile;
-      // const buffer: Buffer;
-      // const bytes = await file.arrayBuffer();
-      // const buffer = Buffer.from(bytes);
+      console.log(file.name);
+      const bytes = await file?.arrayBuffer();
+      const buffer: Buffer = Buffer.from(bytes);
 
-      // try {
-        const bytes = await file?.arrayBuffer();
-        const buffer : Buffer = Buffer.from(bytes);
-      // } catch (err) {
-      //   console.log(err);
-      //   const bytes = await file.bytes();
-      //   buffer = Buffer.from(bytes);
-      // }
+      const blob = await put(`profiles/${Date.now()}-${file.name}`, buffer, {
+        access: "public",
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+      });
 
-      // try {
-      //   await mkdir(uploadDir, { recursive: true });
-      // } catch (e) {
-      //   // Le dossier existe déjà
-      //   console.log(e);
-      // }
+      imagePath = blob.url;
+      // const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.]/g, "_")}`;
+      // const filePath = join(uploadDir, fileName);
+      // await writeFile(filePath, buffer);
 
-      const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.]/g, "_")}`;
-      const filePath = join(uploadDir, fileName);
-      await writeFile(filePath, buffer);
-
-      imagePath = `/uploads/profiles/${fileName}`;
+      // imagePath = `/uploads/profiles/${fileName}`;
     }
 
     // 2. Générer le slug

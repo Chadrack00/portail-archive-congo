@@ -7,10 +7,8 @@ import {
   sendEmailStatusChange,
 } from "@/lib/mail/client-nodemailer";
 import { prisma } from "@/lib/prisma";
-import { randomUUID } from "crypto";
-import { writeFile } from "fs/promises";
+import { put } from "@vercel/blob";
 import { revalidatePath, revalidateTag } from "next/cache";
-import { join } from "path";
 
 export async function getRendezVous(userSlug: string) {
   try {
@@ -91,10 +89,15 @@ export async function createConsultation(id_rdv: string, formData: FormData) {
       if (file && file.size > 0) {
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
-        const fileName = `${randomUUID()}-${file.name}`;
-        const filePath = join(process.cwd(), "public/uploads", fileName);
-        await writeFile(filePath, buffer);
-        savedFiles.push({ lien_fichier: `/uploads/${fileName}` });
+        // const fileName = `${randomUUID()}-${file.name}`;
+        // const filePath = join(process.cwd(), "public/uploads", fileName);
+        // await writeFile(filePath, buffer);
+        const blob = await put(`consultations/${Date.now()}-${file.name}`, buffer, {
+          access: "public",
+          token: process.env.BLOB_READ_WRITE_TOKEN,
+        });
+
+        savedFiles.push({ lien_fichier: blob.url });
       }
     }
 

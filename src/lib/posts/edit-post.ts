@@ -1,8 +1,8 @@
 "use server";
-
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { editPostSchema } from "@/types/zod-types/post-types";
+import { del } from "@vercel/blob";
 import { mkdir, unlink, writeFile } from "fs/promises";
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
@@ -28,15 +28,18 @@ export async function deletePost(postId: string, userSlug: string) {
     if (post?.lien_image) {
       // url is something like "/uploads/posts/1234.jpg"
       // path is join(process.cwd(), "public", post.lien_image)
-      const imagePath = join(process.cwd(), "public", post.lien_image);
-      try {
-        await unlink(imagePath);
-      } catch (err) {
-        console.error(
-          "Failed to delete unused image during post deletion",
-          err,
-        );
-      }
+      // const imagePath = join(process.cwd(), "public", post.lien_image);
+      // try {
+      //   await unlink(imagePath);
+      // } catch (err) {
+      //   console.error(
+      //     "Failed to delete unused image during post deletion",
+      //     err,
+      //   );
+      // }
+      await del(post.lien_image, {
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+      });
     }
 
     await prisma.posts.delete({

@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      new URL('https://hwmltei1obospejs.public.blob.vercel-storage.com/**'),
     ],
   },
 };
