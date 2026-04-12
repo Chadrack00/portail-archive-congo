@@ -79,6 +79,7 @@ export async function completeProfilAction(values: CompleteProfilOutput) {
         postnom: data.postnom,
         prenom: data.prenom,
         slug: generatedSlug,
+        role: data.type_profil.toLowerCase(),
         numero_telephone: data.numero_telephone,
         date_de_naissance: data.date_naissance,
         adresse_residence: data.adresse_residence,
