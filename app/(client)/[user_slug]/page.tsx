@@ -32,7 +32,7 @@ export default async function Page({
   console.log(session?.user.role);
   const isOwner = user.id === session?.user.id;
   const isSessionDoctor = session?.user.role === "medecin";
-  const isSessionUser = session?.user.role === "user";
+  const isSessionUser = session?.user.role === "patient";
   if (user?.role === "user" && !isOwner) notFound();
 
   const d =

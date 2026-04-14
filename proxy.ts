@@ -50,13 +50,13 @@ export async function proxy(request: NextRequest) {
   }
 
   // Prevent a patient from visiting /[user_slug]/posts
-  // Patient is role="user"
-  if (isAuthenticated && user?.role === "user") {
-    // pathname match: /john-doe/posts or /john-doe/posts/...
-    if (pathname.match(/^\/[^\/]+\/posts(\/.*)?$/)) {
-      return NextResponse.redirect(new URL("/", request.url));
-    }
-  }
+  // Patient is role="patient"
+  // if (isAuthenticated && user?.role === "patient") {
+  //   // pathname match: /john-doe/posts or /john-doe/posts/...
+  //   if (pathname.match(/^\/[^\/]+\/posts(\/.*)?$/)) {
+  //     return NextResponse.redirect(new URL("/", request.url));
+  //   }
+  // }
 
   return NextResponse.next();
 }
