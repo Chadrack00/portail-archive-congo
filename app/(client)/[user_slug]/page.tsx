@@ -79,6 +79,7 @@ export default async function Page({
           isDoctor={user?.role === "medecin"}
           user_slug={user_slug}
           isOwner={isOwner}
+          isSessionDoctor={isSessionDoctor}
           postsTabContent={
             <Suspense fallback={<p>Chargement des posts...</p>}>
               <StaticPostPage slug={user_slug} />

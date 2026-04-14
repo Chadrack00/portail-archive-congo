@@ -7,6 +7,7 @@ export default function ProfilTabs({
   user_slug,
   isOwner,
   isDoctor,
+  isSessionDoctor,
   postsTabContent,
   rdvTabContent,
   consultationsTabContent,
@@ -14,6 +15,7 @@ export default function ProfilTabs({
   user_slug: string;
   isOwner: boolean;
   isDoctor: boolean;
+  isSessionDoctor: boolean;
   postsTabContent: React.ReactNode;
   rdvTabContent: React.ReactNode;
   consultationsTabContent: React.ReactNode;
@@ -54,6 +56,13 @@ export default function ProfilTabs({
                 </span>
                 Rendez-vous
               </button>
+              {isSessionDoctor && (
+                <Link href={`/${user_slug}/cons-rdv`} className="p-0">
+                <Button className="px-0">
+                  <Eye size={13} />
+                </Button>
+              </Link>
+              )}
               
             </div>
             <div className="flex items-center gap-0">
@@ -67,11 +76,14 @@ export default function ProfilTabs({
                 Consultations
               </button>
 
-              <Link href={`/${user_slug}/cons-rdv`} className="p-0">
+              
+              {isSessionDoctor && (
+                <Link href={`/${user_slug}/cons-rdv`} className="p-0">
                 <Button className="px-0">
                   <Eye size={13} />
                 </Button>
               </Link>
+              )}
             </div>
           </>
         )}

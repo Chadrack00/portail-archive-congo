@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -447,7 +448,9 @@ export default function TableConsRdv({ slug }: { slug: string }) {
                           </DialogDescription>
                         </DialogHeader>
                         <div className="flex justify-end gap-3 mt-4">
-                          <Button variant="outline">Annuler</Button>
+                          <DialogClose asChild>
+                            <Button variant="outline">Annuler</Button>
+                          </DialogClose>
                           <Button
                             variant="destructive"
                             onClick={() => handleDelete(rdv.id_rdv)}

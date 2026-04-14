@@ -42,7 +42,9 @@ export default async function StaticRdvPage({
               <TableHead className="text-slate-400">Motif</TableHead>
               <TableHead className="text-right text-slate-400">Etat</TableHead>
               {isSessionDoctor && (
-                <TableHead className="text-right text-slate-400">Action</TableHead>
+                <TableHead className="text-right text-slate-400">
+                  Action
+                </TableHead>
               )}
             </TableRow>
           </TableHeader>
@@ -56,42 +58,50 @@ export default async function StaticRdvPage({
                   {isSessionDoctor ? rdv.nomPatient : rdv.nomMedecin}
                 </TableCell>
                 <TableCell>{rdv.motif}</TableCell>
-                {isSessionDoctor && (
-                  <TableCell className="text-right">
-                    <Badge
-                      className={
-                        rdv.status === "attente"
-                          ? "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
-                          : rdv.status === "confirme"
-                            ? "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
-                            : rdv.status === "annule"
-                              ? "bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300"
-                              : "bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300"
-                      }
-                    >
-                      {rdv.status}
-                    </Badge>
-                  </TableCell>
-                )}
-                <TableCell>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="outline" className="text-slate-400  dark:bg-transparent dark:border">Open</Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                      <DropdownMenuGroup>
-                        <DropdownMenuLabel>
-                          Choissez une action
-                          <DropdownMenuStatus
-                            status={rdv.status as StatusRvd}
-                            id={rdv.id}
-                            slug={slug}
-                          />
-                        </DropdownMenuLabel>
-                      </DropdownMenuGroup>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+
+                <TableCell className="text-right">
+                  <Badge
+                    className={
+                      rdv.status === "attente"
+                        ? "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
+                        : rdv.status === "confirme"
+                          ? "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+                          : rdv.status === "annule"
+                            ? "bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-300"
+                            : "bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300"
+                    }
+                  >
+                    {rdv.status}
+                  </Badge>
                 </TableCell>
+                {isSessionDoctor && (
+                  <>
+                    <TableCell>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button
+                            variant="outline"
+                            className="text-slate-400  dark:bg-transparent dark:border"
+                          >
+                            Ouvrir
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                          <DropdownMenuGroup>
+                            <DropdownMenuLabel>
+                              Choissez une action
+                              <DropdownMenuStatus
+                                status={rdv.status as StatusRvd}
+                                id={rdv.id}
+                                slug={slug}
+                              />
+                            </DropdownMenuLabel>
+                          </DropdownMenuGroup>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </TableCell>
+                  </>
+                )}
               </TableRow>
             ))}
           </TableBody>
@@ -117,10 +127,10 @@ export default async function StaticRdvPage({
             Cet utilisateur n&apos;a pas encore de rendez-vous enregistrés.
           </p>
           <Link href={`/`} className="p-0">
-                <Button className="px-0">
-                  <Eye size={13} />
-                </Button>
-              </Link>
+            <Button className="px-0">
+              <Eye size={13} />
+            </Button>
+          </Link>
         </div>
       )}
 
