@@ -15,9 +15,7 @@ type dataSendEmail = {
 };
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false, // true for 465, false for other ports
+  service: "gmail",
   auth: {
     user: process.env.GOOGLE_EMAIL_USER,
     pass: process.env.GOOGLE_EMAIL_PASSWORD,
