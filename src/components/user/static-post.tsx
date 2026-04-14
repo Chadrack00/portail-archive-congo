@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { PostTypes } from "@/types/profil/slug";
-import { Plus, ReceiptText, ThumbsDown, ThumbsUp } from "lucide-react";
+import { Plus, ReceiptText} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -9,7 +9,7 @@ export default async function StaticPostPage({ slug }: { slug: string; }) {
   return (
     <> 
       {posts.length > 0 && (
-        <div className="relative grid grid-cols-3 w-[45vw] gap-2">
+        <Link href={`/${slug}/posts`} className="relative grid grid-cols-3 w-[45vw] gap-2 cursor-pointer">
           {posts.map((post, index) => (
             <div
               key={index}
@@ -33,22 +33,9 @@ export default async function StaticPostPage({ slug }: { slug: string; }) {
                 <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
                   {post.description}
                 </p>
-                <div className="mt-4 flex items-center justify-between text-xs text-slate-400">
+                <div className="mt-4 flex items-center justify-end text-xs text-slate-400">
                   <span>Il y a {post.createdAt.getDate()}</span>
-                  <div className="flex items-center gap-3">
-                    <span className="flex items-center gap-1">
-                      <span className="material-symbols-outlined text-sm">
-                        <ThumbsUp />
-                      </span>{" "}
-                      {post.thumbsUp}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <span className="material-symbols-outlined text-sm">
-                        <ThumbsDown />
-                      </span>{" "}
-                      {post.thumbsDown}
-                    </span>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -58,7 +45,7 @@ export default async function StaticPostPage({ slug }: { slug: string; }) {
               Voir plus <Plus size={15} />
             </Button>
           </Link>
-        </div>
+        </Link>
       )}
 
       {/* <PostCard/> */}

@@ -1,0 +1,35 @@
+"use cleint";
+
+import { Skeleton } from "@/components/ui/skeleton";
+
+export default function Page() {
+  return (
+    <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased">
+      <div className="relative flex min-h-screen flex-col">
+        {/* <!-- Top Navigation Bar --> */}
+
+        <main className="flex-1 max-w-7xl mx-auto w-full px-6 lg:px-20 py-8">
+          {/* <!-- Hero Header --> */}
+          <div className="mb-5">
+            <h1 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight mb-3">
+              <Skeleton className="w-full h-10" />
+            </h1>
+            <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl">
+              <Skeleton className="w-full h-10" />
+            </p>
+          </div>
+          {/* <!-- Main Grid Layout --> */}
+          <div className="grid grid-cols-1 gap-8">
+            <Skeleton className="w-full h-12" />
+          </div>
+
+          {/* <!-- Articles and Health Tips Section --> */}
+
+          <div className="h-[400px] flex items-center justify-center text-slate-500 font-medium mt-20">
+            <Skeleton className="w-full h-12" />
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}

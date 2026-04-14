@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/prisma";
 import { CalendarCheck, Stethoscope, Users } from "lucide-react";
-import { unstable_cache } from "next/cache";
 
 export default async function RatingSection() {
   const [c, s, p] = await getRating();
@@ -72,11 +71,11 @@ function formatNumber(n: number): string {
   return n.toString();
 }
 
-const getRating = unstable_cache(async()=>{
+const getRating = async()=>{
   const res = Promise.all([
     await prisma.consultations.count(),
     await prisma.patients.count(),
     await prisma.medecins.count(),
   ]);
   return res;
-}, ["rating"], {tags: ["rating"]})
+}

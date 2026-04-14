@@ -69,7 +69,7 @@ export default async function Page({
             user={data}
             isOwner={isOwner}
             // L'id du medecin doit exister et la session doit etre celui d'un user qui a le role "user"
-            id_medecin={isSessionUser ? d?.id_medecin : undefined}
+            id_medecin={isSessionDoctor ? d?.id_medecin : undefined}
             isOpen={isRdvModelOpen}
           />
         </Suspense>

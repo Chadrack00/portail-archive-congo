@@ -1,7 +1,7 @@
 import { BriefcaseMedical } from "lucide-react";
 import Link from "next/link";
-import { UserProfilAvatar } from "./home/avatar-profil";
 import { Suspense } from "react";
+import { UserProfilAvatar } from "./home/avatar-profil";
 export default function Header() {
   const navs = [
     {
@@ -17,7 +17,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-3">
+          <Link href={"/"} className="flex items-center gap-3 cursor-pointer">
             <div className=" p-1.5 rounded-lg flex items-center justify-center">
               <span className="bg-blue-600 rounded-xl p-2 material-symbols-outlined text-white text-2xl">
                 <BriefcaseMedical />
@@ -26,7 +26,7 @@ export default function Header() {
             <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
               SantéConnect
             </h1>
-          </div>
+          </Link>
           <nav className="hidden md:flex items-center gap-8">
             {navs.map((nav) => (
               <Link
@@ -42,7 +42,11 @@ export default function Header() {
             </Suspense>
           </nav>
           <button className="md:hidden p-2 rounded-md text-slate-600">
-            <span className="material-symbols-outlined">menu</span>
+            <span className="material-symbols-outlined">
+              <Suspense>
+                <UserProfilAvatar />
+              </Suspense>
+            </span>
           </button>
         </div>
       </div>

@@ -26,20 +26,15 @@ export default function Footer() {
             <li>
               <Link
                 className="hover:text-primary transition-colors"
-                href="/home"
+                href="/overview"
               >
                 Prendre RDV
               </Link>
             </li>
             <li>
-              <Link className="hover:text-primary transition-colors" href="#">
-                Téléconsultation
-              </Link>
-            </li>
-            <li>
               <Link
                 className="hover:text-primary transition-colors"
-                href="/posts"
+                href="/overview"
               >
                 Blog Santé
               </Link>
@@ -57,19 +52,7 @@ export default function Footer() {
                 S&apos;inscrire
               </Link>
             </li>
-            <li>
-              <Link
-                className="hover:text-primary transition-colors"
-                href="#"
-              >
-                Solution logicielle
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:text-primary transition-colors" href="#">
-                Support Praticien
-              </Link>
-            </li>
+            
           </ul>
         </div>
         <div>

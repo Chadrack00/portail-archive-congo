@@ -48,7 +48,7 @@ export async function getOverviewPosts() {
       authorName:
         `${post.medecins.user.name || ""} ${post.medecins.user.postnom || ""}`.trim() ||
         "Dr. Inconnu",
-      slug: `/${post.medecins.user.id}/posts/${post.slug}`,
+      slug: `/${post.medecins.user.id}/posts/`,
     }));
   } catch (error) {
     console.error("Error fetching overview posts:", error);
