@@ -125,28 +125,31 @@ export default function AsidePosts({
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <button className="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md transition-colors focus:outline-none">
-                        <MoreVertical size={16} className="text-slate-500" />
-                      </button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem
-                        onClick={() =>
-                          router.push(`/${params.user_slug}/posts/${post.slug}`)
-                        }
-                      >
-                        <Edit2 size={14} className="mr-2" />
-                        Éditer
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        className="text-red-500 focus:bg-red-50 focus:text-red-600 dark:focus:bg-red-950"
-                        onClick={() => setPostToDelete(post)}
-                      >
-                        <Trash2 size={14} className="mr-2" />
-                        Supprimer
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>)}
+                          <MoreVertical size={16} className="text-slate-500" />
+                        </button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem
+                          onClick={() =>
+                            router.push(
+                              `/${params.user_slug}/posts/${post.id}/`,
+                            )
+                          }
+                        >
+                          <Edit2 size={14} className="mr-2" />
+                          Éditer
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          className="text-red-500 focus:bg-red-50 focus:text-red-600 dark:focus:bg-red-950"
+                          onClick={() => setPostToDelete(post)}
+                        >
+                          <Trash2 size={14} className="mr-2" />
+                          Supprimer
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
+                )}
               </div>
             </div>
           );

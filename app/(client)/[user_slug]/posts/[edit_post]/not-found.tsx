@@ -13,7 +13,7 @@ export default function NotFound() {
         n&apos;avez pas les droits de le modifier.
       </p>
       <Link
-        href="/home"
+        href="/overview"
         className="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors"
       >
         Retour à l&apos;accueil

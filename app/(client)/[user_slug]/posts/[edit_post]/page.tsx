@@ -13,7 +13,7 @@ export default async function EditPostPage({
 
   const post = await prisma.posts.findUnique({
     where: {
-      slug: edit_post,
+      id_post: edit_post,
     },
     select: {
       id_post: true,
